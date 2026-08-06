@@ -1,0 +1,13 @@
+[
+  {
+    "id": "rtx4090-a",
+    "name": "RTX 4090 AI Cluster Node A",
+    "gpu": "4 × NVIDIA RTX 4090",
+    "cpu": "Dual Intel Xeon Gold 6430",
+    "memory": "256GB DDR5 ECC",
+    "leasePrice": "$500",
+    "dailyIncome": "$7",
+    "status": "Available",
+    "image": "/assets/images/products/rtx4090/hero.webp"
+  }
+]
