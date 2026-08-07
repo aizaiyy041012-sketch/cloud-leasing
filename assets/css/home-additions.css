@@ -71,6 +71,19 @@
   line-height: 1.9;
 }
 
+/* ---------- The API Economy ---------- */
+.api-economy-text {
+  max-width: var(--container-780);
+}
+
+.api-economy-source {
+  font-family: var(--mono);
+  font-size: var(--text-0-65r);
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-top: var(--space-1-5r);
+}
+
 .overview-text p + p {
   margin-top: var(--space-1-5r);
 }
@@ -205,12 +218,15 @@
 }
 
 /* Per-tier label colors so the three category cards read as distinct tiers
-   at a glance. Professional Tier keeps the base .cat-tag cyan above. */
-.cat-tag-enterprise {
+   at a glance. Professional Tier keeps the base .cat-tag cyan above.
+   Compound selector (.cat-tag.cat-tag-*) intentionally raises specificity
+   above a bare .cat-tag so these can never lose the cascade to it,
+   regardless of source order. */
+.cat-tag.cat-tag-enterprise {
   color: var(--accent);
 }
 
-.cat-tag-frontier {
+.cat-tag.cat-tag-frontier {
   color: var(--color-accent3);
 }
 
@@ -242,6 +258,39 @@
 
 .cat-link:hover {
   color: var(--accent2);
+}
+
+/* Small comparison data blocks under each category card's description —
+   same visual pattern as the Products page's key-spec tiles (label above
+   value, bordered box), ported here with this file's own tokens since the
+   homepage doesn't load products.css. */
+.cat-data-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-0-5r);
+  margin-bottom: var(--space-1-5r);
+}
+
+.cat-data-tile {
+  border: 1px solid rgba(var(--color-accent-rgb), 0.12);
+  background: var(--black);
+  padding: var(--space-0-6r) var(--space-0-75r);
+}
+
+.cat-data-label {
+  font-family: var(--mono);
+  font-size: var(--text-0-6r);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-0-3r);
+}
+
+.cat-data-value {
+  font-family: var(--mono);
+  font-size: var(--text-0-75r);
+  line-height: 1.3;
+  color: var(--white);
 }
 
 /* ---------- Enterprise Deployment Process ---------- */
