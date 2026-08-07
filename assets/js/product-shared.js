@@ -2,7 +2,8 @@
   'use strict';
 
   var DATA_URL = '/assets/data/products.json';
-  var LEASE_URL = 'https://vig-compute.net/vig/index.html#/';
+  // Sourced from assets/js/config.js, which must load before this file.
+  var LEASE_URL = window.LEASING_SYSTEM_URL;
 
   var SPEC_FIELDS = [
     { key: 'gpu', label: 'GPU' },
