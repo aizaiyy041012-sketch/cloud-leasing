@@ -30,10 +30,12 @@
       wrap.appendChild(span);
     }
 
-    if (product.image) {
+    var src = product.image || ('/assets/images/products/' + product.id + '.svg');
+
+    if (src) {
       var img = document.createElement('img');
-      img.src = product.image;
-      img.alt = product.name || 'GPU server';
+      img.src = src;
+      img.alt = (product.name || 'GPU server') + ' architecture diagram';
       img.loading = 'lazy';
       img.addEventListener('error', showPlaceholder);
       wrap.appendChild(img);
