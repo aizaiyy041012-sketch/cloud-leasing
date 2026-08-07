@@ -1,0 +1,187 @@
+/* ===========================================================================
+   Cloud Leasing — Design Tokens
+   ===========================================================================
+   Centralized values only — no selectors, no component rules here.
+
+   This file consolidates values that were previously hardcoded and/or
+   redeclared independently across index.html, privacy/index.html,
+   terms/index.html, trust/index.html, assets/css/products.css, and
+   assets/css/home-additions.css. Every value below is copied verbatim from
+   the existing site — nothing here is a new color, size, or timing.
+
+   IMPORTANT: this file intentionally keeps several near-identical colors
+   (e.g. two near-blacks, three muted grays) as SEPARATE tokens rather than
+   merging them into one. The homepage and the products/legal pages have
+   always used slightly different shades; unifying them would change actual
+   rendered pixels on one set of pages, which this refactor must not do.
+
+   Typography-scale and spacing-scale tokens are named after their literal
+   value (e.g. --text-0-85r = 0.85rem) rather than a semantic tier (xs/sm/md).
+   The existing values were never on a clean scale to begin with, so a literal
+   naming scheme is the only way to introduce tokens without silently
+   rounding or re-tiering anything — see requirement 5 ("reuse existing
+   values only, do not introduce new values").
+   =========================================================================== */
+
+:root {
+
+  /* ---------- Colors: base ink / paper ---------- */
+  --color-black-900: #080A0F;   /* homepage background (was index.html --black) */
+  --color-black-950: #050505;   /* products / legal / trust page background (was --bg) */
+  --color-white-100: #F0EEE8;   /* homepage off-white text (was index.html --white) */
+  --color-white-200: #F2F5F7;   /* products / legal off-white text (was --text) */
+  --color-white-pure: #FFFFFF;  /* trust page body text color */
+
+  /* ---------- Colors: brand accents ---------- */
+  --color-accent: #00FF88;        /* primary brand green, used site-wide */
+  --color-accent-hover: #00cc70;  /* accent hover/darken state on primary buttons */
+  --color-accent2: #00CFFF;       /* secondary brand cyan */
+
+  /* ---------- Colors: surfaces ---------- */
+  --color-surface-dim: #1A1E28;   /* homepage "dim" section background (was --dim) */
+  --color-surface-mid: #2C3140;   /* homepage --mid (declared in original :root, not applied by any rule) */
+  --color-surface-card: #0B0F12;  /* products / legal card background (was --card) */
+
+  /* ---------- Colors: borders ---------- */
+  --color-border: #151A1F;        /* products / legal / trust hairline border (was --line) */
+
+  /* ---------- Colors: muted text ---------- */
+  --color-muted-1: #6B7280;   /* homepage muted text (was --text-muted) */
+  --color-muted-2: #7C8792;   /* products / legal muted text (was --muted) */
+  --color-muted-3: #999999;   /* trust page muted text (was literal #999) */
+
+  /* ---------- Colors: RGB triplets, for rgba() alpha compositing ---------- */
+  --color-black-900-rgb: 8, 10, 15;
+  --color-white-100-rgb: 240, 238, 232;
+  --color-white-pure-rgb: 255, 255, 255;
+  --color-accent-rgb: 0, 255, 136;
+  --color-accent2-rgb: 0, 207, 255;
+
+  /* ---------- Typography: font families ---------- */
+  --font-mono: 'Space Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+  --font-display: 'Bebas Neue', sans-serif;
+
+  /* ---------- Typography: font weights ---------- */
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ---------- Typography: responsive display sizes (clamp) ---------- */
+  --text-display-hero: clamp(5rem, 12vw, 10rem);        /* homepage hero title */
+  --text-display-section: clamp(2.5rem, 6vw, 5rem);      /* homepage section titles */
+  --text-display-page: clamp(2.8rem, 6vw, 4.4rem);       /* products/detail page h1 */
+  --text-display-quote: clamp(2rem, 4vw, 3.2rem);        /* homepage manifesto quote */
+  --text-display-subsection: clamp(1.6rem, 3vw, 2.2rem); /* family/detail section titles */
+
+  /* ---------- Typography: scale (fixed sizes, literal-named) ---------- */
+  --text-10: 10px;
+  --text-11: 11px;
+  --text-12: 12px;
+  --text-13: 13px;
+  --text-14: 14px;
+  --text-15: 15px;
+  --text-18: 18px;
+  --text-22: 22px;
+  --text-28: 28px;
+  --text-48: 48px;
+  --text-58: 58px;
+
+  --text-0-6r: 0.6rem;
+  --text-0-65r: 0.65rem;
+  --text-0-68r: 0.68rem;
+  --text-0-7r: 0.7rem;
+  --text-0-75r: 0.75rem;
+  --text-0-8r: 0.8rem;
+  --text-0-82r: 0.82rem;
+  --text-0-85r: 0.85rem;
+  --text-0-9r: 0.9rem;
+  --text-1r: 1rem;
+  --text-1-02r: 1.02rem;
+  --text-1-05r: 1.05rem;
+  --text-1-1r: 1.1rem;
+  --text-1-2r: 1.2rem;
+  --text-1-3r: 1.3rem;
+  --text-1-4r: 1.4rem;
+  --text-1-5r: 1.5rem;
+  --text-1-6r: 1.6rem;
+  --text-1-7r: 1.7rem;
+  --text-2-8r: 2.8rem;
+
+  /* ---------- Spacing scale (literal-named, unit preserved as originally used) ---------- */
+  --space-1: 1px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-60: 60px;
+  --space-64: 64px;
+  --space-80: 80px;
+  --space-neg-8: -8px;
+
+  --space-0-3r: 0.3rem;
+  --space-0-35r: 0.35rem;
+  --space-0-45r: 0.45rem;
+  --space-0-5r: 0.5rem;
+  --space-0-55r: 0.55rem;
+  --space-0-6r: 0.6rem;
+  --space-0-7r: 0.7rem;
+  --space-0-75r: 0.75rem;
+  --space-0-9r: 0.9rem;
+  --space-1r: 1rem;
+  --space-1-1r: 1.1rem;
+  --space-1-25r: 1.25rem;
+  --space-1-5r: 1.5rem;
+  --space-1-75r: 1.75rem;
+  --space-2r: 2rem;
+  --space-2-5r: 2.5rem;
+  --space-3r: 3rem;
+  --space-3-5r: 3.5rem;
+  --space-4r: 4rem;
+  --space-5r: 5rem;
+  --space-7r: 7rem;
+  --space-8r: 8rem;
+
+  /* ---------- Borders & radius ---------- */
+  --radius-circle: 50%;
+  --radius-lg: 12px;
+
+  /* ---------- Shadows ---------- */
+  /* No box-shadow is currently used anywhere on the site (the design language
+     relies on 1px borders instead). No shadow tokens are defined, since
+     inventing one would add a value that doesn't exist today. */
+
+  /* ---------- Container widths ---------- */
+  --container-480: 480px;
+  --container-620: 620px;
+  --container-680: 680px;
+  --container-700: 700px;
+  --container-720: 720px;
+  --container-760: 760px;
+  --container-780: 780px;
+  --container-900: 900px;
+  --container-1100: 1100px;
+  --container-1200: 1200px;
+  --container-1400: 1400px;
+
+  /* ---------- Animation timing ---------- */
+  --transition-fast: 0.2s;
+  --duration-orb-pulse: 6s;
+  --duration-ticker-scroll: 30s;
+
+  /* ---------- Z-index layers ---------- */
+  --z-base: 0;
+  --z-content: 1;
+  --z-ticker: 2;
+  --z-nav: 100;
+}

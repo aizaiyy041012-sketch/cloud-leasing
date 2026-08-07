@@ -1,0 +1,648 @@
+:root {
+  --bg: var(--color-black-950);
+  --card: var(--color-surface-card);
+  --line: var(--color-border);
+  --accent: var(--color-accent);
+  --accent2: var(--color-accent2);
+  --text: var(--color-white-200);
+  --muted: var(--color-muted-2);
+  --mono: var(--font-mono);
+  --body: var(--font-body);
+  --display: var(--font-display);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  line-height: 1.8;
+}
+
+.topbar {
+  width: 100%;
+  padding: var(--space-24) var(--space-32);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--accent);
+  font-size: var(--text-28);
+  font-family: var(--mono);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.back {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: var(--text-14);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-1200);
+  margin: auto;
+  padding: var(--space-80) var(--space-24);
+}
+
+.label {
+  color: var(--accent);
+  font-size: var(--text-13);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: var(--mono);
+  margin-bottom: var(--space-24);
+}
+
+h1 {
+  font-family: var(--display);
+  font-size: var(--text-display-page);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-24);
+}
+
+.subtitle {
+  max-width: var(--container-780);
+  color: var(--muted);
+  font-size: var(--text-18);
+  margin-bottom: var(--space-48);
+}
+
+.products-status {
+  font-family: var(--mono);
+  font-size: var(--text-13);
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-align: center;
+  padding: var(--space-3r) 0;
+}
+
+.products-status.is-hidden {
+  display: none;
+}
+
+.product-family-section {
+  margin-top: var(--space-64);
+}
+
+.product-family-section:first-child {
+  margin-top: 0;
+}
+
+.product-family-label {
+  color: var(--accent);
+  font-size: var(--text-12);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: var(--mono);
+  margin-bottom: var(--space-12);
+}
+
+.product-family-title {
+  font-family: var(--display);
+  font-size: var(--text-display-subsection);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-24);
+  padding-bottom: var(--space-16);
+  border-bottom: 1px solid var(--line);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: var(--space-24);
+}
+
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.product-card-image-link {
+  display: block;
+}
+
+.product-card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-card-image.is-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-1r);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(var(--color-accent-rgb),0.08), transparent 60%),
+    var(--bg);
+}
+
+.product-card-image.is-placeholder span {
+  font-family: var(--mono);
+  font-size: var(--text-12);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.product-card-body {
+  padding: var(--space-28);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  flex: 1;
+}
+
+.product-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+
+.product-name {
+  font-family: var(--display);
+  font-size: var(--text-1-6r);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.product-name-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-name-link:hover {
+  color: var(--accent);
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.product-status-badge {
+  font-family: var(--mono);
+  font-size: var(--text-10);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: var(--space-0-35r) var(--space-0-7r);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.product-status-badge.status-available {
+  color: var(--accent);
+  border-color: rgba(var(--color-accent-rgb),0.35);
+  background: rgba(var(--color-accent-rgb),0.06);
+}
+
+.product-specs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-12);
+  font-size: var(--text-14);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: var(--space-8);
+}
+
+.spec-row dt {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: var(--text-11);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+
+.spec-row dd {
+  color: var(--text);
+  text-align: right;
+}
+
+.product-price-row {
+  display: flex;
+  gap: var(--space-24);
+}
+
+.price-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.price-label {
+  font-family: var(--mono);
+  font-size: var(--text-10);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.price-value {
+  font-family: var(--display);
+  font-size: var(--text-1-5r);
+  color: var(--text);
+}
+
+.price-value.is-accent {
+  color: var(--accent);
+}
+
+.btn-lease {
+  margin-top: auto;
+  display: block;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: var(--text-0-75r);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: var(--space-0-9r) var(--space-1-5r);
+  background: var(--accent);
+  color: var(--color-black-900);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-lease:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+.footer {
+  padding: var(--space-60) var(--space-24);
+  text-align: center;
+  color: var(--muted);
+  font-size: var(--text-13);
+  border-top: 1px solid var(--line);
+  margin-top: var(--space-60);
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+}
+
+/* Note: CSS custom properties cannot be used inside @media conditions,
+   so the 900px / 640px breakpoints below stay literal values by necessity. */
+@media (max-width: 900px) {
+  .container {
+    padding: var(--space-64) var(--space-20);
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    padding: var(--space-20);
+  }
+
+  .container {
+    padding: var(--space-56) var(--space-20);
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-cta {
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
+/* ---------- Catalog fields (Phase 3) ---------- */
+
+.product-category {
+  font-family: var(--mono);
+  font-size: var(--text-10);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-8);
+}
+
+.cluster-scale {
+  font-family: var(--mono);
+  font-size: var(--text-12);
+  color: var(--text);
+  background: rgba(var(--color-accent-rgb),0.06);
+  border: 1px solid rgba(var(--color-accent-rgb),0.2);
+  padding: var(--space-8) var(--space-12);
+  margin-top: var(--space-neg-8);
+}
+
+.product-description {
+  color: var(--muted);
+  font-size: var(--text-14);
+  line-height: 1.7;
+}
+
+.pricing-table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  border: 1px solid var(--line);
+  padding: var(--space-12);
+  background: var(--bg);
+}
+
+.pricing-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6) var(--space-16);
+  font-size: var(--text-13);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--line);
+}
+
+.pricing-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.pricing-price {
+  font-family: var(--display);
+  font-size: var(--text-1-1r);
+  color: var(--text);
+}
+
+.pricing-period {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: var(--text-11);
+  align-self: center;
+}
+
+.pricing-return {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: var(--text-11);
+  align-self: center;
+  margin-left: auto;
+}
+
+.card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.key-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: var(--space-10);
+}
+
+.key-spec-tile {
+  border: 1px solid var(--line);
+  background: var(--bg);
+  padding: var(--space-10) var(--space-12);
+}
+
+.key-spec-label {
+  font-family: var(--mono);
+  font-size: var(--text-10);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--space-4);
+}
+
+.key-spec-value {
+  font-size: var(--text-13);
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.full-specs {
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-12);
+}
+
+.full-specs summary {
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: var(--text-11);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  list-style: none;
+}
+
+.full-specs summary::-webkit-details-marker {
+  display: none;
+}
+
+.full-specs summary::before {
+  content: '+ ';
+}
+
+.full-specs[open] summary::before {
+  content: '− ';
+}
+
+.full-specs-heading {
+  font-family: var(--mono);
+  font-size: var(--text-10);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: var(--space-16) 0 var(--space-8);
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.component-table,
+.breakdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-12);
+}
+
+.component-table th,
+.component-table td,
+.breakdown-table td {
+  padding: var(--space-8) var(--space-10);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.component-table td:nth-child(3) {
+  white-space: normal;
+  min-width: 220px;
+}
+
+.breakdown-table td:first-child {
+  white-space: normal;
+  color: var(--muted);
+}
+
+.component-table th {
+  font-family: var(--mono);
+  font-size: var(--text-10);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--accent);
+}
+
+.price-detail {
+  color: var(--muted);
+  font-size: var(--text-11);
+}
+
+.breakdown-table .row-subtotal td {
+  color: var(--text);
+  font-weight: var(--font-weight-semibold);
+  background: rgba(var(--color-white-pure-rgb),0.02);
+}
+
+.breakdown-table .row-total td {
+  color: var(--accent2);
+  font-family: var(--display);
+  font-size: var(--text-1r);
+  border-bottom: none;
+  padding-top: var(--space-12);
+}
+
+/* ---------- Product Detail Page ---------- */
+
+/* Everything above the first .detail-section border lives "above the fold":
+   name, family/deployment-type badges, price, key specs, and the single CTA. */
+.detail-above-fold {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  margin-bottom: var(--space-24);
+}
+
+.detail-hero-top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
+  flex-wrap: wrap;
+}
+
+.detail-hero-top h1 {
+  margin-bottom: 0;
+}
+
+.detail-hero-pricing {
+  max-width: var(--container-480);
+}
+
+.detail-cta {
+  display: inline-block;
+  padding: var(--space-1r) var(--space-3-5r);
+  align-self: flex-start;
+}
+
+.detail-section {
+  margin-top: var(--space-64);
+  padding-top: var(--space-48);
+  border-top: 1px solid var(--line);
+}
+
+.detail-section-title {
+  font-family: var(--display);
+  font-size: var(--text-display-subsection);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-20);
+}
+
+.detail-section .product-specs {
+  margin-bottom: var(--space-24);
+}
+
+.detail-section .pricing-table {
+  margin-bottom: var(--space-24);
+}
+
+.detail-copy {
+  max-width: var(--container-720);
+}
+
+/* ---------- Infrastructure page: capability cards ---------- */
+/* Same "1px-gap mosaic" technique already used by the homepage's hw-grid/dc-grid/sec-grid,
+   ported here using this file's own tokens so the Infrastructure page can stay on the
+   products/legal background family while reusing an established pattern rather than
+   inventing a new one. */
+.infra-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-1);
+  background: rgba(var(--color-accent-rgb), 0.05);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.1);
+  margin-top: var(--space-24);
+}
+
+.infra-card {
+  background: var(--bg);
+  padding: var(--space-24);
+}
+
+.infra-tag {
+  font-family: var(--mono);
+  font-size: var(--text-10);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-8);
+}
+
+.infra-name {
+  font-family: var(--display);
+  font-size: var(--text-1-3r);
+  margin-bottom: var(--space-8);
+  line-height: 1.1;
+}
+
+.infra-desc {
+  color: var(--muted);
+  font-size: var(--text-14);
+  line-height: 1.7;
+}
+
+/* Modifier for a standalone, centered final CTA — combine with .detail-section
+   (e.g. class="detail-section detail-cta-section") to keep the same divider/spacing
+   rhythm as every other section on the page. */
+.detail-cta-section {
+  text-align: center;
+}

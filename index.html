@@ -4,8 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cloud Leasing — AI Compute Production Platform</title>
+<meta name="description" content="Enterprise-grade GPU infrastructure for AI training and inference. Lease H100, GB200, and enterprise-tier compute nodes without upfront hardware investment.">
+<link rel="canonical" href="https://aicloudleasing.com/">
+
+<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Leasing">
+<meta property="og:title" content="Cloud Leasing — AI Compute Production Platform">
+<meta property="og:description" content="Enterprise-grade GPU infrastructure for AI training and inference. Lease H100, GB200, and enterprise-tier compute nodes without upfront hardware investment.">
+<meta property="og:url" content="https://aicloudleasing.com/">
+<meta property="og:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cloud Leasing — AI Compute Production Platform">
+<meta name="twitter:description" content="Enterprise-grade GPU infrastructure for AI training and inference. Lease H100, GB200, and enterprise-tier compute nodes without upfront hardware investment.">
+<meta name="twitter:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/home-additions.css">
 <style>
   *, *::before, *::after {
     box-sizing: border-box;
@@ -14,16 +37,16 @@
   }
 
   :root {
-    --black: #080A0F;
-    --white: #F0EEE8;
-    --accent: #00FF88;
-    --accent2: #00CFFF;
-    --dim: #1A1E28;
-    --mid: #2C3140;
-    --text-muted: #6B7280;
-    --mono: 'Space Mono', monospace;
-    --body: 'Inter', sans-serif;
-    --display: 'Bebas Neue', sans-serif;
+    --black: var(--color-black-900);
+    --white: var(--color-white-100);
+    --accent: var(--color-accent);
+    --accent2: var(--color-accent2);
+    --dim: var(--color-surface-dim);
+    --mid: var(--color-surface-mid);
+    --text-muted: var(--color-muted-1);
+    --mono: var(--font-mono);
+    --body: var(--font-body);
+    --display: var(--font-display);
   }
 
   html {
@@ -43,11 +66,11 @@
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(var(--color-accent-rgb),0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--color-accent-rgb),0.03) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
-    z-index: 0;
+    z-index: var(--z-base);
   }
 
   nav {
@@ -55,26 +78,26 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: var(--z-nav);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.25rem 3rem;
-    border-bottom: 1px solid rgba(0,255,136,0.12);
-    background: rgba(8,10,15,0.85);
+    padding: var(--space-1-25r) var(--space-3r);
+    border-bottom: 1px solid rgba(var(--color-accent-rgb),0.12);
+    background: rgba(var(--color-black-900-rgb),0.85);
     backdrop-filter: blur(12px);
   }
 
   .nav-logo {
     font-family: var(--display);
-    font-size: 1.5rem;
+    font-size: var(--text-1-5r);
     letter-spacing: 0.08em;
     color: var(--accent);
   }
 
   .nav-tag {
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: var(--text-0-65r);
     color: var(--text-muted);
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -86,26 +109,26 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 8rem 3rem 5rem;
+    padding: var(--space-8r) var(--space-3r) var(--space-5r);
     overflow: hidden;
   }
 
   .hero-eyebrow {
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: var(--text-0-7r);
     letter-spacing: 0.3em;
     color: var(--accent);
     text-transform: uppercase;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-1-5r);
   }
 
   .hero-title {
     font-family: var(--display);
-    font-size: clamp(5rem, 12vw, 10rem);
+    font-size: var(--text-display-hero);
     line-height: 0.9;
     letter-spacing: 0.02em;
     color: var(--white);
-    max-width: 900px;
+    max-width: var(--container-900);
   }
 
   .hero-title span {
@@ -114,46 +137,46 @@
   }
 
   .hero-sub {
-    font-size: 1.1rem;
-    color: rgba(240,238,232,0.65);
-    max-width: 620px;
-    margin-top: 2rem;
-    font-weight: 300;
+    font-size: var(--text-1-1r);
+    color: rgba(var(--color-white-100-rgb),0.65);
+    max-width: var(--container-620);
+    margin-top: var(--space-2r);
+    font-weight: var(--font-weight-light);
   }
 
   .hero-cta {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    margin-top: 3rem;
+    gap: var(--space-1-5r);
+    margin-top: var(--space-3r);
     flex-wrap: wrap;
   }
 
   .btn-primary,
   .btn-ghost {
     font-family: var(--mono);
-    font-size: 0.75rem;
+    font-size: var(--text-0-75r);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 0.9rem 2rem;
+    padding: var(--space-0-9r) var(--space-2r);
     text-decoration: none;
-    transition: all 0.2s;
+    transition: all var(--transition-fast);
     display: inline-block;
   }
 
   .btn-primary {
     background: var(--accent);
     color: var(--black);
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
   }
 
   .btn-primary:hover {
-    background: #00cc70;
+    background: var(--color-accent-hover);
     transform: translateY(-2px);
   }
 
   .btn-ghost {
-    border: 1px solid rgba(240,238,232,0.25);
+    border: 1px solid rgba(var(--color-white-100-rgb),0.25);
     color: var(--white);
   }
 
@@ -168,12 +191,12 @@
     top: 50%;
     transform: translateY(-50%);
     width: 52vw;
-    max-width: 700px;
+    max-width: var(--container-700);
     aspect-ratio: 1;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 40%, rgba(0,207,255,0.15), rgba(0,255,136,0.08) 40%, transparent 70%);
-    border: 1px solid rgba(0,255,136,0.08);
-    animation: pulse 6s ease-in-out infinite;
+    border-radius: var(--radius-circle);
+    background: radial-gradient(circle at 35% 40%, rgba(var(--color-accent2-rgb),0.15), rgba(var(--color-accent-rgb),0.08) 40%, transparent 70%);
+    border: 1px solid rgba(var(--color-accent-rgb),0.08);
+    animation: pulse var(--duration-orb-pulse) ease-in-out infinite;
     pointer-events: none;
   }
 
@@ -185,25 +208,25 @@
   .ticker {
     background: var(--accent);
     overflow: hidden;
-    padding: 0.6rem 0;
+    padding: var(--space-0-6r) 0;
     position: relative;
-    z-index: 2;
+    z-index: var(--z-ticker);
   }
 
   .ticker-inner {
     display: flex;
     white-space: nowrap;
-    animation: ticker 30s linear infinite;
+    animation: ticker var(--duration-ticker-scroll) linear infinite;
   }
 
   .ticker-item {
     font-family: var(--mono);
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: var(--text-0-7r);
+    font-weight: var(--font-weight-bold);
     color: var(--black);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 0 3rem;
+    padding: 0 var(--space-3r);
     flex-shrink: 0;
   }
 
@@ -214,42 +237,42 @@
 
   section {
     position: relative;
-    z-index: 1;
-    padding: 7rem 3rem;
+    z-index: var(--z-content);
+    padding: var(--space-7r) var(--space-3r);
   }
 
   .section-label {
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: var(--text-0-65r);
     letter-spacing: 0.3em;
     color: var(--accent);
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-1r);
   }
 
   .section-title {
     font-family: var(--display);
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: var(--text-display-section);
     line-height: 1;
-    max-width: 760px;
-    margin-bottom: 1.5rem;
+    max-width: var(--container-760);
+    margin-bottom: var(--space-1-5r);
   }
 
   .intro-grid,
   .hw-grid,
   .features-grid {
-    margin-top: 3rem;
+    margin-top: var(--space-3r);
   }
 
   .intro-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: var(--space-4r);
     align-items: center;
   }
 
   .intro-text {
-    color: rgba(240,238,232,0.72);
+    color: rgba(var(--color-white-100-rgb),0.72);
     line-height: 1.9;
   }
 
@@ -260,85 +283,85 @@
   .stat-stack {
     display: flex;
     flex-direction: column;
-    gap: 1px;
+    gap: var(--space-1);
   }
 
   .stat-item {
-    border: 1px solid rgba(0,255,136,0.12);
-    padding: 1.5rem;
+    border: 1px solid rgba(var(--color-accent-rgb),0.12);
+    padding: var(--space-1-5r);
     background: var(--dim);
     display: flex;
-    gap: 1.25rem;
+    gap: var(--space-1-25r);
   }
 
   .stat-num {
     font-family: var(--display);
-    font-size: 2.8rem;
+    font-size: var(--text-2-8r);
     color: var(--accent);
     min-width: 90px;
   }
 
   .stat-title {
     color: var(--white);
-    margin-bottom: 0.3rem;
-    font-weight: 500;
+    margin-bottom: var(--space-0-3r);
+    font-weight: var(--font-weight-medium);
   }
 
   .stat-desc {
-    color: rgba(240,238,232,0.6);
-    font-size: 0.85rem;
+    color: rgba(var(--color-white-100-rgb),0.6);
+    font-size: var(--text-0-85r);
   }
 
   .hw-section,
   .stack-section {
     background: var(--dim);
-    border-top: 1px solid rgba(0,255,136,0.1);
-    border-bottom: 1px solid rgba(0,255,136,0.1);
+    border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
+    border-bottom: 1px solid rgba(var(--color-accent-rgb),0.1);
   }
 
   .hw-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(0,255,136,0.05);
-    border: 1px solid rgba(0,255,136,0.1);
+    gap: var(--space-1);
+    background: rgba(var(--color-accent-rgb),0.05);
+    border: 1px solid rgba(var(--color-accent-rgb),0.1);
   }
 
   .hw-card,
   .feature-card {
     background: var(--black);
-    padding: 2rem;
+    padding: var(--space-2r);
   }
 
   .hw-icon,
   .feature-tag {
     font-family: var(--mono);
-    font-size: 0.6rem;
+    font-size: var(--text-0-6r);
     color: var(--accent);
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--space-0-75r);
   }
 
   .hw-name {
     font-family: var(--display);
-    font-size: 1.6rem;
-    margin-bottom: 0.7rem;
+    font-size: var(--text-1-6r);
+    margin-bottom: var(--space-0-7r);
     line-height: 1.1;
   }
 
   .hw-desc,
   .feature-desc {
-    color: rgba(240,238,232,0.58);
-    font-size: 0.85rem;
+    color: rgba(var(--color-white-100-rgb),0.58);
+    font-size: var(--text-0-85r);
     line-height: 1.8;
   }
 
   .flow-steps {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 2rem;
-    margin-top: 4rem;
+    gap: var(--space-2r);
+    margin-top: var(--space-4r);
   }
 
   .flow-step {
@@ -348,74 +371,74 @@
   .flow-num {
     width: 5rem;
     height: 5rem;
-    border: 1px solid rgba(0,255,136,0.3);
-    border-radius: 50%;
+    border: 1px solid rgba(var(--color-accent-rgb),0.3);
+    border-radius: var(--radius-circle);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.25rem;
+    margin: 0 auto var(--space-1-25r);
     font-family: var(--display);
-    font-size: 1.6rem;
+    font-size: var(--text-1-6r);
     color: var(--accent);
   }
 
   .flow-step-title {
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--space-0-5r);
   }
 
   .flow-step-desc {
-    color: rgba(240,238,232,0.55);
-    font-size: 0.8rem;
+    color: rgba(var(--color-white-100-rgb),0.55);
+    font-size: var(--text-0-8r);
   }
 
   .features-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: rgba(0,255,136,0.04);
-    border: 1px solid rgba(0,255,136,0.08);
+    gap: var(--space-1);
+    background: rgba(var(--color-accent-rgb),0.04);
+    border: 1px solid rgba(var(--color-accent-rgb),0.08);
   }
 
   .feature-title {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
+    font-size: var(--text-1-1r);
+    margin-bottom: var(--space-0-75r);
   }
 
   .stack-intro {
-    color: rgba(240,238,232,0.65);
-    max-width: 680px;
-    margin-top: 1rem;
+    color: rgba(var(--color-white-100-rgb),0.65);
+    max-width: var(--container-680);
+    margin-top: var(--space-1r);
   }
 
   .stack-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 2.5rem;
+    gap: var(--space-0-5r);
+    margin-top: var(--space-2-5r);
   }
 
   .stack-pill {
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: var(--text-0-65r);
     letter-spacing: 0.1em;
     color: var(--accent2);
-    border: 1px solid rgba(0,207,255,0.25);
-    padding: 0.45rem 0.9rem;
-    background: rgba(0,207,255,0.04);
+    border: 1px solid rgba(var(--color-accent2-rgb),0.25);
+    padding: var(--space-0-45r) var(--space-0-9r);
+    background: rgba(var(--color-accent2-rgb),0.04);
   }
 
   .manifesto {
     text-align: center;
-    border-top: 1px solid rgba(0,255,136,0.1);
+    border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
   }
 
   .manifesto-quote {
     font-family: var(--display);
-    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-size: var(--text-display-quote);
     line-height: 1.2;
-    max-width: 900px;
-    margin: 0 auto 3rem;
+    max-width: var(--container-900);
+    margin: 0 auto var(--space-3r);
   }
 
   .manifesto-quote em {
@@ -425,15 +448,15 @@
 
   .manifesto-sub {
     font-family: var(--mono);
-    font-size: 0.75rem;
+    font-size: var(--text-0-75r);
     letter-spacing: 0.15em;
-    color: rgba(240,238,232,0.5);
+    color: rgba(var(--color-white-100-rgb),0.5);
     text-transform: uppercase;
   }
 
   footer {
-    border-top: 1px solid rgba(0,255,136,0.1);
-    padding: 2.5rem 3rem;
+    border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
+    padding: var(--space-2-5r) var(--space-3r);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -441,24 +464,26 @@
 
   .footer-logo {
     font-family: var(--display);
-    font-size: 1.2rem;
+    font-size: var(--text-1-2r);
     color: var(--accent);
   }
 
   .footer-copy {
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: var(--text-0-65r);
     color: var(--text-muted);
     letter-spacing: 0.12em;
   }
 
+  /* Note: CSS custom properties cannot be used inside @media conditions,
+     so the 900px breakpoint below stays a literal value by necessity. */
   @media (max-width: 900px) {
     nav,
     section,
     footer,
     .hero {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+      padding-left: var(--space-1-5r);
+      padding-right: var(--space-1-5r);
     }
 
     .intro-grid,
@@ -474,17 +499,112 @@
 
     footer {
       flex-direction: column;
-      gap: 1rem;
+      gap: var(--space-1r);
       text-align: center;
     }
   }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Cloud Leasing",
+  "url": "https://aicloudleasing.com/",
+  "logo": "https://aicloudleasing.com/assets/images/apple-touch-icon.png",
+  "description": "Cloud Leasing provides enterprise-grade GPU infrastructure for AI training and inference, leased on demand."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Cloud Leasing",
+  "url": "https://aicloudleasing.com/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What GPUs are available to lease?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The platform offers a range of tiers from professional multi-GPU nodes to enterprise and frontier-scale clusters. Full specifications and current availability are listed on the GPU Servers page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does billing work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Leasing and billing are handled through the Cloud Leasing platform, where pricing and payment details are presented before you commit to a node."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a minimum lease commitment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Commitment terms vary by node tier and are presented at the time of leasing on the platform."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I deploy my own models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Nodes ship with a pre-installed runtime stack (CUDA, PyTorch, vLLM, TensorRT-LLM) so you can deploy proprietary or open-source models directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What support is included?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Infrastructure and deployment support is available throughout your lease, with dedicated support for enterprise deployments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I need a dedicated, multi-node deployment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Teams that need dedicated capacity beyond a single node go through the enterprise deployment process, which includes a needs assessment, custom cluster design, and a defined support SLA rather than the self-service flow used for individual GPU nodes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is data or model IP shared between customers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Workloads are isolated at the node and network level, and customer data and model artifacts are handled under defined operational access controls rather than exposed by default."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get started?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start directly on the Cloud Leasing platform, where you can select a node and begin deployment."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <nav>
   <div class="nav-logo">CLOUD LEASING</div>
-  <div class="nav-tag">AI Compute Production Platform</div>
+  <div class="nav-right">
+    <div class="nav-tag">AI Compute Production Platform</div>
+    <a href="/products/" class="nav-link">Products</a>
+    <a href="https://vig-compute.net/vig/index.html#/" target="_blank" class="nav-cta">Get Started</a>
+  </div>
 </nav>
 
 <section class="hero">
@@ -527,6 +647,41 @@
   </div>
 </div>
 
+<section id="company">
+  <div class="section-label">// COMPANY OVERVIEW</div>
+
+  <h2 class="section-title">
+    Built For The New Class<br>
+    Of AI Builders
+  </h2>
+
+  <div class="overview-grid">
+    <div class="overview-text">
+      <p>
+        Cloud Leasing designs, operates, and supports enterprise GPU infrastructure end to end — from hardware provisioning and network fabric to the runtime stack running on every node. Customers work with a single operator across the full deployment lifecycle rather than assembling infrastructure, tooling, and support from separate vendors.
+      </p>
+      <p>
+        Every node is provisioned, configured, and monitored by the same team that maintains the underlying data center operations, network fabric, and pre-installed software stack. That operating model is what allows teams to move from a leased GPU node to a production AI workload without first building an internal infrastructure practice.
+      </p>
+    </div>
+
+    <div class="overview-points">
+      <div class="overview-point">
+        <div class="overview-point-title">Full-Lifecycle Infrastructure</div>
+        <div class="overview-point-desc">Hardware, network fabric, runtime stack, and API tooling are managed as one integrated system, not a collection of separately sourced components.</div>
+      </div>
+      <div class="overview-point">
+        <div class="overview-point-title">Operator, Not Just Landlord</div>
+        <div class="overview-point-desc">The team that provisions a node also maintains its runtime environment, so customers troubleshoot with infrastructure engineers, not a ticketing queue for a colocation facility.</div>
+      </div>
+      <div class="overview-point">
+        <div class="overview-point-title">Grows With Your Workload</div>
+        <div class="overview-point-desc">The same operating model that supports a single leased node also supports dedicated, multi-node clusters, so scaling up does not require switching providers or re-architecting deployment tooling.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="intro">
   <div class="section-label">// ABOUT THE PLATFORM</div>
 
@@ -538,19 +693,19 @@
   <div class="intro-grid">
     <div class="intro-text">
       <p>
-        Cloud Leasing is building a true <strong>AI compute production platform</strong> designed specifically for individual entrepreneurs, independent developers, and small-to-medium AI teams.
+        Cloud Leasing is an <strong>AI compute production platform</strong> built for individual entrepreneurs, independent developers, and small-to-medium AI teams — builders who have the technical capability but not the capital position of a hyperscale enterprise.
       </p>
 
       <br>
 
       <p>
-        In the past, training and deploying AI models required extremely expensive GPU clusters, data centers, and complex infrastructure. Even developers with strong AI ideas often could not afford the multi-million-dollar hardware investment.
+        Training and deploying AI models has historically required large GPU clusters, purpose-built data centers, and infrastructure engineering expertise that most teams cannot justify building in-house. Even developers with a strong technical roadmap have been priced out by the scale of the underlying hardware investment.
       </p>
 
       <br>
 
       <p>
-        We package this traditionally complex and capital-intensive AI infrastructure into a fully accessible <strong>AI production platform that anyone can rent and monetize</strong>.
+        Cloud Leasing packages that same class of infrastructure into a platform that can be leased and put into production directly — an <strong>AI production platform that can be rented and monetized</strong> without the capital outlay or multi-year commitment that owning the hardware would require.
       </p>
     </div>
 
@@ -559,7 +714,7 @@
         <div class="stat-num">$0</div>
         <div>
           <div class="stat-title">Hardware Procurement Cost</div>
-          <div class="stat-desc">No need to purchase GPUs — rent enterprise compute power on demand.</div>
+          <div class="stat-desc">No capital outlay for GPU hardware — provision enterprise compute capacity on demand instead of purchasing it.</div>
         </div>
       </div>
 
@@ -567,7 +722,7 @@
         <div class="stat-num">∞</div>
         <div>
           <div class="stat-title">Elastic Scalability</div>
-          <div class="stat-desc">Kubernetes-native orchestration automatically scales infrastructure.</div>
+          <div class="stat-desc">Kubernetes-native orchestration scales node capacity up or down automatically as workload demand changes.</div>
         </div>
       </div>
 
@@ -575,9 +730,51 @@
         <div class="stat-num">API</div>
         <div>
           <div class="stat-title">Instant Monetization</div>
-          <div class="stat-desc">Deploy AI models and instantly generate production-ready commercial APIs.</div>
+          <div class="stat-desc">Deploy a trained model and expose it as a production-ready, billable API without building the surrounding infrastructure yourself.</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-label">// WHY CHOOSE US</div>
+
+  <h2 class="section-title">
+    A Different Way To<br>
+    Access AI Compute
+  </h2>
+
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">No Hardware Procurement</div>
+      <div class="why-desc">Skip multi-month GPU lead times and large upfront capital outlay — lease compute on demand instead.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">Transparent Pricing</div>
+      <div class="why-desc">Straightforward lease pricing with no hidden infrastructure or maintenance fees.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">No Long-Term Lock-In</div>
+      <div class="why-desc">Scale nodes up or down as workloads change, without being tied to a fixed hardware investment.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">Production-Ready From Day One</div>
+      <div class="why-desc">Every node arrives pre-configured with the runtime stack needed for training and inference, not a bare machine.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">Dedicated Technical Support</div>
+      <div class="why-desc">Infrastructure and deployment support throughout the lease, not just at signup.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">Built For Monetization</div>
+      <div class="why-desc">Integrated API and billing tooling turns a deployed model into a sellable product, not just a running process.</div>
     </div>
   </div>
 </section>
@@ -595,7 +792,7 @@
       <div class="hw-icon">// GPU NODES</div>
       <div class="hw-name">H100 SXM<br>GB200 / GB300</div>
       <div class="hw-desc">
-        Latest-generation NVIDIA GPU architectures with HBM high-bandwidth memory and PCIe Gen5 infrastructure for large-scale AI training and inference.
+        Current-generation NVIDIA GPU architectures with HBM high-bandwidth memory and PCIe Gen5 infrastructure, sized for large-scale AI training and inference workloads.
       </div>
     </div>
 
@@ -603,7 +800,7 @@
       <div class="hw-icon">// HIGH-SPEED INTERCONNECT</div>
       <div class="hw-name">NVLink<br>InfiniBand</div>
       <div class="hw-desc">
-        NVLink + NVSwitch + InfiniBand networking architecture creates a massive low-latency GPU fabric powered by RDMA communication.
+        NVLink, NVSwitch, and InfiniBand combine into a low-latency GPU fabric built on RDMA, so multi-GPU and multi-node jobs exchange data without traversing the standard network stack.
       </div>
     </div>
 
@@ -611,7 +808,7 @@
       <div class="hw-icon">// COOLING SYSTEM</div>
       <div class="hw-name">Liquid Cooling<br>Cold Plate System</div>
       <div class="hw-desc">
-        Intelligent thermal management with liquid cooling and ultra-low PUE architecture for long-term high-density efficiency.
+        Liquid cooling and cold-plate systems remove heat directly at the GPU, supporting sustained high-density loads at a lower PUE than traditional air-cooled racks.
       </div>
     </div>
 
@@ -619,7 +816,7 @@
       <div class="hw-icon">// POWER INFRASTRUCTURE</div>
       <div class="hw-name">High Voltage<br>Dual Redundancy</div>
       <div class="hw-desc">
-        Enterprise-grade power systems with UPS + PDU smart distribution and redundant infrastructure deployed in low-cost energy regions.
+        Redundant UPS and PDU power distribution, sited in regions selected for reliable, cost-efficient energy access, keeps GPU nodes running through localized power events.
       </div>
     </div>
 
@@ -627,7 +824,7 @@
       <div class="hw-icon">// STORAGE ARCHITECTURE</div>
       <div class="hw-name">EPYC / Xeon<br>NVMe SSD</div>
       <div class="hw-desc">
-        Enterprise EPYC and Xeon CPUs paired with ultra-fast NVMe SSD arrays for high-throughput AI workloads.
+        AMD EPYC and Intel Xeon CPUs pair with NVMe SSD arrays sized for the sustained read/write throughput that data-heavy training and inference pipelines require.
       </div>
     </div>
 
@@ -635,8 +832,80 @@
       <div class="hw-icon">// CLUSTER SCALE</div>
       <div class="hw-name">NVL72<br>Bare Metal</div>
       <div class="hw-desc">
-        GB300 NVL72 bare-metal AI supercomputing clusters supporting multimodal generation, AI agents, and ultra-high-load inference.
+        GB300 NVL72 bare-metal clusters scale to the multimodal generation, agentic, and high-concurrency inference workloads that outgrow single-node deployments.
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="dc-section">
+  <div class="section-label">// DATA CENTER OPERATIONS</div>
+
+  <h2 class="section-title">
+    Facility-Grade Operations<br>
+    Behind Every Node
+  </h2>
+
+  <div class="dc-grid">
+    <div class="dc-card">
+      <div class="dc-icon">// POWER & UPTIME</div>
+      <div class="dc-name">Redundant Power<br>& Uptime</div>
+      <div class="dc-desc">N+1 power redundancy, continuous monitoring, and automatic failover are designed to keep workloads running through routine maintenance and localized equipment failures, not only planned outages.</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// FACILITY ACCESS</div>
+      <div class="dc-name">Physical<br>Security</div>
+      <div class="dc-desc">Restricted facility access, monitored environments, and controlled hardware handling apply from the moment a node is racked through every subsequent maintenance visit, not only at initial deployment.</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// CONNECTIVITY</div>
+      <div class="dc-name">Network Peering<br>& Bandwidth</div>
+      <div class="dc-desc">High-throughput uplinks and peering relationships are provisioned ahead of demand, so inference and training traffic does not compete with other tenants for shared bandwidth during peak load.</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// FOOTPRINT</div>
+      <div class="dc-name">Multi-Region<br>Deployment</div>
+      <div class="dc-desc">Infrastructure spans multiple facilities, which lets workloads be placed closer to end users or data sources and gives customers a path to geographic redundancy without managing multiple vendor relationships.</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// MONITORING</div>
+      <div class="dc-name">24/7 Facility<br>Monitoring</div>
+      <div class="dc-desc">Continuous environmental and hardware monitoring across cooling, power, and network layers surfaces early warning signs — thermal drift, power quality issues, link degradation — before they affect running workloads.</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// MAINTENANCE</div>
+      <div class="dc-name">Proactive<br>Maintenance</div>
+      <div class="dc-desc">Scheduled hardware servicing and health checks are staged around active workloads, so routine maintenance is planned rather than disruptive.</div>
+    </div>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="section-label">// GPU PRODUCT CATEGORIES</div>
+
+  <h2 class="section-title">
+    Compute Tiers For<br>
+    Every Stage
+  </h2>
+
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="cat-tag">Professional Tier</div>
+      <div class="cat-name">RTX-Class Nodes</div>
+      <div class="cat-desc">Multi-GPU nodes suited for fine-tuning, small-scale training, and inference workloads.</div>
+      <a href="/products/#cat-rtx" class="cat-link">Explore RTX Nodes →</a>
+    </div>
+    <div class="cat-card">
+      <div class="cat-tag">Enterprise Tier</div>
+      <div class="cat-name">A100-Class Nodes</div>
+      <div class="cat-desc">Built for large model training and high-throughput inference at production scale.</div>
+      <a href="/products/#cat-a100" class="cat-link">Explore A100 Nodes →</a>
+    </div>
+    <div class="cat-card">
+      <div class="cat-tag">Frontier Tier</div>
+      <div class="cat-name">H800-Class Nodes</div>
+      <div class="cat-desc">Bare-metal clusters for the largest training runs and multimodal inference workloads.</div>
+      <a href="/products/#cat-h800" class="cat-link">Explore H800 Nodes →</a>
     </div>
   </div>
 </section>
@@ -653,32 +922,77 @@
     <div class="flow-step">
       <div class="flow-num">01</div>
       <div class="flow-step-title">Lease GPU Compute</div>
-      <div class="flow-step-desc">Choose H100, GB200, or enterprise GPU nodes with zero hardware procurement costs.</div>
+      <div class="flow-step-desc">Select from H100, GB200, or other enterprise GPU tiers and provision the configuration that matches your workload — no hardware purchase or multi-month procurement cycle required.</div>
     </div>
 
     <div class="flow-step">
       <div class="flow-num">02</div>
       <div class="flow-step-title">Deploy AI Models</div>
-      <div class="flow-step-desc">Upload proprietary models or deploy open-source models with pre-installed runtimes.</div>
+      <div class="flow-step-desc">Upload a proprietary model or select from open-source options, using the runtime stack already pre-installed on the node.</div>
     </div>
 
     <div class="flow-step">
       <div class="flow-num">03</div>
       <div class="flow-step-title">Optimize Inference</div>
-      <div class="flow-step-desc">vLLM and TensorRT-LLM maximize GPU efficiency while Kubernetes orchestrates resources.</div>
+      <div class="flow-step-desc">vLLM and TensorRT-LLM handle inference-level optimization while Kubernetes-native orchestration manages resource allocation across the node.</div>
     </div>
 
     <div class="flow-step">
       <div class="flow-num">04</div>
       <div class="flow-step-title">Generate APIs</div>
-      <div class="flow-step-desc">API Gateway automatically packages your models into scalable production APIs.</div>
+      <div class="flow-step-desc">The API Gateway exposes your deployed model as a production endpoint, complete with authentication and rate limiting.</div>
     </div>
 
     <div class="flow-step">
       <div class="flow-num">05</div>
       <div class="flow-step-title">Start Monetizing</div>
-      <div class="flow-step-desc">Monetize through API calls, token usage, subscriptions, or custom billing models.</div>
+      <div class="flow-step-desc">Bill against API calls, token usage, subscriptions, or a custom pricing model — the billing logic runs on the same platform as the deployment.</div>
     </div>
+  </div>
+</section>
+
+<section id="enterprise-deploy">
+  <div class="section-label">// ENTERPRISE DEPLOYMENT</div>
+
+  <h2 class="section-title">
+    A Dedicated Path For<br>
+    Larger Deployments
+  </h2>
+
+  <p class="deploy-intro">
+    Teams that need dedicated capacity beyond a single leased node move through a structured onboarding process, rather than the self-service flow used for individual GPU nodes.
+  </p>
+
+  <div class="deploy-steps">
+    <div class="deploy-step">
+      <div class="deploy-num">01</div>
+      <div class="deploy-step-title">Consultation & Needs Assessment</div>
+      <div class="deploy-step-desc">Review workload requirements, model size, and throughput targets to determine the right cluster configuration.</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">02</div>
+      <div class="deploy-step-title">Custom Cluster Design</div>
+      <div class="deploy-step-desc">Configure GPU count, interconnect topology, and storage to match the workload profile.</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">03</div>
+      <div class="deploy-step-title">Provisioning & Integration</div>
+      <div class="deploy-step-desc">Stand up dedicated nodes and integrate them with existing pipelines, orchestration, and tooling.</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">04</div>
+      <div class="deploy-step-title">Dedicated Support & SLA</div>
+      <div class="deploy-step-desc">Ongoing infrastructure support backed by a defined service commitment.</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">05</div>
+      <div class="deploy-step-title">Ongoing Optimization</div>
+      <div class="deploy-step-desc">Continuous monitoring and tuning as workloads and usage patterns evolve.</div>
+    </div>
+  </div>
+
+  <div class="deploy-cta-wrap">
+    <a href="https://vig-compute.net/vig/index.html#/" target="_blank" class="btn-primary">Start An Enterprise Deployment</a>
   </div>
 </section>
 
@@ -695,7 +1009,7 @@
       <div class="feature-tag">Inference Optimization</div>
       <div class="feature-title">Maximum GPU Utilization</div>
       <div class="feature-desc">
-        Built-in vLLM continuous batching, TensorRT-LLM optimization, and Triton orchestration ensure every GPU core operates at peak efficiency.
+        vLLM continuous batching, TensorRT-LLM optimization, and Triton orchestration work together so GPU capacity stays utilized rather than idle between requests.
       </div>
     </div>
 
@@ -703,7 +1017,7 @@
       <div class="feature-tag">API Commercialization</div>
       <div class="feature-title">Full API Monetization Stack</div>
       <div class="feature-desc">
-        Integrated API key management, token billing, RPM/TPM control, and WAF protection allow users to focus entirely on business growth.
+        API key management, token-based billing, RPM/TPM rate limiting, and WAF protection are built into the platform, so commercializing a model doesn't require assembling a separate billing and security stack.
       </div>
     </div>
 
@@ -711,7 +1025,7 @@
       <div class="feature-tag">Elastic Scaling</div>
       <div class="feature-title">Automatic Infrastructure Scaling</div>
       <div class="feature-desc">
-        Kubernetes-native orchestration and load balancing automatically adapt to traffic spikes from startups to enterprise SaaS platforms.
+        Kubernetes-native orchestration and load balancing adjust allocated resources as traffic changes, from early-stage workloads to production SaaS-scale demand.
       </div>
     </div>
 
@@ -719,8 +1033,40 @@
       <div class="feature-tag">AI Workloads</div>
       <div class="feature-title">Full-Stack AI Scenarios</div>
       <div class="feature-desc">
-        Support for AI training, inference, multimodal image/video generation, RAG systems, and AI agent runtimes — all within one platform.
+        Training, inference, multimodal image and video generation, retrieval-augmented generation (RAG) pipelines, and AI agent runtimes all run on the same underlying platform.
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="tech-advantages">
+  <div class="section-label">// TECHNICAL ADVANTAGES</div>
+
+  <h2 class="section-title">
+    Engineering Details<br>
+    That Compound
+  </h2>
+
+  <div class="adv-grid">
+    <div class="adv-card">
+      <div class="adv-tag">Inference</div>
+      <div class="adv-title">Continuous Batching</div>
+      <div class="adv-desc">vLLM-based continuous batching keeps GPUs processing requests instead of sitting idle between them.</div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-tag">Networking</div>
+      <div class="adv-title">Optimized Interconnect</div>
+      <div class="adv-desc">NVLink and InfiniBand fabrics reduce cross-GPU communication overhead on multi-node training jobs.</div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-tag">Thermal</div>
+      <div class="adv-title">Efficient Cooling</div>
+      <div class="adv-desc">Liquid cooling and cold-plate systems sustain high-density GPU loads without thermal throttling.</div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-tag">Orchestration</div>
+      <div class="adv-title">Smart Scheduling</div>
+      <div class="adv-desc">Kubernetes-native scheduling places workloads on the right node automatically as demand shifts.</div>
     </div>
   </div>
 </section>
@@ -745,6 +1091,7 @@
     <div class="stack-pill">vLLM</div>
     <div class="stack-pill">Triton Inference Server</div>
     <div class="stack-pill">Kubernetes (K8s)</div>
+    <div class="stack-pill">Slurm</div>
     <div class="stack-pill">Docker Container Runtime</div>
     <div class="stack-pill">GPU Virtualization</div>
     <div class="stack-pill">FastAPI</div>
@@ -756,6 +1103,127 @@
     <div class="stack-pill">Load Balancing</div>
     <div class="stack-pill">RDMA</div>
     <div class="stack-pill">NVMe SSD Arrays</div>
+  </div>
+</section>
+
+<section class="security-section">
+  <div class="section-label">// SECURITY & COMPLIANCE</div>
+
+  <h2 class="section-title">
+    Security Built Into<br>
+    Every Layer
+  </h2>
+
+  <div class="sec-grid">
+    <div class="sec-card">
+      <div class="sec-icon">// TRANSIT</div>
+      <div class="sec-name">Encrypted Communication</div>
+      <div class="sec-desc">Data in transit is encrypted across API traffic, orchestration channels, and management interfaces, so requests moving between a deployed model and its callers are not exposed on the wire.</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// ISOLATION</div>
+      <div class="sec-name">Tenant Isolation</div>
+      <div class="sec-desc">Workloads are isolated at the node and network level, so one customer's deployment cannot observe or interfere with another's traffic, storage, or compute allocation.</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// ACCESS</div>
+      <div class="sec-name">Access Control</div>
+      <div class="sec-desc">Role-based access controls and scoped API keys determine who can reach infrastructure and deployed models, so permissions can be limited to what a given user or service actually needs.</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// EDGE PROTECTION</div>
+      <div class="sec-name">WAF & Network Protection</div>
+      <div class="sec-desc">A web application firewall and network-layer protections sit in front of API endpoints, filtering abusive traffic before it reaches a deployed model.</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// MONITORING</div>
+      <div class="sec-name">Continuous Monitoring</div>
+      <div class="sec-desc">Infrastructure and access activity are monitored on an ongoing basis, so unusual access patterns or resource usage can be flagged and investigated before they become an incident.</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// DATA HANDLING</div>
+      <div class="sec-name">Responsible Data Handling</div>
+      <div class="sec-desc">Customer data and model artifacts are handled under defined operational access controls, visible only to the systems and personnel that need them to operate the platform — not exposed by default.</div>
+    </div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="section-label">// WHO WE SERVE</div>
+
+  <h2 class="section-title">
+    Industries Building<br>
+    On Cloud Leasing
+  </h2>
+
+  <div class="industries-grid">
+    <div class="industry-card">
+      <div class="industry-name">AI Startups</div>
+      <div class="industry-desc">Building and shipping new models and AI-powered products without the upfront cost of owning GPU infrastructure.</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">Research Labs & Universities</div>
+      <div class="industry-desc">Running training, fine-tuning, and experimentation workloads on demand, without maintaining a permanent on-site cluster.</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">Independent Developers</div>
+      <div class="industry-desc">Turning a fine-tuned model or side project into a hosted, billable API without managing the underlying servers.</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">SaaS & API Companies</div>
+      <div class="industry-desc">Running production inference behind an existing product, with capacity that scales alongside customer demand.</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">Generative Media Teams</div>
+      <div class="industry-desc">Running image, video, and multimodal generation workloads that require sustained, high-VRAM GPU capacity.</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">Enterprise AI Teams</div>
+      <div class="industry-desc">Extending internal compute capacity for pilots and internal tools without a new capital hardware purchase.</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-label">// FREQUENTLY ASKED QUESTIONS</div>
+
+  <h2 class="section-title">
+    Common Questions
+  </h2>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>What GPUs are available to lease?</summary>
+      <div class="faq-answer">The platform offers a range of tiers from professional multi-GPU nodes to enterprise and frontier-scale clusters. Full specifications and current availability are listed on the <a href="/products/">GPU Servers</a> page.</div>
+    </details>
+    <details class="faq-item">
+      <summary>How does billing work?</summary>
+      <div class="faq-answer">Leasing and billing are handled through the Cloud Leasing platform, where pricing and payment details are presented before you commit to a node.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Is there a minimum lease commitment?</summary>
+      <div class="faq-answer">Commitment terms vary by node tier and are presented at the time of leasing on the platform.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Can I deploy my own models?</summary>
+      <div class="faq-answer">Yes. Nodes ship with a pre-installed runtime stack (CUDA, PyTorch, vLLM, TensorRT-LLM) so you can deploy proprietary or open-source models directly.</div>
+    </details>
+    <details class="faq-item">
+      <summary>What support is included?</summary>
+      <div class="faq-answer">Infrastructure and deployment support is available throughout your lease, with dedicated support for enterprise deployments.</div>
+    </details>
+    <details class="faq-item">
+      <summary>What if I need a dedicated, multi-node deployment?</summary>
+      <div class="faq-answer">Teams that need dedicated capacity beyond a single node go through the <a href="#enterprise-deploy">enterprise deployment process</a>, which includes a needs assessment, custom cluster design, and a defined support SLA rather than the self-service flow used for individual GPU nodes.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Is data or model IP shared between customers?</summary>
+      <div class="faq-answer">No. Workloads are isolated at the node and network level, and customer data and model artifacts are handled under defined operational access controls rather than exposed by default.</div>
+    </details>
+    <details class="faq-item">
+      <summary>How do I get started?</summary>
+      <div class="faq-answer">Start directly on the Cloud Leasing platform, where you can select a node and begin deployment. <a href="https://vig-compute.net/vig/index.html#/" target="_blank">Get Started →</a></div>
+    </details>
   </div>
 </section>
 
@@ -776,48 +1244,32 @@
 <a href="https://vig-compute.net/vig/index.html#/" target="_blank" class="btn-primary">Start Now</a>  </div>
 </section>
 
-<div style="margin-top:40px;text-align:center;">
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col footer-brand">
+      <div class="footer-logo">CLOUD LEASING</div>
+      <div class="footer-copy">AI COMPUTE PRODUCTION PLATFORM · BUILT FOR BUILDERS</div>
+    </div>
 
-<a href="/trust/index.html"
-style="
-color:#00FF88;
-text-decoration:none;
-margin:0 18px;
-font-size:13px;
-font-family:'Space Mono',monospace;
-letter-spacing:1px;
-">
-TRUST CENTER
-</a>
+    <div class="footer-col">
+      <div class="footer-col-title">Platform</div>
+      <a href="/#flow">How It Works</a>
+      <a href="/#features">Platform Capabilities</a>
+      <a href="/products/">GPU Servers</a>
+    </div>
 
-<a href="/privacy/index.html"
-style="
-color:#00FF88;
-text-decoration:none;
-margin:0 18px;
-font-size:13px;
-font-family:'Space Mono',monospace;
-letter-spacing:1px;
-">
-PRIVACY POLICY
-</a>
+    <div class="footer-col">
+      <div class="footer-col-title">Legal</div>
+      <a href="/trust/index.html">Trust Center</a>
+      <a href="/privacy/index.html">Privacy Policy</a>
+      <a href="/terms/index.html">Terms of Service</a>
+    </div>
 
-<a href="/terms/index.html"
-style="
-color:#00FF88;
-text-decoration:none;
-margin:0 18px;
-font-size:13px;
-font-family:'Space Mono',monospace;
-letter-spacing:1px;
-">
-TERMS OF SERVICE
-</a>
-
-</div><footer>
-  <div class="footer-logo">CLOUD LEASING</div>
-  <div class="footer-copy">AI COMPUTE PRODUCTION PLATFORM · BUILT FOR BUILDERS</div>
-
+    <div class="footer-col">
+      <div class="footer-col-title">Get Started</div>
+      <a href="https://vig-compute.net/vig/index.html#/" target="_blank">Lease Compute →</a>
+    </div>
+  </div>
 </footer>
 
 </body>

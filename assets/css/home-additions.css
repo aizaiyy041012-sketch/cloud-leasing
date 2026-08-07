@@ -1,0 +1,495 @@
+/* Cloud Leasing — homepage additions (Phase 2) */
+/* Reuses --black, --white, --accent, --accent2, --dim, --mid, --text-muted, --mono, --body, --display
+   defined in index.html's inline <style> :root block (which itself now sources its values from
+   /assets/css/tokens.css). This file only adds new section styles; it never overrides the
+   original inline stylesheet. Design tokens (--space-*, --text-*, --color-*-rgb, etc.) come from
+   tokens.css, loaded on every page that includes this file. */
+
+/* ---------- Nav additions ---------- */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2r);
+}
+
+.nav-link {
+  font-family: var(--mono);
+  font-size: var(--text-0-7r);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.nav-cta {
+  font-family: var(--mono);
+  font-size: var(--text-0-68r);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: var(--space-0-55r) var(--space-1-1r);
+  background: var(--accent);
+  color: var(--black);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  display: inline-block;
+}
+
+.nav-cta:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .nav-tag {
+    display: none;
+  }
+
+  .nav-right {
+    gap: 1rem;
+  }
+}
+
+/* ---------- Company Overview ---------- */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-4r);
+  margin-top: var(--space-3r);
+  align-items: start;
+}
+
+.overview-text {
+  color: rgba(var(--color-white-100-rgb),0.72);
+  line-height: 1.9;
+}
+
+.overview-text p + p {
+  margin-top: var(--space-1-5r);
+}
+
+.overview-points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  background: rgba(var(--color-accent-rgb),0.05);
+  border: 1px solid rgba(var(--color-accent-rgb),0.1);
+}
+
+.overview-point {
+  background: var(--black);
+  padding: var(--space-1-5r);
+}
+
+.overview-point-title {
+  font-family: var(--display);
+  font-size: var(--text-1-2r);
+  letter-spacing: 0.01em;
+  color: var(--accent);
+  margin-bottom: var(--space-0-5r);
+}
+
+.overview-point-desc {
+  color: rgba(var(--color-white-100-rgb),0.6);
+  font-size: var(--text-0-85r);
+  line-height: 1.7;
+}
+
+/* ---------- Why Choose Us ---------- */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-1);
+  background: rgba(var(--color-accent-rgb),0.05);
+  border: 1px solid rgba(var(--color-accent-rgb),0.1);
+  margin-top: var(--space-3r);
+}
+
+.why-item {
+  background: var(--black);
+  padding: var(--space-1-75r);
+}
+
+.why-check {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: var(--text-0-9r);
+  margin-bottom: var(--space-0-75r);
+}
+
+.why-title {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-0-5r);
+  font-size: var(--text-1-02r);
+}
+
+.why-desc {
+  color: rgba(var(--color-white-100-rgb),0.58);
+  font-size: var(--text-0-85r);
+  line-height: 1.75;
+}
+
+/* ---------- Data Center Features (facility/ops layer) ---------- */
+.dc-section {
+  background: var(--dim);
+  border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
+  border-bottom: 1px solid rgba(var(--color-accent-rgb),0.1);
+}
+
+.dc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-1);
+  background: rgba(var(--color-accent-rgb),0.05);
+  border: 1px solid rgba(var(--color-accent-rgb),0.1);
+  margin-top: var(--space-3r);
+}
+
+.dc-card {
+  background: var(--black);
+  padding: var(--space-2r);
+}
+
+.dc-icon {
+  font-family: var(--mono);
+  font-size: var(--text-0-6r);
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-0-75r);
+}
+
+.dc-name {
+  font-family: var(--display);
+  font-size: var(--text-1-4r);
+  margin-bottom: var(--space-0-7r);
+  line-height: 1.1;
+}
+
+.dc-desc {
+  color: rgba(var(--color-white-100-rgb),0.58);
+  font-size: var(--text-0-85r);
+  line-height: 1.8;
+}
+
+/* ---------- GPU Product Categories ---------- */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-1-5r);
+  margin-top: var(--space-3r);
+}
+
+.cat-card {
+  border: 1px solid rgba(var(--color-accent-rgb),0.12);
+  background: var(--dim);
+  padding: var(--space-2r);
+  display: flex;
+  flex-direction: column;
+}
+
+.cat-tag {
+  font-family: var(--mono);
+  font-size: var(--text-0-6r);
+  color: var(--accent2);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-0-75r);
+}
+
+.cat-name {
+  font-family: var(--display);
+  font-size: var(--text-1-7r);
+  margin-bottom: var(--space-0-75r);
+  line-height: 1.1;
+}
+
+.cat-desc {
+  color: rgba(var(--color-white-100-rgb),0.6);
+  font-size: var(--text-0-85r);
+  line-height: 1.8;
+  margin-bottom: var(--space-1-5r);
+  flex: 1;
+}
+
+.cat-link {
+  font-family: var(--mono);
+  font-size: var(--text-0-7r);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  border-top: 1px solid rgba(var(--color-accent-rgb),0.15);
+  padding-top: var(--space-1r);
+}
+
+.cat-link:hover {
+  color: var(--accent2);
+}
+
+/* ---------- Enterprise Deployment Process ---------- */
+.deploy-intro {
+  color: rgba(var(--color-white-100-rgb),0.65);
+  max-width: var(--container-680);
+  margin-top: var(--space-1r);
+}
+
+.deploy-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-2r);
+  margin-top: var(--space-4r);
+}
+
+.deploy-step {
+  text-align: center;
+}
+
+.deploy-num {
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid rgba(var(--color-accent-rgb),0.3);
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-1-25r);
+  font-family: var(--display);
+  font-size: var(--text-1-6r);
+  color: var(--accent);
+}
+
+.deploy-step-title {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-0-5r);
+}
+
+.deploy-step-desc {
+  color: rgba(var(--color-white-100-rgb),0.55);
+  font-size: var(--text-0-8r);
+}
+
+.deploy-cta-wrap {
+  text-align: center;
+  margin-top: var(--space-3-5r);
+}
+
+/* ---------- Technical Advantages ---------- */
+.adv-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-1-25r);
+  margin-top: var(--space-3r);
+}
+
+.adv-card {
+  background: var(--dim);
+  border: 1px solid rgba(var(--color-accent-rgb),0.12);
+  padding: var(--space-1-75r);
+}
+
+.adv-tag {
+  font-family: var(--mono);
+  font-size: var(--text-0-6r);
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-0-9r);
+}
+
+.adv-title {
+  font-size: var(--text-1-05r);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-0-6r);
+}
+
+.adv-desc {
+  color: rgba(var(--color-white-100-rgb),0.58);
+  font-size: var(--text-0-82r);
+  line-height: 1.75;
+}
+
+/* ---------- Security & Compliance ---------- */
+.security-section {
+  background: var(--dim);
+  border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
+  border-bottom: 1px solid rgba(var(--color-accent-rgb),0.1);
+}
+
+.sec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-1);
+  background: rgba(var(--color-accent-rgb),0.05);
+  border: 1px solid rgba(var(--color-accent-rgb),0.1);
+  margin-top: var(--space-3r);
+}
+
+.sec-card {
+  background: var(--black);
+  padding: var(--space-2r);
+}
+
+.sec-icon {
+  font-family: var(--mono);
+  font-size: var(--text-0-6r);
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-0-75r);
+}
+
+.sec-name {
+  font-family: var(--display);
+  font-size: var(--text-1-3r);
+  margin-bottom: var(--space-0-7r);
+  line-height: 1.1;
+}
+
+.sec-desc {
+  color: rgba(var(--color-white-100-rgb),0.58);
+  font-size: var(--text-0-85r);
+  line-height: 1.8;
+}
+
+/* ---------- Customer Industries ---------- */
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-1-5r);
+  margin-top: var(--space-3r);
+}
+
+.industry-card {
+  border: 1px solid rgba(var(--color-accent-rgb),0.1);
+  padding: var(--space-1-75r);
+}
+
+.industry-name {
+  font-family: var(--display);
+  font-size: var(--text-1-3r);
+  color: var(--white);
+  margin-bottom: var(--space-0-6r);
+}
+
+.industry-desc {
+  color: rgba(var(--color-white-100-rgb),0.58);
+  font-size: var(--text-0-85r);
+  line-height: 1.75;
+}
+
+/* ---------- FAQ ---------- */
+.faq-list {
+  margin-top: var(--space-3r);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  background: rgba(var(--color-accent-rgb),0.05);
+  border: 1px solid rgba(var(--color-accent-rgb),0.1);
+}
+
+.faq-item {
+  background: var(--black);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  padding: var(--space-1-5r) var(--space-2r);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-1r);
+  color: var(--white);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1r);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: var(--text-1-3r);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 var(--space-2r) var(--space-1-75r);
+  color: rgba(var(--color-white-100-rgb),0.62);
+  font-size: var(--text-0-9r);
+  line-height: 1.8;
+}
+
+.faq-answer a {
+  color: var(--accent);
+}
+
+/* ---------- Expanded Footer ---------- */
+.site-footer {
+  border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
+  padding: var(--space-3-5r) var(--space-3r) var(--space-2-5r);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: var(--space-2-5r);
+}
+
+.footer-col-title {
+  font-family: var(--mono);
+  font-size: var(--text-0-65r);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-1-1r);
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-75r);
+}
+
+.footer-col a {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: var(--text-0-75r);
+  letter-spacing: 0.05em;
+}
+
+.footer-col a:hover {
+  color: var(--accent2);
+}
+
+/* ---------- Responsive: collapse new grids on narrow screens ---------- */
+@media (max-width: 900px) {
+  .overview-grid,
+  .why-grid,
+  .dc-grid,
+  .cat-grid,
+  .deploy-steps,
+  .adv-grid,
+  .sec-grid,
+  .industries-grid,
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+}

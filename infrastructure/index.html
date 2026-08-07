@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Infrastructure | Cloud Leasing</title>
+<meta name="description" content="A technical overview of the compute, storage, networking, deployment, and monitoring layers that make up the Cloud Leasing platform.">
+<link rel="canonical" href="https://aicloudleasing.com/infrastructure/">
+
+<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Leasing">
+<meta property="og:title" content="Infrastructure | Cloud Leasing">
+<meta property="og:description" content="A technical overview of the compute, storage, networking, deployment, and monitoring layers that make up the Cloud Leasing platform.">
+<meta property="og:url" content="https://aicloudleasing.com/infrastructure/">
+<meta property="og:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Infrastructure | Cloud Leasing">
+<meta name="twitter:description" content="A technical overview of the compute, storage, networking, deployment, and monitoring layers that make up the Cloud Leasing platform.">
+<meta name="twitter:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/products.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://aicloudleasing.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Infrastructure", "item": "https://aicloudleasing.com/infrastructure/" }
+  ]
+}
+</script>
+</head>
+
+<body>
+
+<div class="topbar">
+  <a href="/" class="logo">CLOUD LEASING</a>
+  <a href="/" class="back">← Back to Platform</a>
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="label">// INFRASTRUCTURE</div>
+  <h1>Infrastructure</h1>
+  <p class="subtitle">
+    A technical overview of the compute, storage, and networking layers that make up the Cloud Leasing platform, plus how nodes are deployed and monitored once they're running.
+  </p>
+
+  <!-- Infrastructure Overview -->
+  <section class="detail-section">
+    <div class="label">// PLATFORM OVERVIEW</div>
+    <h2 class="detail-section-title">How The Platform Is Built</h2>
+    <p class="product-description detail-copy">
+      Every Cloud Leasing node is built from four layers: GPU and CPU compute, NVMe storage, network interconnect, and the orchestration software that ties them together. The sections below describe each layer, followed by how nodes move from a signed lease to a running workload and how the platform is monitored once deployed.
+    </p>
+  </section>
+
+  <!-- Compute -->
+  <section class="detail-section">
+    <div class="label">// COMPUTE</div>
+    <h2 class="detail-section-title">GPU &amp; CPU Platforms</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// GPU Families</div>
+        <div class="infra-name">RTX, A100, H800</div>
+        <div class="infra-desc">Available as single-GPU nodes, multi-GPU nodes, and 8-GPU HGX platforms with NVSwitch, depending on family and configuration.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// CPU Platforms</div>
+        <div class="infra-name">Intel Xeon / AMD EPYC</div>
+        <div class="infra-desc">Nodes pair GPUs with Intel Xeon or AMD EPYC processors, sized to the GPU configuration and workload.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// System Memory</div>
+        <div class="infra-name">DDR5 ECC RDIMM</div>
+        <div class="infra-desc">Memory scales with node size, from single-node configurations up to multi-terabyte capacities on 8-GPU platforms.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// Node Scale</div>
+        <div class="infra-name">Single GPU to Cluster</div>
+        <div class="infra-desc">Compute ranges from single-GPU nodes to 8-GPU HGX platforms to multi-node bare-metal clusters.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Storage -->
+  <section class="detail-section">
+    <div class="label">// STORAGE</div>
+    <h2 class="detail-section-title">NVMe Storage Architecture</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// System Storage</div>
+        <div class="infra-name">Enterprise NVMe</div>
+        <div class="infra-desc">Dedicated enterprise NVMe system drives handle OS and runtime storage, separate from data storage.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// Data Storage</div>
+        <div class="infra-name">High-Capacity NVMe</div>
+        <div class="infra-desc">Higher-capacity enterprise NVMe data drives scale with node size to support dataset and checkpoint storage.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// Redundancy</div>
+        <div class="infra-name">RAID-Managed</div>
+        <div class="infra-desc">Broadcom MegaRAID controllers manage storage redundancy across system and data drives on every node.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Networking -->
+  <section class="detail-section">
+    <div class="label">// NETWORKING</div>
+    <h2 class="detail-section-title">Interconnect &amp; Fabric</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// GPU Interconnect</div>
+        <div class="infra-name">NVLink / NVSwitch</div>
+        <div class="infra-desc">Connects GPUs within a node for high-bandwidth, low-latency communication on multi-GPU platforms.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// Cluster Fabric</div>
+        <div class="infra-name">InfiniBand / High-Speed Ethernet</div>
+        <div class="infra-desc">Connects nodes into multi-node clusters over RDMA, so cross-node traffic bypasses the standard network stack.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// DPU Offload</div>
+        <div class="infra-name">NVIDIA BlueField-3</div>
+        <div class="infra-desc">Offloads networking, storage, and security processing from the host CPU on HGX and cluster platforms.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment -->
+  <section class="detail-section">
+    <div class="label">// DEPLOYMENT</div>
+    <h2 class="detail-section-title">From Lease To Running Workload</h2>
+    <p class="product-description detail-copy">
+      Single-node deployments are self-service: select a node, and it's provisioned with the runtime stack already installed. Multi-node cluster deployments follow a structured process instead — consultation, custom cluster design, provisioning, and a defined support SLA. See the <a href="/#enterprise-deploy">enterprise deployment process</a> for details.
+    </p>
+  </section>
+
+  <!-- Monitoring -->
+  <section class="detail-section">
+    <div class="label">// MONITORING</div>
+    <h2 class="detail-section-title">Platform Monitoring</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// Infrastructure</div>
+        <div class="infra-name">Continuous Monitoring</div>
+        <div class="infra-desc">Compute, power, cooling, and network layers are monitored on a continuous basis, so environmental or hardware issues can be caught before they affect running workloads.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// Access &amp; Activity</div>
+        <div class="infra-name">Ongoing Oversight</div>
+        <div class="infra-desc">Infrastructure and access activity are monitored on an ongoing basis to help catch unusual patterns early.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="detail-section detail-cta-section">
+    <a href="https://vig-compute.net/vig/index.html#/" target="_blank" rel="noopener" class="btn-lease detail-cta">Lease Now</a>
+  </section>
+
+</div>
+
+<div class="footer">
+  CLOUD LEASING © AI Compute Production Platform
+</div>
+
+</body>
+</html>
