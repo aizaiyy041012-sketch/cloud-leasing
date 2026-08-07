@@ -204,6 +204,16 @@
   margin-bottom: var(--space-0-75r);
 }
 
+/* Per-tier label colors so the three category cards read as distinct tiers
+   at a glance. Professional Tier keeps the base .cat-tag cyan above. */
+.cat-tag-enterprise {
+  color: var(--accent);
+}
+
+.cat-tag-frontier {
+  color: var(--color-accent3);
+}
+
 .cat-name {
   font-family: var(--display);
   font-size: var(--text-1-7r);

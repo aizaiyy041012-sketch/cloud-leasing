@@ -36,6 +36,7 @@
   --color-accent: #00FF88;        /* primary brand green, used site-wide */
   --color-accent-hover: #00cc70;  /* accent hover/darken state on primary buttons */
   --color-accent2: #00CFFF;       /* secondary brand cyan */
+  --color-accent3: #FFB000;       /* tertiary accent (amber) — homepage "Frontier Tier" label only */
 
   /* ---------- Colors: surfaces ---------- */
   --color-surface-dim: #1A1E28;   /* homepage "dim" section background (was --dim) */
