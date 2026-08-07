@@ -112,6 +112,23 @@
       wrap.appendChild(row);
     });
 
+    if (product.hardwareSubtotal) {
+      var deployRow = document.createElement('div');
+      deployRow.className = 'pricing-deployment-row';
+
+      var deployLabel = document.createElement('span');
+      deployLabel.className = 'pricing-deployment-label';
+      deployLabel.textContent = 'Deployment Value';
+
+      var deployValue = document.createElement('span');
+      deployValue.className = 'pricing-deployment-value';
+      deployValue.textContent = product.hardwareSubtotal;
+
+      deployRow.appendChild(deployLabel);
+      deployRow.appendChild(deployValue);
+      wrap.appendChild(deployRow);
+    }
+
     return wrap;
   }
 

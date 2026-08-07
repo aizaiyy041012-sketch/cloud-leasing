@@ -413,6 +413,20 @@ h1 {
   margin-left: auto;
 }
 
+.pricing-deployment-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-16);
+  padding-top: var(--space-6);
+}
+
+.pricing-deployment-label,
+.pricing-deployment-value {
+  font-family: var(--mono);
+  font-size: var(--text-11);
+  color: var(--muted);
+}
+
 .card-description {
   display: -webkit-box;
   -webkit-line-clamp: 2;

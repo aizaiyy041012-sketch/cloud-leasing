@@ -32,10 +32,6 @@
     if (product.memory) rows.push(['Memory', product.memory]);
     if (product.storage) rows.push(['Storage', product.storage]);
     if (product.network) rows.push(['Network', product.network]);
-    if (Array.isArray(product.pricing) && product.pricing.length && product.pricing[0].leasePrice) {
-      var tier = product.pricing[0];
-      rows.push(['Lease Price', tier.leasePrice + (tier.leasePeriod ? ' / ' + tier.leasePeriod : '')]);
-    }
     return rows;
   }
 
@@ -82,6 +78,9 @@
     // 4. Key specs
     var keySpecs = S.buildKeySpecsGrid(buildCardKeySpecs(product));
     if (keySpecs) body.appendChild(keySpecs);
+
+    var pricingTable = S.buildPricingTable(product);
+    if (pricingTable) body.appendChild(pricingTable);
 
     // 5. Primary CTA
     var cta = document.createElement('a');
