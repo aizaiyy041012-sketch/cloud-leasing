@@ -208,6 +208,24 @@
   flex-direction: column;
 }
 
+/* Bleeds to the card's own edges by negating .cat-card's padding on three
+   sides, so the illustration sits flush against the card border with no
+   gap. .cat-card currently has no border-radius, so this stays square too
+   rather than introducing a rounded corner that wouldn't match it. */
+.cat-art {
+  margin: calc(-1 * var(--space-2r)) calc(-1 * var(--space-2r)) var(--space-1r);
+  height: 132px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(var(--color-accent-rgb), 0.12);
+}
+
+.cat-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .cat-tag {
   font-family: var(--mono);
   font-size: var(--text-0-6r);
