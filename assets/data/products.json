@@ -47,7 +47,7 @@
   },
   {
     "id": "rtx4090-a",
-    "name": "RTX 4090 4-GPU Workstation Cluster Node · Config A",
+    "name": "RTX 4090 4-GPU Workstation Cluster Node · Model A",
     "productLine": "Enterprise AI Cluster Node",
     "category": "RTX 4090 Workstation Node",
     "gpuFamily": "RTX",
@@ -92,7 +92,7 @@
   },
   {
     "id": "rtx4090-b",
-    "name": "RTX 4090 4-GPU Workstation Cluster Node · Config B",
+    "name": "RTX 4090 4-GPU Workstation Cluster Node · Model B",
     "productLine": "Enterprise AI Cluster Node",
     "category": "RTX 4090 Workstation Node",
     "gpuFamily": "RTX",
@@ -681,7 +681,7 @@
   },
   {
     "id": "h800-hgx8-cluster-flagship",
-    "name": "H800 8-GPU HGX Flagship Liquid-Cooled Cluster",
+    "name": "H800 8-GPU HGX Flagship Fully Liquid-Cooled Cluster",
     "productLine": "Enterprise AI Cluster Node",
     "category": "H800 8-GPU HGX Cluster",
     "gpuFamily": "H800",
@@ -707,7 +707,7 @@
       { "item": "Enterprise Care (5-Year)", "detail": "5-Year Enterprise Support & Warranty (7×24 NBD / on-site response)", "price": "$314,740" }
     ],
     "fabricServicesSubtotal": "$1,118,940",
-    "deploymentValue": "Contact Us",
+    "deploymentValue": "$3,741,770",
     "components": [
       { "item": "CPU", "brand": "AMD", "config": "EPYC 9755 ×2 per node (128C/256T ×2)", "price": "$187,600", "priceDetail": "$26,800 × 7 nodes" },
       { "item": "Motherboard", "brand": "Supermicro", "config": "H14 dual-socket SP5 8-GPU HGX AI Platform", "price": "$64,400", "priceDetail": "$9,200 × 7 nodes" },
