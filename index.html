@@ -89,10 +89,20 @@
   }
 
   .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-family: var(--display);
     font-size: var(--text-1-5r);
     letter-spacing: 0.08em;
     color: var(--accent);
+  }
+
+  .nav-logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: contain;
   }
 
   .nav-tag {
@@ -467,9 +477,19 @@
   }
 
   .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--display);
     font-size: var(--text-1-2r);
     color: var(--accent);
+  }
+
+  .footer-logo-mark {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    object-fit: contain;
   }
 
   .footer-copy {
@@ -603,7 +623,7 @@
 <body>
 
 <nav>
-  <div class="nav-logo">CLOUD LEASING</div>
+  <div class="nav-logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="nav-logo-mark">CLOUD LEASING</div>
   <div class="nav-right">
     <div class="nav-tag">AI Compute Production Platform</div>
     <a href="/products/" class="nav-link">Products</a>
@@ -1337,7 +1357,7 @@
 <footer class="site-footer">
   <div class="footer-top">
     <div class="footer-col footer-brand">
-      <div class="footer-logo">CLOUD LEASING</div>
+      <div class="footer-logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="footer-logo-mark">CLOUD LEASING</div>
       <div class="footer-copy">AI COMPUTE PRODUCTION PLATFORM · BUILT FOR BUILDERS</div>
     </div>
 
