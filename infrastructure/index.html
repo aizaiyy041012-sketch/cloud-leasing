@@ -8,6 +8,12 @@
 <meta name="description" content="A technical overview of the compute, storage, networking, deployment, and monitoring layers that make up the Cloud Leasing platform.">
 <link rel="canonical" href="https://aicloudleasing.com/infrastructure/">
 
+<link rel="alternate" hreflang="en" href="https://aicloudleasing.com/infrastructure/">
+<link rel="alternate" hreflang="zh-CN" href="https://aicloudleasing.com/zh/infrastructure/">
+<link rel="alternate" hreflang="ja" href="https://aicloudleasing.com/ja/infrastructure/">
+<link rel="alternate" hreflang="ko" href="https://aicloudleasing.com/ko/infrastructure/">
+<link rel="alternate" hreflang="x-default" href="https://aicloudleasing.com/infrastructure/">
+
 <link rel="icon" href="/assets/images/favicon.svg?v=2" type="image/svg+xml">
 <link rel="icon" href="/assets/images/favicon-32.png?v=2" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v=2">
@@ -31,6 +37,7 @@
 
 <link rel="stylesheet" href="/assets/css/tokens.css">
 <link rel="stylesheet" href="/assets/css/products.css">
+<link rel="stylesheet" href="/assets/css/lang-switcher.css">
 
 <script type="application/ld+json">
 {
@@ -48,7 +55,10 @@
 
 <div class="topbar">
   <a href="/" class="logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="logo-mark">CLOUD LEASING</a>
-  <a href="/" data-smart-back class="back">← Back to Platform</a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="/" data-smart-back class="back">← Back to Platform</a>
+    <div data-lang-switcher></div>
+  </div>
 </div>
 
 <div class="container">
@@ -183,6 +193,7 @@
 
 <script src="/assets/js/config.js"></script>
 <script src="/assets/js/smart-back.js"></script>
+<script src="/assets/js/i18n.js"></script>
 <script src="/assets/js/apply-leasing-links.js"></script>
 
 </body>

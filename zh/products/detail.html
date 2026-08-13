@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>GPU Servers | Cloud Leasing</title>
-  <meta name="description" content="Explore Cloud Leasing GPU servers for AI training and inference, including RTX, A100, and H800 compute nodes with enterprise-grade hardware and on-demand leasing.">
-  <link rel="canonical" href="https://aicloudleasing.com/products/">
+<title id="page-title">GPU 服务器 | Cloud Leasing</title>
+  <meta name="description" content="Cloud Leasing GPU 服务器的详细规格与租赁方案，包含面向 AI 工作负载的企业级 NVIDIA GPU 节点。">
+  <link rel="canonical" href="https://aicloudleasing.com/zh/products/">
 
   <link rel="alternate" hreflang="en" href="https://aicloudleasing.com/products/">
   <link rel="alternate" hreflang="zh-CN" href="https://aicloudleasing.com/zh/products/">
@@ -20,16 +20,16 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Cloud Leasing">
-  <meta property="og:title" content="GPU Servers | Cloud Leasing">
-  <meta property="og:description" content="Explore Cloud Leasing GPU servers for AI training and inference, including RTX, A100, and H800 compute nodes with enterprise-grade hardware and on-demand leasing.">
-  <meta property="og:url" content="https://aicloudleasing.com/products/">
+  <meta property="og:title" content="GPU 服务器 | Cloud Leasing">
+  <meta property="og:description" content="Cloud Leasing GPU 服务器的详细规格与租赁方案，包含面向 AI 工作负载的企业级 NVIDIA GPU 节点。">
+  <meta property="og:url" content="https://aicloudleasing.com/zh/products/">
   <meta property="og:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="GPU Servers | Cloud Leasing">
-  <meta name="twitter:description" content="Explore Cloud Leasing GPU servers for AI training and inference, including RTX, A100, and H800 compute nodes with enterprise-grade hardware and on-demand leasing.">
+  <meta name="twitter:title" content="GPU 服务器 | Cloud Leasing">
+  <meta name="twitter:description" content="Cloud Leasing GPU 服务器的详细规格与租赁方案，包含面向 AI 工作负载的企业级 NVIDIA GPU 节点。">
   <meta name="twitter:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -42,33 +42,23 @@
 <body>
 
 <div class="topbar">
-  <a href="/" class="logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="logo-mark">CLOUD LEASING</a>
+  <a href="/zh/" class="logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="logo-mark">CLOUD LEASING</a>
   <div style="display:flex;align-items:center;gap:1rem;">
-    <a href="/" data-smart-back class="back">← Back to Platform</a>
+    <a href="/zh/products/" data-smart-back class="back">← 返回 GPU 服务器列表</a>
     <div data-lang-switcher></div>
   </div>
 </div>
 
 <div class="container">
 
-  <div class="label">// AVAILABLE COMPUTE</div>
+  <div id="detail-status" class="products-status">正在加载产品信息…</div>
 
-  <h1>GPU Servers</h1>
-
-  <p class="subtitle">
-    Dedicated GPU nodes ready for AI training and inference. Lease enterprise-grade compute
-    on demand — no hardware procurement, no long-term commitment. Purpose-built for AI
-    deployment, inference, and production APIs — never general-purpose hosting.
-  </p>
-
-  <div id="products-status" class="products-status">Loading available GPUs…</div>
-
-  <div id="products-sections"></div>
+  <div id="detail-root"></div>
 
 </div>
 
 <div class="footer">
-  CLOUD LEASING © AI Compute Production Platform
+  CLOUD LEASING © AI 算力生产平台
 </div>
 
 <script src="/assets/js/config.js"></script>
@@ -76,7 +66,7 @@
 <script src="/assets/js/i18n.js"></script>
 <script src="/assets/js/i18n-dictionary.js"></script>
 <script src="/assets/js/product-shared.js"></script>
-<script src="/assets/js/products.js" defer></script>
+<script src="/assets/js/product-detail.js" defer></script>
 
 </body>
 </html>

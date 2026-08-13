@@ -2,12 +2,14 @@
   'use strict';
 
   var S = window.ProductShared;
+  var UI = S.UI || {};
 
   var FAMILY_ORDER = ['RTX', 'A100', 'H800'];
+  var FAMILY_TITLES = UI.familyTitles || { RTX: 'RTX-Class Nodes', A100: 'A100-Class Nodes', H800: 'H800-Class Nodes' };
   var FAMILY_META = {
-    RTX: { title: 'RTX-Class Nodes', anchor: 'cat-rtx' },
-    A100: { title: 'A100-Class Nodes', anchor: 'cat-a100' },
-    H800: { title: 'H800-Class Nodes', anchor: 'cat-h800' }
+    RTX: { title: FAMILY_TITLES.RTX, anchor: 'cat-rtx' },
+    A100: { title: FAMILY_TITLES.A100, anchor: 'cat-a100' },
+    H800: { title: FAMILY_TITLES.H800, anchor: 'cat-h800' }
   };
 
   var statusEl = document.getElementById('products-status');
@@ -25,13 +27,13 @@
 
   function buildCardKeySpecs(product) {
     var rows = [];
-    if (product.gpuFamily) rows.push(['GPU Family', product.gpuFamily]);
+    if (product.gpuFamily) rows.push([UI.gpuFamilyLabel || 'GPU Family', product.gpuFamily]);
     if (product.gpuQuantity) {
-      rows.push(['GPU Count', String(product.gpuQuantity) + (product.clusterScale ? ' (cluster total)' : '')]);
+      rows.push([UI.gpuCount || 'GPU Count', String(product.gpuQuantity) + (product.clusterScale ? (UI.clusterTotalSuffix || ' (cluster total)') : '')]);
     }
-    if (product.memory) rows.push(['Memory', product.memory]);
-    if (product.storage) rows.push(['Storage', product.storage]);
-    if (product.network) rows.push(['Network', product.network]);
+    if (product.memory) rows.push([(UI.specLabels && UI.specLabels.memory) || 'Memory', product.memory]);
+    if (product.storage) rows.push([(UI.specLabels && UI.specLabels.storage) || 'Storage', product.storage]);
+    if (product.network) rows.push([(UI.specLabels && UI.specLabels.network) || 'Network', product.network]);
     return rows;
   }
 
@@ -60,7 +62,7 @@
     var nameLink = document.createElement('a');
     nameLink.href = S.detailUrl(product);
     nameLink.className = 'product-name-link';
-    nameLink.textContent = product.name || 'Unnamed GPU Node';
+    nameLink.textContent = product.name || UI.unnamedNode || 'Unnamed GPU Node';
     name.appendChild(nameLink);
     top.appendChild(name);
     body.appendChild(top);
@@ -88,7 +90,7 @@
     cta.href = S.LEASE_URL;
     cta.target = '_blank';
     cta.rel = 'noopener';
-    cta.textContent = 'Lease Now';
+    cta.textContent = UI.leaseNow || 'Lease Now';
     body.appendChild(cta);
 
     // Optional supplementary detail, collapsed by default
@@ -108,7 +110,7 @@
 
     var label = document.createElement('div');
     label.className = 'product-family-label';
-    label.textContent = '// ' + familyKey + ' FAMILY';
+    label.textContent = '// ' + familyKey + ' ' + (UI.familySuffix || 'FAMILY');
     section.appendChild(label);
 
     var title = document.createElement('h2');
@@ -128,7 +130,7 @@
 
   function render(products) {
     if (!Array.isArray(products) || products.length === 0) {
-      setStatus('No GPU nodes currently listed — check back soon.');
+      setStatus(UI.noGpusListed || 'No GPU nodes currently listed — check back soon.');
       return;
     }
 
@@ -142,7 +144,7 @@
 
     var hasAny = FAMILY_ORDER.some(function (key) { return byFamily[key] && byFamily[key].length; });
     if (!hasAny) {
-      setStatus('No GPU nodes currently listed — check back soon.');
+      setStatus(UI.noGpusListed || 'No GPU nodes currently listed — check back soon.');
       return;
     }
 
@@ -156,15 +158,11 @@
     sectionsEl.appendChild(fragment);
   }
 
-  setStatus('Loading available GPUs…');
+  setStatus(UI.loadingGpus || 'Loading available GPUs…');
 
-  fetch(S.DATA_URL)
-    .then(function (res) {
-      if (!res.ok) throw new Error('Failed to load product data');
-      return res.json();
-    })
+  S.loadProducts()
     .then(render)
     .catch(function () {
-      setStatus('Unable to load GPU listings right now. Please try again shortly.');
+      setStatus(UI.unableToLoadListings || 'Unable to load GPU listings right now. Please try again shortly.');
     });
 })();

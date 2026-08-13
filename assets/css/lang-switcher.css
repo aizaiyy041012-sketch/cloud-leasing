@@ -1,0 +1,70 @@
+/* Shared language-switcher styling, loaded on every page. Kept in its own file
+   (instead of duplicated in every page's inline <style>) since this project has
+   no build step / template includes — this is the one piece of UI genuinely
+   shared byte-for-byte across all pages and all locale variants of each page. */
+
+.lang-switcher {
+  position: relative;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  display: inline-block;
+}
+
+.lang-switcher-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  color: inherit;
+  font: inherit;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.45em 0.85em;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.lang-switcher-btn:hover {
+  border-color: var(--color-accent, #00ff88);
+  color: var(--color-accent, #00ff88);
+}
+
+.lang-switcher-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 130px;
+  background: #0b0f12;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  z-index: 999;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lang-switcher.is-open .lang-switcher-menu {
+  display: flex;
+}
+
+.lang-switcher-menu a {
+  padding: 0.65em 1em;
+  font-size: 0.75rem;
+  color: #F0EEE8;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.lang-switcher-menu a:hover {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--color-accent, #00ff88);
+}
+
+.lang-switcher-menu a.is-active {
+  color: var(--color-accent, #00ff88);
+}
+
+@media (max-width: 720px) {
+  .lang-switcher-menu {
+    right: 0;
+    left: auto;
+  }
+}

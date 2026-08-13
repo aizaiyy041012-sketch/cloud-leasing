@@ -2,17 +2,58 @@
   'use strict';
 
   var DATA_URL = '/assets/data/products.json';
+  var TRANSLATIONS_URL = '/assets/data/products.translations.json';
   // Sourced from assets/js/config.js, which must load before this file.
   var LEASE_URL = window.LEASING_SYSTEM_URL;
+  // Sourced from assets/js/i18n.js + i18n-dictionary.js, which must load before this file.
+  var LOCALE = (window.CloudLeasingI18n && window.CloudLeasingI18n.locale) || 'en';
+  var UI = window.CloudLeasingUI || {};
 
   var SPEC_FIELDS = [
-    { key: 'gpu', label: 'GPU' },
-    { key: 'cpu', label: 'CPU' },
-    { key: 'memory', label: 'Memory' },
-    { key: 'storage', label: 'Storage' },
-    { key: 'network', label: 'Network' },
-    { key: 'interconnect', label: 'Interconnect' }
+    { key: 'gpu', label: (UI.specLabels && UI.specLabels.gpu) || 'GPU' },
+    { key: 'cpu', label: (UI.specLabels && UI.specLabels.cpu) || 'CPU' },
+    { key: 'memory', label: (UI.specLabels && UI.specLabels.memory) || 'Memory' },
+    { key: 'storage', label: (UI.specLabels && UI.specLabels.storage) || 'Storage' },
+    { key: 'network', label: (UI.specLabels && UI.specLabels.network) || 'Network' },
+    { key: 'interconnect', label: (UI.specLabels && UI.specLabels.interconnect) || 'Interconnect' }
   ];
+
+  // Product listing/spec data (assets/data/products.json) stays single-sourced in
+  // English — technical fields (brand names, part numbers, prices) don't need
+  // translating and would just drift if duplicated per locale. Only the
+  // human-language fields (name/category/description/clusterScale) get a
+  // per-locale overlay merged in here before anything renders.
+  var translationsPromise = null;
+  function loadProducts() {
+    var productsPromise = fetch(DATA_URL).then(function (res) {
+      if (!res.ok) throw new Error('Failed to load product data');
+      return res.json();
+    });
+
+    if (LOCALE === 'en') return productsPromise;
+
+    if (!translationsPromise) {
+      translationsPromise = fetch(TRANSLATIONS_URL)
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .catch(function () { return null; });
+    }
+
+    return Promise.all([productsPromise, translationsPromise]).then(function (results) {
+      var products = results[0];
+      var translations = results[1];
+      if (!translations) return products;
+      return products.map(function (product) {
+        var entry = translations.products && translations.products[product.id];
+        var override = entry && entry[LOCALE];
+        return override ? Object.assign({}, product, override) : product;
+      });
+    });
+  }
+
+  function translateLabel(dict, value) {
+    if (!value) return value;
+    return (dict && dict[value]) || value;
+  }
 
   function statusSlug(status) {
     return String(status || 'unknown').trim().toLowerCase().replace(/\s+/g, '-');
@@ -26,7 +67,7 @@
       wrap.classList.add('is-placeholder');
       wrap.innerHTML = '';
       var span = document.createElement('span');
-      span.textContent = product.name || 'GPU Node';
+      span.textContent = product.name || UI.gpuNodeFallback || 'GPU Node';
       wrap.appendChild(span);
     }
 
@@ -35,7 +76,7 @@
     if (src) {
       var img = document.createElement('img');
       img.src = src;
-      img.alt = (product.name || 'GPU server') + ' architecture diagram';
+      img.alt = (product.name || UI.gpuServerFallback || 'GPU server') + (UI.gpuServerAltSuffix || ' architecture diagram');
       img.loading = 'lazy';
       img.addEventListener('error', showPlaceholder);
       wrap.appendChild(img);
@@ -72,9 +113,9 @@
       var row = document.createElement('div');
       row.className = 'spec-row';
       var dt = document.createElement('dt');
-      dt.textContent = 'GPU Count';
+      dt.textContent = UI.gpuCount || 'GPU Count';
       var dd = document.createElement('dd');
-      dd.textContent = product.gpuQuantity + (product.clusterScale ? ' (cluster total)' : '');
+      dd.textContent = product.gpuQuantity + (product.clusterScale ? (UI.clusterTotalSuffix || ' (cluster total)') : '');
       row.appendChild(dt);
       row.appendChild(dd);
       dl.appendChild(row);
@@ -102,13 +143,13 @@
       if (tier.leasePeriod) {
         var period = document.createElement('span');
         period.className = 'pricing-cell pricing-period';
-        period.textContent = tier.leasePeriod;
+        period.textContent = translateLabel(UI.leasePeriods, tier.leasePeriod);
         row.appendChild(period);
       }
       if (tier.returnValue) {
         var ret = document.createElement('span');
         ret.className = 'pricing-cell pricing-return';
-        ret.textContent = (tier.returnLabel || 'Return') + ': ' + tier.returnValue;
+        ret.textContent = translateLabel(UI.returnLabels, tier.returnLabel || 'Return') + ': ' + tier.returnValue;
         row.appendChild(ret);
       }
 
@@ -121,7 +162,7 @@
 
       var deployLabel = document.createElement('span');
       deployLabel.className = 'pricing-deployment-label';
-      deployLabel.textContent = 'Deployment Value';
+      deployLabel.textContent = UI.deploymentValueLabel || 'Deployment Value';
 
       var deployValue = document.createElement('span');
       deployValue.className = 'pricing-deployment-value';
@@ -135,12 +176,22 @@
     return wrap;
   }
 
+  // Returns { key, label }: key is the stable English identifier (used for the
+  // CSS status-slug so class names stay ASCII and stable across locales), label
+  // is the translated display text shown in the badge.
+  function deploymentType(product) {
+    var key = null;
+    if (product.clusterScale) key = 'Cluster';
+    else if (product.gpuFamily === 'RTX') key = 'Workstation';
+    else if (product.gpuQuantity === 1) key = 'Single GPU';
+    else if (product.gpuQuantity > 1) key = 'Multi GPU';
+    if (!key) return null;
+    return { key: key, label: (UI.deployTypeLabels && UI.deployTypeLabels[key]) || key };
+  }
+
   function deploymentTypeLabel(product) {
-    if (product.clusterScale) return 'Cluster';
-    if (product.gpuFamily === 'RTX') return 'Workstation';
-    if (product.gpuQuantity === 1) return 'Single GPU';
-    if (product.gpuQuantity > 1) return 'Multi GPU';
-    return null;
+    var type = deploymentType(product);
+    return type ? type.label : null;
   }
 
   function buildKeySpecsGrid(rows) {
@@ -176,14 +227,14 @@
     var statusBadge = document.createElement('span');
     var statusSlugVal = statusSlug(product.status);
     statusBadge.className = 'product-status-badge status-' + statusSlugVal;
-    statusBadge.textContent = product.status || 'Unknown';
+    statusBadge.textContent = translateLabel(UI.statuses, product.status) || 'Unknown';
     wrap.appendChild(statusBadge);
 
-    var typeLabel = deploymentTypeLabel(product);
-    if (typeLabel) {
+    var type = deploymentType(product);
+    if (type) {
       var typeBadge = document.createElement('span');
-      typeBadge.className = 'product-status-badge status-' + statusSlug(typeLabel);
-      typeBadge.textContent = typeLabel;
+      typeBadge.className = 'product-status-badge status-' + statusSlug(type.key);
+      typeBadge.textContent = type.label;
       wrap.appendChild(typeBadge);
     }
 
@@ -199,8 +250,15 @@
     var table = document.createElement('table');
     table.className = 'component-table';
 
+    var headers = UI.tableHeaders || {};
     var thead = document.createElement('thead');
-    thead.innerHTML = '<tr><th>Component</th><th>Brand</th><th>Configuration</th><th>Price</th></tr>';
+    var headRow = document.createElement('tr');
+    [headers.component || 'Component', headers.brand || 'Brand', headers.configuration || 'Configuration', headers.price || 'Price'].forEach(function (text) {
+      var th = document.createElement('th');
+      th.textContent = text;
+      headRow.appendChild(th);
+    });
+    thead.appendChild(headRow);
     table.appendChild(thead);
 
     var tbody = document.createElement('tbody');
@@ -208,7 +266,7 @@
       var tr = document.createElement('tr');
 
       var tdItem = document.createElement('td');
-      tdItem.textContent = c.item || '';
+      tdItem.textContent = translateLabel(UI.componentItems, c.item) || '';
       var tdBrand = document.createElement('td');
       tdBrand.textContent = c.brand || '';
       var tdConfig = document.createElement('td');
@@ -262,18 +320,18 @@
     }
 
     if (product.hardwareSubtotal) {
-      addRow('Hardware Subtotal', null, product.hardwareSubtotal, true, false);
+      addRow(UI.hardwareSubtotal || 'Hardware Subtotal', null, product.hardwareSubtotal, true, false);
     }
     if (hasBreakdown) {
       product.deploymentBreakdown.forEach(function (row) {
-        addRow(row.item, row.detail, row.price, false, false);
+        addRow(translateLabel(UI.deployItems, row.item), row.detail, row.price, false, false);
       });
     }
     if (product.fabricServicesSubtotal) {
-      addRow('Fabric / Software / Services Subtotal', null, product.fabricServicesSubtotal, true, false);
+      addRow(UI.fabricServicesSubtotal || 'Fabric / Software / Services Subtotal', null, product.fabricServicesSubtotal, true, false);
     }
     if (product.deploymentValue) {
-      addRow('Estimated Enterprise Deployment Value', null, product.deploymentValue, false, true);
+      addRow(UI.estimatedDeploymentValue || 'Estimated Enterprise Deployment Value', null, product.deploymentValue, false, true);
     }
 
     table.appendChild(tbody);
@@ -290,13 +348,13 @@
     details.className = 'full-specs';
 
     var summary = document.createElement('summary');
-    summary.textContent = 'View Full Specifications';
+    summary.textContent = UI.viewFullSpecs || 'View Full Specifications';
     details.appendChild(summary);
 
     if (componentsTable) {
       var h4a = document.createElement('div');
       h4a.className = 'full-specs-heading';
-      h4a.textContent = 'Hardware Configuration';
+      h4a.textContent = UI.hardwareConfiguration || 'Hardware Configuration';
       details.appendChild(h4a);
       details.appendChild(componentsTable);
     }
@@ -304,7 +362,7 @@
     if (breakdownTable) {
       var h4b = document.createElement('div');
       h4b.className = 'full-specs-heading';
-      h4b.textContent = 'Estimated Enterprise Deployment Value';
+      h4b.textContent = UI.estimatedDeploymentValue || 'Estimated Enterprise Deployment Value';
       details.appendChild(h4b);
       details.appendChild(breakdownTable);
     }
@@ -313,14 +371,20 @@
   }
 
   function detailUrl(product) {
-    return '/products/detail.html?id=' + encodeURIComponent(product.id);
+    var prefix = LOCALE === 'en' ? '' : '/' + LOCALE.replace('zh-CN', 'zh');
+    return prefix + '/products/detail.html?id=' + encodeURIComponent(product.id);
   }
 
   window.ProductShared = {
     DATA_URL: DATA_URL,
     LEASE_URL: LEASE_URL,
+    LOCALE: LOCALE,
+    UI: UI,
     SPEC_FIELDS: SPEC_FIELDS,
+    loadProducts: loadProducts,
+    translateLabel: translateLabel,
     statusSlug: statusSlug,
+    deploymentType: deploymentType,
     deploymentTypeLabel: deploymentTypeLabel,
     buildKeySpecsGrid: buildKeySpecsGrid,
     buildBadgeRow: buildBadgeRow,

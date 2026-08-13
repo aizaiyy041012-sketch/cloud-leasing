@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Leasing — AI 算力生产平台</title>
+<meta name="description" content="面向 AI 训练与推理的企业级 GPU 基础设施。无需前期硬件投入，即可租赁 H100、GB200 及企业级算力节点。">
+<link rel="canonical" href="https://aicloudleasing.com/zh/">
+
+<link rel="icon" href="/assets/images/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="/assets/images/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v=2">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Leasing">
+<meta property="og:title" content="Cloud Leasing — AI 算力生产平台">
+<meta property="og:description" content="面向 AI 训练与推理的企业级 GPU 基础设施。无需前期硬件投入，即可租赁 H100、GB200 及企业级算力节点。">
+<meta property="og:url" content="https://aicloudleasing.com/zh/">
+<meta property="og:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cloud Leasing — AI 算力生产平台">
+<meta name="twitter:description" content="面向 AI 训练与推理的企业级 GPU 基础设施。无需前期硬件投入，即可租赁 H100、GB200 及企业级算力节点。">
+<meta name="twitter:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+
+<link rel="alternate" hreflang="en" href="https://aicloudleasing.com/">
+<link rel="alternate" hreflang="zh-CN" href="https://aicloudleasing.com/zh/">
+<link rel="alternate" hreflang="ja" href="https://aicloudleasing.com/ja/">
+<link rel="alternate" hreflang="ko" href="https://aicloudleasing.com/ko/">
+<link rel="alternate" hreflang="x-default" href="https://aicloudleasing.com/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/home-additions.css">
+<link rel="stylesheet" href="/assets/css/lang-switcher.css">
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --black: var(--color-black-900);
+    --white: var(--color-white-100);
+    --accent: var(--color-accent);
+    --accent2: var(--color-accent2);
+    --dim: var(--color-surface-dim);
+    --mid: var(--color-surface-mid);
+    --text-muted: var(--color-muted-1);
+    --mono: var(--font-mono);
+    --body: var(--font-body);
+    --display: var(--font-display);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--body);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(var(--color-accent-rgb),0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--color-accent-rgb),0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: var(--z-base);
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-nav);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-1-25r) var(--space-3r);
+    border-bottom: 1px solid rgba(var(--color-accent-rgb),0.12);
+    background: rgba(var(--color-black-900-rgb),0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--display);
+    font-size: var(--text-1-5r);
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  .nav-logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  .nav-tag {
+    font-family: var(--mono);
+    font-size: var(--text-0-65r);
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-8r) var(--space-3r) var(--space-5r);
+    overflow: hidden;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: var(--text-0-7r);
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: var(--space-1-5r);
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-size: var(--text-display-hero);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    max-width: var(--container-900);
+  }
+
+  .hero-title span {
+    color: var(--accent);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: var(--text-1-1r);
+    color: rgba(var(--color-white-100-rgb),0.65);
+    max-width: var(--container-620);
+    margin-top: var(--space-2r);
+    font-weight: var(--font-weight-light);
+  }
+
+  .hero-cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1-5r);
+    margin-top: var(--space-3r);
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    font-family: var(--mono);
+    font-size: var(--text-0-75r);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: var(--space-0-9r) var(--space-2r);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    border: 1px solid rgba(var(--color-white-100-rgb),0.25);
+    color: var(--white);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-orb {
+    position: absolute;
+    right: -8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52vw;
+    max-width: var(--container-700);
+    aspect-ratio: 1;
+    border-radius: var(--radius-circle);
+    background: radial-gradient(circle at 35% 40%, rgba(var(--color-accent2-rgb),0.15), rgba(var(--color-accent-rgb),0.08) 40%, transparent 70%);
+    border: 1px solid rgba(var(--color-accent-rgb),0.08);
+    animation: pulse var(--duration-orb-pulse) ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); }
+    50% { opacity: 1; transform: translateY(-50%) scale(1.02); }
+  }
+
+  .ticker {
+    background: var(--accent);
+    overflow: hidden;
+    padding: var(--space-0-6r) 0;
+    position: relative;
+    z-index: var(--z-ticker);
+  }
+
+  .ticker-inner {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker var(--duration-ticker-scroll) linear infinite;
+  }
+
+  .ticker-item {
+    font-family: var(--mono);
+    font-size: var(--text-0-7r);
+    font-weight: var(--font-weight-bold);
+    color: var(--black);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0 var(--space-3r);
+    flex-shrink: 0;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  section {
+    position: relative;
+    z-index: var(--z-content);
+    padding: var(--space-7r) var(--space-3r);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: var(--text-0-65r);
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: var(--space-1r);
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: var(--text-display-section);
+    line-height: 1;
+    max-width: var(--container-760);
+    margin-bottom: var(--space-1-5r);
+  }
+
+  .section-title-sub {
+    font-size: clamp(1.8rem, 4.2vw, 3rem);
+  }
+
+  .intro-grid,
+  .hw-grid,
+  .features-grid {
+    margin-top: var(--space-3r);
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4r);
+    align-items: center;
+  }
+
+  .intro-text {
+    color: rgba(var(--color-white-100-rgb),0.72);
+    line-height: 1.9;
+  }
+
+  .intro-text strong {
+    color: var(--white);
+  }
+
+  .stat-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .stat-item {
+    border: 1px solid rgba(var(--color-accent-rgb),0.12);
+    padding: var(--space-1-5r);
+    background: var(--dim);
+    display: flex;
+    gap: var(--space-1-25r);
+  }
+
+  .stat-num {
+    font-family: var(--display);
+    font-size: var(--text-2-8r);
+    color: var(--accent);
+    min-width: 90px;
+  }
+
+  .stat-title {
+    color: var(--white);
+    margin-bottom: var(--space-0-3r);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .stat-desc {
+    color: rgba(var(--color-white-100-rgb),0.6);
+    font-size: var(--text-0-85r);
+  }
+
+  .hw-section,
+  .stack-section {
+    background: var(--dim);
+    border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
+    border-bottom: 1px solid rgba(var(--color-accent-rgb),0.1);
+  }
+
+  .hw-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-1);
+    background: rgba(var(--color-accent-rgb),0.05);
+    border: 1px solid rgba(var(--color-accent-rgb),0.1);
+  }
+
+  .hw-card,
+  .feature-card {
+    background: var(--black);
+    padding: var(--space-2r);
+  }
+
+  .hw-icon,
+  .feature-tag {
+    font-family: var(--mono);
+    font-size: var(--text-0-6r);
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-0-75r);
+  }
+
+  .hw-name {
+    font-family: var(--display);
+    font-size: var(--text-1-6r);
+    margin-bottom: var(--space-0-7r);
+    line-height: 1.1;
+  }
+
+  .hw-desc,
+  .feature-desc {
+    color: rgba(var(--color-white-100-rgb),0.58);
+    font-size: var(--text-0-85r);
+    line-height: 1.8;
+  }
+
+  .flow-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-2r);
+    margin-top: var(--space-4r);
+  }
+
+  .flow-step {
+    text-align: center;
+  }
+
+  .flow-num {
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid rgba(var(--color-accent-rgb),0.3);
+    border-radius: var(--radius-circle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-1-25r);
+    font-family: var(--display);
+    font-size: var(--text-1-6r);
+    color: var(--accent);
+  }
+
+  .flow-step-title {
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--space-0-5r);
+  }
+
+  .flow-step-desc {
+    color: rgba(var(--color-white-100-rgb),0.55);
+    font-size: var(--text-0-8r);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-1);
+    background: rgba(var(--color-accent-rgb),0.04);
+    border: 1px solid rgba(var(--color-accent-rgb),0.08);
+  }
+
+  .feature-title {
+    font-size: var(--text-1-1r);
+    margin-bottom: var(--space-0-75r);
+  }
+
+  .stack-intro {
+    color: rgba(var(--color-white-100-rgb),0.65);
+    max-width: var(--container-680);
+    margin-top: var(--space-1r);
+  }
+
+  .stack-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-0-5r);
+    margin-top: var(--space-2-5r);
+  }
+
+  .stack-pill {
+    font-family: var(--mono);
+    font-size: var(--text-0-65r);
+    letter-spacing: 0.1em;
+    color: var(--accent2);
+    border: 1px solid rgba(var(--color-accent2-rgb),0.25);
+    padding: var(--space-0-45r) var(--space-0-9r);
+    background: rgba(var(--color-accent2-rgb),0.04);
+  }
+
+  .manifesto {
+    text-align: center;
+    border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
+  }
+
+  .manifesto-quote {
+    font-family: var(--display);
+    font-size: var(--text-display-quote);
+    line-height: 1.2;
+    max-width: var(--container-900);
+    margin: 0 auto var(--space-3r);
+  }
+
+  .manifesto-quote em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  .manifesto-sub {
+    font-family: var(--mono);
+    font-size: var(--text-0-75r);
+    letter-spacing: 0.15em;
+    color: rgba(var(--color-white-100-rgb),0.5);
+    text-transform: uppercase;
+  }
+
+  footer {
+    border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
+    padding: var(--space-2-5r) var(--space-3r);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--display);
+    font-size: var(--text-1-2r);
+    color: var(--accent);
+  }
+
+  .footer-logo-mark {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    object-fit: contain;
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: var(--text-0-65r);
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+  }
+
+  /* Note: CSS custom properties cannot be used inside @media conditions,
+     so the 900px breakpoint below stays a literal value by necessity. */
+  @media (max-width: 900px) {
+    nav,
+    section,
+    footer,
+    .hero {
+      padding-left: var(--space-1-5r);
+      padding-right: var(--space-1-5r);
+    }
+
+    .intro-grid,
+    .hw-grid,
+    .features-grid,
+    .flow-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-orb {
+      display: none;
+    }
+
+    footer {
+      flex-direction: column;
+      gap: var(--space-1r);
+      text-align: center;
+    }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Cloud Leasing",
+  "url": "https://aicloudleasing.com/zh/",
+  "logo": "https://aicloudleasing.com/assets/images/apple-touch-icon.png",
+  "description": "Cloud Leasing 提供企业级 GPU 基础设施，用于 AI 训练与推理，按需租赁。"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Cloud Leasing",
+  "url": "https://aicloudleasing.com/zh/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "有哪些 GPU 可供租赁？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "本平台提供从专业级多 GPU 节点到企业级、前沿级集群的多档产品。完整规格与实时库存请查看 GPU 服务器页面。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "计费方式是怎样的？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "租赁与计费均通过 Cloud Leasing 平台处理，在你确认租用某个节点之前会先展示价格与付款详情。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "是否有最低租期要求？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "承诺条款因节点档位而异，会在平台上租赁时具体展示。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "我可以部署自己的模型吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。节点预装了完整运行时软件栈（CUDA、PyTorch、vLLM、TensorRT-LLM），你可以直接部署自有模型或开源模型。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "包含哪些支持服务？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "在整个租期内均提供基础设施与部署支持，企业级部署还配有专属支持团队。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "如果我需要专属的多节点部署怎么办？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "需要超出单节点规模的专属算力的团队，会走企业级部署流程——包括需求评估、定制集群设计，以及明确的服务支持SLA，而非面向单个GPU节点的自助式流程。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "客户之间是否会共享数据或模型知识产权？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不会。工作负载在节点与网络层面相互隔离，客户数据与模型资产按既定的运营访问控制处理，而非默认对外暴露。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "如何开始使用？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "直接在 Cloud Leasing 平台上开始，你可以在那里选择节点并开始部署。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="nav-logo-mark">CLOUD LEASING</div>
+  <div class="nav-right">
+    <div class="nav-tag">AI 算力生产平台</div>
+    <a href="/zh/products/" class="nav-link">产品</a>
+    <div data-lang-switcher></div>
+    <a href="#" data-leasing-link target="_blank" class="nav-cta">立即开始</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">// 新一代 AI 算力基础设施</div>
+
+  <h1 class="hero-title">
+    AI 算力
+    <span>为 API 构建者而生</span>
+  </h1>
+
+  <p class="hero-sub">
+    将企业级 AI 超算能力，转化为任何人都能租用、部署、变现与扩展的普惠生产基础设施。
+  </p>
+
+  <div class="hero-cta">
+    <a href="#flow" class="btn-primary">了解运作方式</a>
+    <a href="#features" class="btn-ghost">探索平台功能</a>
+  </div>
+
+  <div class="hero-orb"></div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">H100 SXM</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">GB200</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">GB300 NVL72</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">NVLink</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">InfiniBand</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">液冷散热</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">超低 PUE</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">低延迟 RDMA</span>
+  </div>
+</div>
+
+<section id="company">
+  <div class="section-label">// 公司概览</div>
+
+  <h2 class="section-title">
+    为新一代 AI 构建者<br>
+    而打造
+  </h2>
+
+  <div class="overview-grid">
+    <div class="overview-text">
+      <p>
+        Cloud Leasing 端到端设计、运营并支持企业级 GPU 基础设施——从硬件供给、网络架构，到每个节点上运行的软件栈。客户只需与同一个运营方对接完成整个部署生命周期，而不必从多个供应商处拼凑基础设施、工具与技术支持。
+      </p>
+      <p>
+        每个节点都由同一个团队进行配置与监控，这个团队同时也负责维护底层数据中心运营、网络架构与预装软件栈。正是这种运营模式，使团队能够从租用一个 GPU 节点，直接迈向生产级 AI 工作负载，而无需先自建一套内部基础设施能力。
+      </p>
+    </div>
+
+    <div class="overview-points">
+      <div class="overview-point">
+        <div class="overview-point-title">全生命周期基础设施</div>
+        <div class="overview-point-desc">硬件、网络架构、运行时软件栈与 API 工具作为一套集成系统统一管理，而非拼凑而成的零散组件。</div>
+      </div>
+      <div class="overview-point">
+        <div class="overview-point-title">运营方，而非单纯的"房东"</div>
+        <div class="overview-point-desc">负责配置节点的团队同时也维护其运行环境，因此客户对接的是基础设施工程师，而非托管机房的工单排队系统。</div>
+      </div>
+      <div class="overview-point">
+        <div class="overview-point-title">随业务一起成长</div>
+        <div class="overview-point-desc">支撑单个租用节点的同一套运营模式，同样支持专属的多节点集群，因此扩容不需要更换供应商或重新搭建部署工具链。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="intro">
+  <div class="section-label">// 关于本平台</div>
+
+  <h2 class="section-title">
+    不只是服务器——<br>
+    是一座 AI 工厂
+  </h2>
+
+  <div class="intro-grid">
+    <div class="intro-text">
+      <p>
+        Cloud Leasing 是一个 <strong>AI 算力生产平台</strong>，面向独立创业者、独立开发者以及中小型 AI 团队——这些团队具备足够的技术能力，却不具备超大型企业的资本实力。
+      </p>
+
+      <br>
+
+      <p>
+        长期以来，训练与部署 AI 模型都需要庞大的 GPU 集群、专用数据中心，以及大多数团队难以负担的自建基础设施工程能力。即便是技术路线清晰的开发者，也常常被底层硬件投入的规模挡在门外。
+      </p>
+
+      <br>
+
+      <p>
+        Cloud Leasing 将同等级别的基础设施，打包成一个可以直接租用并投入生产的平台——一个<strong>可租赁、可变现的 AI 生产平台</strong>，无需承担拥有硬件所需的资本支出或多年期承诺。
+      </p>
+    </div>
+
+    <div class="stat-stack">
+      <div class="stat-item">
+        <div class="stat-num">$0</div>
+        <div>
+          <div class="stat-title">硬件采购成本</div>
+          <div class="stat-desc">无需为 GPU 硬件承担任何资本支出——按需供给企业级算力，而非采购硬件本身。</div>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-num">∞</div>
+        <div>
+          <div class="stat-title">弹性可扩展</div>
+          <div class="stat-desc">Kubernetes 原生编排能力，随工作负载需求变化自动扩容或缩容节点容量。</div>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-num">API</div>
+        <div>
+          <div class="stat-title">即时变现</div>
+          <div class="stat-desc">部署训练好的模型，直接将其对外发布为生产就绪、可计费的 API，无需自行搭建周边基础设施。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-label">// 为什么选择我们</div>
+
+  <h2 class="section-title section-title-sub">
+    获取 AI 算力的<br>
+    另一种方式
+  </h2>
+
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">无需硬件采购</div>
+      <div class="why-desc">跳过长达数月的 GPU 交付周期与大额前期资本支出——改为按需租赁算力。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">价格透明</div>
+      <div class="why-desc">租赁价格清晰直接，没有隐藏的基础设施费用或维护费用。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">无长期锁定</div>
+      <div class="why-desc">随工作负载变化灵活扩容或缩容节点，不被固定的硬件投资所束缚。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">开箱即生产就绪</div>
+      <div class="why-desc">每个节点交付时都已预配置好训练与推理所需的运行时软件栈，而非一台裸机。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">专属技术支持</div>
+      <div class="why-desc">整个租期内均提供基础设施与部署支持，而不仅仅是在开通时。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">专为变现而设计</div>
+      <div class="why-desc">集成的 API 与计费工具，能将一个已部署的模型转化为可售卖的产品，而不只是一个跑着的进程。</div>
+    </div>
+  </div>
+</section>
+
+<section id="api-economy">
+  <div class="section-label">// API 经济</div>
+
+  <h2 class="section-title">
+    为 API 优先的<br>
+    未来而生
+  </h2>
+
+  <div class="intro-text api-economy-text">
+    <p>
+      行业分析机构预测，全球 AI API 市场规模将从 2026 年的约 850 亿美元，增长到 2034 年的 6900 多亿美元——复合年增长率超过 30%。企业购买 AI 能力的方式正在发生转变：不再是一次性购买模型，而是按次计费的 API 调用。
+    </p>
+
+    <br>
+
+    <p>
+      超过 60% 的企业已经直接或间接通过 API 产生收入，未来AI 驱动的 API 预计将嵌入大多数新的企业级应用中。而这场转变背后的基础设施层——GPU 算力、模型服务、计费与 API 网关——正是 Cloud Leasing 所处的位置。
+    </p>
+  </div>
+
+  <div class="api-economy-source">
+    数据来源：Grand View Research、Verified Market Research、Fortune Business Insights——2026 年 AI API 市场报告。
+  </div>
+
+  <div class="api-economy-transition-title">从市场机遇到生产现实</div>
+
+  <div class="api-economy-cards">
+    <div class="overview-point">
+      <div class="overview-point-title">模型到 API 的部署</div>
+      <div class="overview-point-desc">将训练好的模型转化为生产就绪、经过身份验证的 REST 接口——无需自行搭建服务基础设施。</div>
+    </div>
+    <div class="overview-point">
+      <div class="overview-point-title">企业级软件，开箱预装</div>
+      <div class="overview-point-desc">每个节点均已配置好 CUDA、NVIDIA AI Enterprise、Slurm 与 Kubernetes——无需专门的 DevOps 团队即可投入生产。</div>
+    </div>
+  </div>
+
+  <div class="api-economy-flow">租用 GPU → 部署模型 → 生成 API → 向客户计费</div>
+
+  <div class="api-economy-cta-wrap">
+    <a href="#flow" class="btn-ghost">查看部署流程 ↓</a>
+  </div>
+</section>
+
+<section class="hw-section">
+  <div class="section-label">// AI 原生数据中心</div>
+
+  <h2 class="section-title section-title-sub">
+    企业级算力<br>
+    工业级部署
+  </h2>
+
+  <div class="hw-grid">
+    <div class="hw-card">
+      <div class="hw-icon">// GPU 节点</div>
+      <div class="hw-name">H100 SXM<br>GB200 / GB300</div>
+      <div class="hw-desc">
+        当代 NVIDIA GPU 架构，配备 HBM 高带宽内存与 PCIe Gen5 基础设施，专为大规模 AI 训练与推理工作负载而设计。
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-icon">// 高速互联</div>
+      <div class="hw-name">NVLink<br>InfiniBand</div>
+      <div class="hw-desc">
+        NVLink、NVSwitch 与 InfiniBand 共同构建基于 RDMA 的低延迟 GPU 网络架构，使多 GPU、多节点任务无需经过标准网络协议栈即可交换数据。
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-icon">// 散热系统</div>
+      <div class="hw-name">液冷散热<br>冷板系统</div>
+      <div class="hw-desc">
+        液冷与冷板系统直接在 GPU 处带走热量，相比传统风冷机架，能以更低的 PUE 支撑持续的高密度负载。
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-icon">// 电力基础设施</div>
+      <div class="hw-name">高压供电<br>双路冗余</div>
+      <div class="hw-desc">
+        冗余 UPS 与 PDU 配电系统，部署在拥有可靠、经济能源供应的地区，确保 GPU 节点在局部电力事件中持续运行。
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-icon">// 存储架构</div>
+      <div class="hw-name">EPYC / Xeon<br>NVMe SSD</div>
+      <div class="hw-desc">
+        AMD EPYC 与 Intel Xeon CPU 搭配 NVMe SSD 阵列，满足高数据密度训练与推理管线所需的持续读写吞吐量。
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-icon">// 集群规模</div>
+      <div class="hw-name">NVL72<br>裸金属</div>
+      <div class="hw-desc">
+        GB300 NVL72 裸金属集群，可扩展至单节点部署无法承载的多模态生成、智能体（Agentic）与高并发推理工作负载。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dc-section">
+  <div class="section-label">// 数据中心运营</div>
+
+  <h2 class="section-title section-title-sub">
+    每个节点背后的<br>
+    设施级运营
+  </h2>
+
+  <div class="dc-grid">
+    <div class="dc-card">
+      <div class="dc-icon">// 电力与在线率</div>
+      <div class="dc-name">冗余供电<br>与在线率</div>
+      <div class="dc-desc">N+1 电力冗余、持续监控与自动故障切换，旨在让工作负载在日常维护与局部设备故障期间也能持续运行，而不仅仅是应对计划内停机。</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// 机房准入</div>
+      <div class="dc-name">物理<br>安全</div>
+      <div class="dc-desc">受限的机房准入、全程监控的环境，以及受控的硬件操作流程，从节点上架的那一刻起，到之后每一次维护访问，均全程适用，而不仅限于初始部署阶段。</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// 网络连接</div>
+      <div class="dc-name">网络对等<br>与带宽</div>
+      <div class="dc-desc">高吞吐量上行链路与对等互联关系提前于需求进行预配置，因此推理与训练流量在高峰负载期间不会与其他租户争抢共享带宽。</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// 覆盖范围</div>
+      <div class="dc-name">多地域<br>部署</div>
+      <div class="dc-desc">基础设施横跨多个机房，使工作负载能够部署在更靠近终端用户或数据源的位置，也让客户无需管理多个供应商关系即可获得地域级冗余能力。</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// 监控</div>
+      <div class="dc-name">7×24 小时<br>机房监控</div>
+      <div class="dc-desc">对制冷、供电与网络各层进行持续的环境与硬件监控，在早期预警信号——温度漂移、电力质量问题、链路劣化——影响到正在运行的工作负载之前将其发现。</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// 维护保养</div>
+      <div class="dc-name">主动式<br>维护</div>
+      <div class="dc-desc">计划性硬件维护与健康检查会围绕正在运行的工作负载进行排期，让日常维护成为可预期的安排，而非意外的中断。</div>
+    </div>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="section-label">// GPU 产品分类</div>
+
+  <h2 class="section-title">
+    覆盖每个阶段的<br>
+    算力档位
+  </h2>
+
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="cat-art"><img src="/assets/images/tiers/rtx.svg" alt="RTX 系列节点架构" loading="lazy"></div>
+      <div class="cat-tag">专业级</div>
+      <div class="cat-name">RTX 系列节点</div>
+      <div class="cat-desc">面向微调与推理的多 GPU 节点——最低 500 美元起。</div>
+      <div class="cat-data-grid">
+        <div class="cat-data-tile">
+          <div class="cat-data-label">GPU 数量</div>
+          <div class="cat-data-value">4×</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">价格区间</div>
+          <div class="cat-data-value">$500</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">网络</div>
+          <div class="cat-data-value">100GbE</div>
+        </div>
+      </div>
+      <a href="/zh/products/#cat-rtx" class="cat-link">探索 RTX 节点 →</a>
+    </div>
+    <div class="cat-card">
+      <div class="cat-art"><img src="/assets/images/tiers/a100.svg" alt="A100 系列节点架构" loading="lazy"></div>
+      <div class="cat-tag cat-tag-enterprise">企业级</div>
+      <div class="cat-name">A100 系列节点</div>
+      <div class="cat-desc">生产级训练集群——180 天租期 1,000 至 50,000 美元。</div>
+      <div class="cat-data-grid">
+        <div class="cat-data-tile">
+          <div class="cat-data-label">GPU 数量</div>
+          <div class="cat-data-value">1× – 8×</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">价格区间</div>
+          <div class="cat-data-value">$1,000 – $50,000</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">网络</div>
+          <div class="cat-data-value">最高 400GbE</div>
+        </div>
+      </div>
+      <a href="/zh/products/#cat-a100" class="cat-link">探索 A100 节点 →</a>
+    </div>
+    <div class="cat-card">
+      <div class="cat-art"><img src="/assets/images/tiers/h800.svg" alt="H800 系列节点架构" loading="lazy"></div>
+      <div class="cat-tag cat-tag-frontier">前沿级</div>
+      <div class="cat-name">H800 系列节点</div>
+      <div class="cat-desc">多节点前沿级集群——最高 56 张 GPU，180 天租期 500,000 美元。</div>
+      <div class="cat-data-grid">
+        <div class="cat-data-tile">
+          <div class="cat-data-label">GPU 数量</div>
+          <div class="cat-data-value">8× – 56×（集群）</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">价格区间</div>
+          <div class="cat-data-value">$100,000 – $500,000</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">网络</div>
+          <div class="cat-data-value">最高 800GbE</div>
+        </div>
+      </div>
+      <a href="/zh/products/#cat-h800" class="cat-link">探索 H800 节点 →</a>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="section-label">// 运作方式</div>
+
+  <h2 class="section-title">
+    五步开启<br>
+    AI 变现之旅
+  </h2>
+
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="flow-num">01</div>
+      <div class="flow-step-title">租用 GPU 算力</div>
+      <div class="flow-step-desc">从 H100、GB200 或其他企业级 GPU 档位中选择，并配置匹配你工作负载的方案——无需采购硬件，也无需经历数月的采购周期。</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-num">02</div>
+      <div class="flow-step-title">部署 AI 模型</div>
+      <div class="flow-step-desc">上传你自己的模型，或从开源选项中选择，直接使用节点上已预装好的运行时软件栈。</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-num">03</div>
+      <div class="flow-step-title">优化推理性能</div>
+      <div class="flow-step-desc">vLLM 与 TensorRT-LLM 负责推理层面的性能优化，Kubernetes 原生编排则统一管理节点上的资源分配。</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-num">04</div>
+      <div class="flow-step-title">生成 API</div>
+      <div class="flow-step-desc">API 网关将你部署的模型对外发布为生产级接口，并配备完整的身份验证与限流能力。</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-num">05</div>
+      <div class="flow-step-title">开始变现</div>
+      <div class="flow-step-desc">按 API 调用次数、Token 用量、订阅或自定义定价模式计费——计费逻辑与部署运行在同一个平台上。</div>
+    </div>
+  </div>
+</section>
+
+<section id="enterprise-deploy">
+  <div class="section-label">// 企业级部署</div>
+
+  <h2 class="section-title section-title-sub">
+    面向更大规模部署的<br>
+    专属路径
+  </h2>
+
+  <p class="deploy-intro">
+    需要超出单个租用节点规模的专属算力的团队，会走一套结构化的入驻流程，而非面向单个 GPU 节点的自助式流程。
+  </p>
+
+  <div class="deploy-steps">
+    <div class="deploy-step">
+      <div class="deploy-num">01</div>
+      <div class="deploy-step-title">咨询与需求评估</div>
+      <div class="deploy-step-desc">评估工作负载需求、模型规模与吞吐目标，确定合适的集群配置方案。</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">02</div>
+      <div class="deploy-step-title">定制集群设计</div>
+      <div class="deploy-step-desc">根据工作负载特点配置 GPU 数量、互联拓扑与存储方案。</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">03</div>
+      <div class="deploy-step-title">供给与集成</div>
+      <div class="deploy-step-desc">搭建专属节点，并将其与现有的管线、编排系统与工具链集成。</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">04</div>
+      <div class="deploy-step-title">专属支持与 SLA</div>
+      <div class="deploy-step-desc">配有明确服务承诺的持续性基础设施支持。</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">05</div>
+      <div class="deploy-step-title">持续优化</div>
+      <div class="deploy-step-desc">随工作负载与使用模式的演变持续进行监控与调优。</div>
+    </div>
+  </div>
+
+  <div class="deploy-cta-wrap">
+    <a href="/zh/products/" class="btn-primary">发起企业级部署</a>
+  </div>
+</section>
+
+<section id="features">
+  <div class="section-label">// 平台能力</div>
+
+  <h2 class="section-title section-title-sub">
+    一套完整的<br>
+    AI 变现生态系统
+  </h2>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-tag">推理优化</div>
+      <div class="feature-title">最大化 GPU 利用率</div>
+      <div class="feature-desc">
+        vLLM 连续批处理、TensorRT-LLM 优化与 Triton 编排协同工作，让 GPU 算力始终处于利用状态，而非在请求间隙中闲置。
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-tag">API 商业化</div>
+      <div class="feature-title">完整的 API 变现工具栈</div>
+      <div class="feature-desc">
+        API 密钥管理、基于 Token 的计费、RPM/TPM 限流以及 WAF 防护均已内置于平台，让模型商业化无需再自行拼凑一套计费与安全体系。
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-tag">弹性扩缩容</div>
+      <div class="feature-title">自动化基础设施扩缩容</div>
+      <div class="feature-desc">
+        Kubernetes 原生编排与负载均衡随流量变化自动调整已分配资源，从早期阶段的工作负载到生产级 SaaS 规模的需求均可覆盖。
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-tag">AI 工作负载</div>
+      <div class="feature-title">全栈 AI 应用场景</div>
+      <div class="feature-desc">
+        训练、推理、多模态图像与视频生成、检索增强生成（RAG）管线，以及 AI 智能体运行时，均运行在同一底层平台之上。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tech-advantages">
+  <div class="section-label">// 技术优势</div>
+
+  <h2 class="section-title section-title-sub">
+    持续积累的<br>
+    工程细节
+  </h2>
+
+  <div class="adv-grid">
+    <div class="adv-card">
+      <div class="adv-tag">推理</div>
+      <div class="adv-title">连续批处理</div>
+      <div class="adv-desc">基于 vLLM 的连续批处理，让 GPU 始终在处理请求，而非在请求之间闲置等待。</div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-tag">网络</div>
+      <div class="adv-title">优化的互联架构</div>
+      <div class="adv-desc">NVLink 与 InfiniBand 网络架构降低多节点训练任务中跨 GPU 通信的开销。</div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-tag">散热</div>
+      <div class="adv-title">高效散热</div>
+      <div class="adv-desc">液冷与冷板系统在不触发热降频的情况下，支撑持续的高密度 GPU 负载。</div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-tag">编排</div>
+      <div class="adv-title">智能调度</div>
+      <div class="adv-desc">Kubernetes 原生调度能力，随需求变化自动将工作负载分配到合适的节点上。</div>
+    </div>
+  </div>
+</section>
+
+<section class="stack-section">
+  <div class="section-label">// 预装运行时软件栈</div>
+
+  <h2 class="section-title section-title-sub">
+    零配置<br>
+    开箱即用
+  </h2>
+
+  <p class="stack-intro">
+    平台已完整预装企业级 AI 基础设施软件栈。无需处理底层工程复杂度，即可立即部署模型。
+  </p>
+
+  <div class="stack-pills">
+    <div class="stack-pill">CUDA</div>
+    <div class="stack-pill">cuDNN</div>
+    <div class="stack-pill">TensorRT-LLM</div>
+    <div class="stack-pill">PyTorch</div>
+    <div class="stack-pill">vLLM</div>
+    <div class="stack-pill">Triton Inference Server</div>
+    <div class="stack-pill">Kubernetes（K8s）</div>
+    <div class="stack-pill">Slurm</div>
+    <div class="stack-pill">Docker 容器运行时</div>
+    <div class="stack-pill">GPU 虚拟化</div>
+    <div class="stack-pill">FastAPI</div>
+    <div class="stack-pill">gRPC</div>
+    <div class="stack-pill">API 网关</div>
+    <div class="stack-pill">WAF 安全防护</div>
+    <div class="stack-pill">Token 计费系统</div>
+    <div class="stack-pill">API 密钥管理</div>
+    <div class="stack-pill">负载均衡</div>
+    <div class="stack-pill">RDMA</div>
+    <div class="stack-pill">NVMe SSD 阵列</div>
+  </div>
+</section>
+
+<section class="security-section">
+  <div class="section-label">// 安全与合规</div>
+
+  <h2 class="section-title section-title-sub">
+    每一层都内置的<br>
+    安全保障
+  </h2>
+
+  <div class="sec-grid">
+    <div class="sec-card">
+      <div class="sec-icon">// 传输</div>
+      <div class="sec-name">加密通信</div>
+      <div class="sec-desc">在 API 流量、编排通道与管理界面之间，传输中的数据均经过加密，确保在已部署模型与调用方之间往来的请求不会在链路上被暴露。</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// 隔离</div>
+      <div class="sec-name">租户隔离</div>
+      <div class="sec-desc">工作负载在节点与网络层面相互隔离，因此一个客户的部署无法窥探或干扰另一个客户的流量、存储或算力分配。</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// 访问控制</div>
+      <div class="sec-name">访问控制</div>
+      <div class="sec-desc">基于角色的访问控制与限定范围的 API 密钥，决定谁能够访问基础设施与已部署的模型，让权限可以被限制在特定用户或服务真正需要的范围内。</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// 边缘防护</div>
+      <div class="sec-name">WAF 与网络防护</div>
+      <div class="sec-desc">Web 应用防火墙与网络层防护部署在 API 接口前端，在恶意流量到达已部署模型之前将其过滤掉。</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// 监控</div>
+      <div class="sec-name">持续监控</div>
+      <div class="sec-desc">基础设施与访问活动持续受到监控，异常的访问模式或资源使用情况能够被标记并及时排查，避免演变成安全事件。</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// 数据处理</div>
+      <div class="sec-name">负责任的数据处理</div>
+      <div class="sec-desc">客户数据与模型资产按既定的运营访问控制处理，仅对运营平台所必需的系统与人员可见，而非默认对外暴露。</div>
+    </div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="section-label">// 服务的行业</div>
+
+  <h2 class="section-title section-title-sub">
+    正在基于 Cloud Leasing<br>
+    构建业务的行业
+  </h2>
+
+  <div class="industries-grid">
+    <div class="industry-card">
+      <div class="industry-name">AI 初创公司</div>
+      <div class="industry-desc">在无需承担自建 GPU 基础设施前期成本的情况下，构建并交付新模型与 AI 驱动的产品。</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">科研机构与高校</div>
+      <div class="industry-desc">按需运行训练、微调与实验性工作负载，无需维护一套长期驻场的集群。</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">独立开发者</div>
+      <div class="industry-desc">将一个微调好的模型或副业项目，转化为托管、可计费的 API，而无需自行管理底层服务器。</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">SaaS 与 API 公司</div>
+      <div class="industry-desc">在现有产品背后运行生产级推理，算力随客户需求同步扩展。</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">生成式媒体团队</div>
+      <div class="industry-desc">运行需要持续、高显存 GPU 算力的图像、视频与多模态生成工作负载。</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">企业 AI 团队</div>
+      <div class="industry-desc">为试点项目与内部工具扩展内部算力，无需新增一笔资本性硬件采购。</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-label">// 常见问题</div>
+
+  <h2 class="section-title section-title-sub">
+    常见问题解答
+  </h2>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>有哪些 GPU 可供租赁？</summary>
+      <div class="faq-answer">本平台提供从专业级多 GPU 节点到企业级、前沿级集群的多档产品。完整规格与实时库存请查看<a href="/zh/products/">GPU 服务器</a>页面。</div>
+    </details>
+    <details class="faq-item">
+      <summary>计费方式是怎样的？</summary>
+      <div class="faq-answer">租赁与计费均通过 Cloud Leasing 平台处理，在你确认租用某个节点之前会先展示价格与付款详情。</div>
+    </details>
+    <details class="faq-item">
+      <summary>是否有最低租期要求？</summary>
+      <div class="faq-answer">承诺条款因节点档位而异，会在平台上租赁时具体展示。</div>
+    </details>
+    <details class="faq-item">
+      <summary>我可以部署自己的模型吗？</summary>
+      <div class="faq-answer">可以。节点预装了完整运行时软件栈（CUDA、PyTorch、vLLM、TensorRT-LLM），你可以直接部署自有模型或开源模型。</div>
+    </details>
+    <details class="faq-item">
+      <summary>包含哪些支持服务？</summary>
+      <div class="faq-answer">在整个租期内均提供基础设施与部署支持，企业级部署还配有专属支持团队。</div>
+    </details>
+    <details class="faq-item">
+      <summary>如果我需要专属的多节点部署怎么办？</summary>
+      <div class="faq-answer">需要超出单节点规模的专属算力的团队，会走<a href="#enterprise-deploy">企业级部署流程</a>——包括需求评估、定制集群设计，以及明确的服务支持SLA，而非面向单个GPU节点的自助式流程。</div>
+    </details>
+    <details class="faq-item">
+      <summary>客户之间是否会共享数据或模型知识产权？</summary>
+      <div class="faq-answer">不会。工作负载在节点与网络层面相互隔离，客户数据与模型资产按既定的运营访问控制处理，而非默认对外暴露。</div>
+    </details>
+    <details class="faq-item">
+      <summary>如何开始使用？</summary>
+      <div class="faq-answer">直接在 Cloud Leasing 平台上开始，你可以在那里选择节点并开始部署。<a href="#" data-leasing-link target="_blank">立即开始 →</a></div>
+    </details>
+  </div>
+</section>
+
+<section class="manifesto">
+  <div class="section-label">// 我们的使命</div>
+
+  <p class="manifesto-quote">
+    互联网时代，普通人通过网页构建了自己的事业。<br>
+    在 AI 时代，普通人将通过<em>算力与 API</em>构建自己的事业。<br>
+    我们让每个人都能拥有属于自己的<em>AI 生产能力</em>。
+  </p>
+
+  <div class="manifesto-sub">
+    Cloud Leasing — AI 算力与 API 变现操作系统
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col footer-brand">
+      <div class="footer-logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="footer-logo-mark">CLOUD LEASING</div>
+      <div class="footer-copy">AI 算力生产平台 · 为构建者而生</div>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">平台</div>
+      <a href="/zh/#flow">运作方式</a>
+      <a href="/zh/#features">平台能力</a>
+      <a href="/zh/products/">GPU 服务器</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">法律信息</div>
+      <a href="/zh/trust/index.html">信任中心</a>
+      <a href="/zh/privacy/index.html">隐私政策</a>
+      <a href="/zh/terms/index.html">服务条款</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">立即开始</div>
+      <a href="#" data-leasing-link target="_blank">租用算力 →</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/apply-leasing-links.js"></script>
+
+</body>
+</html>

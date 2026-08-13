@@ -2,8 +2,8 @@
   'use strict';
 
   var S = window.ProductShared;
-
-  var BEST_FOR = {
+  var UI = S.UI || {};
+  var BEST_FOR = UI.bestForText || {
     RTX: 'RTX-class nodes are best suited for teams fine-tuning models, running small-scale training jobs, and serving inference workloads that don’t require multi-node scale.',
     A100: 'A100-class nodes are best suited for production teams running large-scale model training and high-throughput inference, including multi-GPU distributed workloads.',
     H800: 'H800-class nodes are best suited for organizations training the largest models and running multimodal inference across bare-metal, multi-node clusters.'
@@ -65,7 +65,7 @@
     var top = document.createElement('div');
     top.className = 'detail-hero-top';
     var h1 = document.createElement('h1');
-    h1.textContent = product.name || 'GPU Server';
+    h1.textContent = product.name || UI.gpuServerFallback || 'GPU Server';
     top.appendChild(h1);
     wrap.appendChild(top);
 
@@ -86,11 +86,11 @@
 
     var highlightRows = [];
     if (product.gpuQuantity) {
-      highlightRows.push(['GPU Count', String(product.gpuQuantity) + (product.clusterScale ? ' (cluster total)' : '')]);
+      highlightRows.push([UI.gpuCount || 'GPU Count', String(product.gpuQuantity) + (product.clusterScale ? (UI.clusterTotalSuffix || ' (cluster total)') : '')]);
     }
-    if (product.memory) highlightRows.push(['Memory', product.memory]);
-    if (product.storage) highlightRows.push(['Storage', product.storage]);
-    if (product.network) highlightRows.push(['Network', product.network]);
+    if (product.memory) highlightRows.push([(UI.specLabels && UI.specLabels.memory) || 'Memory', product.memory]);
+    if (product.storage) highlightRows.push([(UI.specLabels && UI.specLabels.storage) || 'Storage', product.storage]);
+    if (product.network) highlightRows.push([(UI.specLabels && UI.specLabels.network) || 'Network', product.network]);
     var highlights = S.buildKeySpecsGrid(highlightRows);
     if (highlights) wrap.appendChild(highlights);
 
@@ -99,7 +99,7 @@
     cta.href = S.LEASE_URL;
     cta.target = '_blank';
     cta.rel = 'noopener';
-    cta.textContent = 'Lease Now';
+    cta.textContent = UI.leaseNow || 'Lease Now';
     wrap.appendChild(cta);
 
     return wrap;
@@ -107,7 +107,7 @@
 
   function buildOverview(product) {
     if (!product.description && !product.productLine) return null;
-    var section = buildSectionWrapper('// OVERVIEW', 'Overview');
+    var section = buildSectionWrapper('// ' + (UI.overview || 'OVERVIEW').toUpperCase(), UI.overview || 'Overview');
 
     if (product.productLine) {
       var line = document.createElement('div');
@@ -130,7 +130,7 @@
     var text = BEST_FOR[product.gpuFamily];
     if (!text) return null;
 
-    var section = buildSectionWrapper('// BEST FOR', 'Best For');
+    var section = buildSectionWrapper('// ' + (UI.bestFor || 'BEST FOR').toUpperCase(), UI.bestFor || 'Best For');
     var p = document.createElement('p');
     p.className = 'product-description detail-copy';
     p.textContent = text;
@@ -140,14 +140,14 @@
   }
 
   function buildSpecifications(product) {
-    var section = buildSectionWrapper('// SPECIFICATIONS', 'Specifications');
+    var section = buildSectionWrapper('// ' + (UI.specifications || 'SPECIFICATIONS').toUpperCase(), UI.specifications || 'Specifications');
     section.appendChild(S.buildSpecs(product));
 
     var componentsTable = S.buildComponentsTable(product);
     if (componentsTable) {
       var h3a = document.createElement('div');
       h3a.className = 'full-specs-heading';
-      h3a.textContent = 'Hardware Configuration';
+      h3a.textContent = UI.hardwareConfiguration || 'Hardware Configuration';
       section.appendChild(h3a);
       section.appendChild(componentsTable);
     }
@@ -156,7 +156,7 @@
     if (breakdownTable) {
       var h3b = document.createElement('div');
       h3b.className = 'full-specs-heading';
-      h3b.textContent = 'Estimated Enterprise Deployment Value';
+      h3b.textContent = UI.estimatedDeploymentValue || 'Estimated Enterprise Deployment Value';
       section.appendChild(h3b);
       section.appendChild(breakdownTable);
     }
@@ -167,14 +167,19 @@
   // Pricing itself already lives in the above-the-fold zone, so this section covers
   // process only — repeating the price table here would just duplicate it.
   function buildDeployment(product) {
-    var section = buildSectionWrapper('// DEPLOYMENT', 'Deployment');
+    var section = buildSectionWrapper('// ' + (UI.deployment || 'DEPLOYMENT').toUpperCase(), UI.deployment || 'Deployment');
 
     var note = document.createElement('p');
     note.className = 'product-description detail-copy';
     if (product.clusterScale) {
-      note.innerHTML = 'This is a multi-node cluster deployment. Provisioning follows the enterprise deployment process — consultation, custom cluster design, and a defined support SLA. <a href="/#enterprise-deploy">Learn more about enterprise deployment →</a>';
+      var homeHref = (S.LOCALE === 'en' ? '' : '/' + S.LOCALE.replace('zh-CN', 'zh')) + '/#enterprise-deploy';
+      var link = document.createElement('a');
+      link.href = homeHref;
+      link.textContent = UI.clusterDeployLink || 'Learn more about enterprise deployment →';
+      note.textContent = UI.clusterDeployNote || 'This is a multi-node cluster deployment. Provisioning follows the enterprise deployment process — consultation, custom cluster design, and a defined support SLA. ';
+      note.appendChild(link);
     } else {
-      note.textContent = 'Leasing and billing are handled directly through the Cloud Leasing platform. Deployment begins once your lease is confirmed.';
+      note.textContent = UI.singleDeployNote || 'Leasing and billing are handled directly through the Cloud Leasing platform. Deployment begins once your lease is confirmed.';
     }
     section.appendChild(note);
 
@@ -182,7 +187,7 @@
   }
 
   function render(product) {
-    document.getElementById('page-title').textContent = (product.name || 'GPU Server') + ' | Cloud Leasing';
+    document.getElementById('page-title').textContent = (product.name || UI.gpuServerFallback || 'GPU Server') + ' | Cloud Leasing';
 
     var fragment = document.createDocumentFragment();
     fragment.appendChild(buildAboveFold(product));
@@ -201,25 +206,21 @@
 
   var requestedId = getRequestedId();
   if (!requestedId) {
-    setStatus('No product specified. Return to the GPU Servers page to choose one.');
+    setStatus(UI.noProductSpecified || 'No product specified. Return to the GPU Servers page to choose one.');
   } else {
-    setStatus('Loading product…');
-    fetch(S.DATA_URL)
-      .then(function (res) {
-        if (!res.ok) throw new Error('Failed to load product data');
-        return res.json();
-      })
+    setStatus(UI.loadingProduct || 'Loading product…');
+    S.loadProducts()
       .then(function (products) {
         var product = Array.isArray(products) ? products.filter(function (p) { return p.id === requestedId; })[0] : null;
         if (!product) {
-          setStatus('This product could not be found. It may have been renamed or removed — see the full GPU Servers list instead.');
+          setStatus(UI.productNotFound || 'This product could not be found. It may have been renamed or removed — see the full GPU Servers list instead.');
           return;
         }
         setStatus(null);
         render(product);
       })
       .catch(function () {
-        setStatus('Unable to load product data right now. Please try again shortly.');
+        setStatus(UI.unableToLoadProduct || 'Unable to load product data right now. Please try again shortly.');
       });
   }
 })();

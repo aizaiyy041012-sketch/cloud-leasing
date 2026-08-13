@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Leasing — AI コンピュートプロダクションプラットフォーム</title>
+<meta name="description" content="AIのトレーニングと推論のためのエンタープライズ級GPUインフラ。H100、GB200、エンタープライズ級コンピュートノードを、初期ハードウェア投資なしでリース。">
+<link rel="canonical" href="https://aicloudleasing.com/ja/">
+
+<link rel="icon" href="/assets/images/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="/assets/images/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v=2">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Leasing">
+<meta property="og:title" content="Cloud Leasing — AI コンピュートプロダクションプラットフォーム">
+<meta property="og:description" content="AIのトレーニングと推論のためのエンタープライズ級GPUインフラ。H100、GB200、エンタープライズ級コンピュートノードを、初期ハードウェア投資なしでリース。">
+<meta property="og:url" content="https://aicloudleasing.com/ja/">
+<meta property="og:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cloud Leasing — AI コンピュートプロダクションプラットフォーム">
+<meta name="twitter:description" content="AIのトレーニングと推論のためのエンタープライズ級GPUインフラ。H100、GB200、エンタープライズ級コンピュートノードを、初期ハードウェア投資なしでリース。">
+<meta name="twitter:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+
+<link rel="alternate" hreflang="en" href="https://aicloudleasing.com/">
+<link rel="alternate" hreflang="zh-CN" href="https://aicloudleasing.com/zh/">
+<link rel="alternate" hreflang="ja" href="https://aicloudleasing.com/ja/">
+<link rel="alternate" hreflang="ko" href="https://aicloudleasing.com/ko/">
+<link rel="alternate" hreflang="x-default" href="https://aicloudleasing.com/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/home-additions.css">
+<link rel="stylesheet" href="/assets/css/lang-switcher.css">
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --black: var(--color-black-900);
+    --white: var(--color-white-100);
+    --accent: var(--color-accent);
+    --accent2: var(--color-accent2);
+    --dim: var(--color-surface-dim);
+    --mid: var(--color-surface-mid);
+    --text-muted: var(--color-muted-1);
+    --mono: var(--font-mono);
+    --body: var(--font-body);
+    --display: var(--font-display);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--body);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(var(--color-accent-rgb),0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--color-accent-rgb),0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: var(--z-base);
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-nav);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-1-25r) var(--space-3r);
+    border-bottom: 1px solid rgba(var(--color-accent-rgb),0.12);
+    background: rgba(var(--color-black-900-rgb),0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--display);
+    font-size: var(--text-1-5r);
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  .nav-logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  .nav-tag {
+    font-family: var(--mono);
+    font-size: var(--text-0-65r);
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-8r) var(--space-3r) var(--space-5r);
+    overflow: hidden;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: var(--text-0-7r);
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: var(--space-1-5r);
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-size: var(--text-display-hero);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    max-width: var(--container-900);
+  }
+
+  .hero-title span {
+    color: var(--accent);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: var(--text-1-1r);
+    color: rgba(var(--color-white-100-rgb),0.65);
+    max-width: var(--container-620);
+    margin-top: var(--space-2r);
+    font-weight: var(--font-weight-light);
+  }
+
+  .hero-cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1-5r);
+    margin-top: var(--space-3r);
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    font-family: var(--mono);
+    font-size: var(--text-0-75r);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: var(--space-0-9r) var(--space-2r);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    border: 1px solid rgba(var(--color-white-100-rgb),0.25);
+    color: var(--white);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-orb {
+    position: absolute;
+    right: -8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52vw;
+    max-width: var(--container-700);
+    aspect-ratio: 1;
+    border-radius: var(--radius-circle);
+    background: radial-gradient(circle at 35% 40%, rgba(var(--color-accent2-rgb),0.15), rgba(var(--color-accent-rgb),0.08) 40%, transparent 70%);
+    border: 1px solid rgba(var(--color-accent-rgb),0.08);
+    animation: pulse var(--duration-orb-pulse) ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); }
+    50% { opacity: 1; transform: translateY(-50%) scale(1.02); }
+  }
+
+  .ticker {
+    background: var(--accent);
+    overflow: hidden;
+    padding: var(--space-0-6r) 0;
+    position: relative;
+    z-index: var(--z-ticker);
+  }
+
+  .ticker-inner {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker var(--duration-ticker-scroll) linear infinite;
+  }
+
+  .ticker-item {
+    font-family: var(--mono);
+    font-size: var(--text-0-7r);
+    font-weight: var(--font-weight-bold);
+    color: var(--black);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0 var(--space-3r);
+    flex-shrink: 0;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  section {
+    position: relative;
+    z-index: var(--z-content);
+    padding: var(--space-7r) var(--space-3r);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: var(--text-0-65r);
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: var(--space-1r);
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: var(--text-display-section);
+    line-height: 1;
+    max-width: var(--container-760);
+    margin-bottom: var(--space-1-5r);
+  }
+
+  .section-title-sub {
+    font-size: clamp(1.8rem, 4.2vw, 3rem);
+  }
+
+  .intro-grid,
+  .hw-grid,
+  .features-grid {
+    margin-top: var(--space-3r);
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4r);
+    align-items: center;
+  }
+
+  .intro-text {
+    color: rgba(var(--color-white-100-rgb),0.72);
+    line-height: 1.9;
+  }
+
+  .intro-text strong {
+    color: var(--white);
+  }
+
+  .stat-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .stat-item {
+    border: 1px solid rgba(var(--color-accent-rgb),0.12);
+    padding: var(--space-1-5r);
+    background: var(--dim);
+    display: flex;
+    gap: var(--space-1-25r);
+  }
+
+  .stat-num {
+    font-family: var(--display);
+    font-size: var(--text-2-8r);
+    color: var(--accent);
+    min-width: 90px;
+  }
+
+  .stat-title {
+    color: var(--white);
+    margin-bottom: var(--space-0-3r);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .stat-desc {
+    color: rgba(var(--color-white-100-rgb),0.6);
+    font-size: var(--text-0-85r);
+  }
+
+  .hw-section,
+  .stack-section {
+    background: var(--dim);
+    border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
+    border-bottom: 1px solid rgba(var(--color-accent-rgb),0.1);
+  }
+
+  .hw-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-1);
+    background: rgba(var(--color-accent-rgb),0.05);
+    border: 1px solid rgba(var(--color-accent-rgb),0.1);
+  }
+
+  .hw-card,
+  .feature-card {
+    background: var(--black);
+    padding: var(--space-2r);
+  }
+
+  .hw-icon,
+  .feature-tag {
+    font-family: var(--mono);
+    font-size: var(--text-0-6r);
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-0-75r);
+  }
+
+  .hw-name {
+    font-family: var(--display);
+    font-size: var(--text-1-6r);
+    margin-bottom: var(--space-0-7r);
+    line-height: 1.1;
+  }
+
+  .hw-desc,
+  .feature-desc {
+    color: rgba(var(--color-white-100-rgb),0.58);
+    font-size: var(--text-0-85r);
+    line-height: 1.8;
+  }
+
+  .flow-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-2r);
+    margin-top: var(--space-4r);
+  }
+
+  .flow-step {
+    text-align: center;
+  }
+
+  .flow-num {
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid rgba(var(--color-accent-rgb),0.3);
+    border-radius: var(--radius-circle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-1-25r);
+    font-family: var(--display);
+    font-size: var(--text-1-6r);
+    color: var(--accent);
+  }
+
+  .flow-step-title {
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--space-0-5r);
+  }
+
+  .flow-step-desc {
+    color: rgba(var(--color-white-100-rgb),0.55);
+    font-size: var(--text-0-8r);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-1);
+    background: rgba(var(--color-accent-rgb),0.04);
+    border: 1px solid rgba(var(--color-accent-rgb),0.08);
+  }
+
+  .feature-title {
+    font-size: var(--text-1-1r);
+    margin-bottom: var(--space-0-75r);
+  }
+
+  .stack-intro {
+    color: rgba(var(--color-white-100-rgb),0.65);
+    max-width: var(--container-680);
+    margin-top: var(--space-1r);
+  }
+
+  .stack-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-0-5r);
+    margin-top: var(--space-2-5r);
+  }
+
+  .stack-pill {
+    font-family: var(--mono);
+    font-size: var(--text-0-65r);
+    letter-spacing: 0.1em;
+    color: var(--accent2);
+    border: 1px solid rgba(var(--color-accent2-rgb),0.25);
+    padding: var(--space-0-45r) var(--space-0-9r);
+    background: rgba(var(--color-accent2-rgb),0.04);
+  }
+
+  .manifesto {
+    text-align: center;
+    border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
+  }
+
+  .manifesto-quote {
+    font-family: var(--display);
+    font-size: var(--text-display-quote);
+    line-height: 1.2;
+    max-width: var(--container-900);
+    margin: 0 auto var(--space-3r);
+  }
+
+  .manifesto-quote em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  .manifesto-sub {
+    font-family: var(--mono);
+    font-size: var(--text-0-75r);
+    letter-spacing: 0.15em;
+    color: rgba(var(--color-white-100-rgb),0.5);
+    text-transform: uppercase;
+  }
+
+  footer {
+    border-top: 1px solid rgba(var(--color-accent-rgb),0.1);
+    padding: var(--space-2-5r) var(--space-3r);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--display);
+    font-size: var(--text-1-2r);
+    color: var(--accent);
+  }
+
+  .footer-logo-mark {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    object-fit: contain;
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: var(--text-0-65r);
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+  }
+
+  /* Note: CSS custom properties cannot be used inside @media conditions,
+     so the 900px breakpoint below stays a literal value by necessity. */
+  @media (max-width: 900px) {
+    nav,
+    section,
+    footer,
+    .hero {
+      padding-left: var(--space-1-5r);
+      padding-right: var(--space-1-5r);
+    }
+
+    .intro-grid,
+    .hw-grid,
+    .features-grid,
+    .flow-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-orb {
+      display: none;
+    }
+
+    footer {
+      flex-direction: column;
+      gap: var(--space-1r);
+      text-align: center;
+    }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Cloud Leasing",
+  "url": "https://aicloudleasing.com/ja/",
+  "logo": "https://aicloudleasing.com/assets/images/apple-touch-icon.png",
+  "description": "Cloud Leasing は、AIのトレーニングと推論のためのエンタープライズ級GPUインフラをオンデマンドでリース提供します。"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Cloud Leasing",
+  "url": "https://aicloudleasing.com/ja/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "リースできるGPUには何がありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "本プラットフォームでは、プロフェッショナル向けマルチGPUノードから、エンタープライズ級・フロンティア級クラスターまで、幅広いラインナップを提供しています。詳細な仕様と現在の在庫状況は GPU サーバーページに掲載されています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "請求はどのように行われますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "リースと請求は Cloud Leasing プラットフォーム上で処理され、ノードの利用を確定する前に料金と支払いの詳細が表示されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "最低リース期間はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "契約条件はノードのクラスによって異なり、プラットフォーム上でリース時に提示されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "自分のモデルをデプロイできますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。ノードには事前にランタイムスタック（CUDA、PyTorch、vLLM、TensorRT-LLM）がインストールされているため、独自モデルやオープンソースモデルを直接デプロイできます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "どのようなサポートが含まれますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "リース期間中を通じてインフラおよびデプロイのサポートを受けられ、エンタープライズ導入には専任サポートが提供されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "専用のマルチノード導入が必要な場合はどうすればよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "単一ノードを超える専用の容量が必要なチームは、個別GPUノード向けのセルフサービスフローではなく、要件ヒアリング、カスタムクラスター設計、明確なサポートSLAを含むエンタープライズ導入プロセスに進みます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "顧客間でデータやモデルの知的財産は共有されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ。ワークロードはノードおよびネットワークレベルで分離されており、顧客データとモデル資産は、デフォルトで公開されるのではなく、定められた運用アクセス制御のもとで管理されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "どのように始めればよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cloud Leasing プラットフォーム上で直接開始できます。ノードを選択してデプロイを開始してください。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="nav-logo-mark">CLOUD LEASING</div>
+  <div class="nav-right">
+    <div class="nav-tag">AI コンピュートプロダクションプラットフォーム</div>
+    <a href="/ja/products/" class="nav-link">製品</a>
+    <div data-lang-switcher></div>
+    <a href="#" data-leasing-link target="_blank" class="nav-cta">今すぐ始める</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">// 次世代 AI コンピュートインフラ</div>
+
+  <h1 class="hero-title">
+    AI コンピュートを、
+    <span>API ビルダーの手に</span>
+  </h1>
+
+  <p class="hero-sub">
+    エンタープライズ級 AI スーパーコンピューティングの力を、誰もがレンタルし、デプロイし、収益化し、拡張できる本番インフラへと変えます。
+  </p>
+
+  <div class="hero-cta">
+    <a href="#flow" class="btn-primary">仕組みを見る</a>
+    <a href="#features" class="btn-ghost">プラットフォーム機能を見る</a>
+  </div>
+
+  <div class="hero-orb"></div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">H100 SXM</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">GB200</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">GB300 NVL72</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">NVLink</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">InfiniBand</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">液冷</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">超低PUE</span>
+    <span class="ticker-item">●</span>
+    <span class="ticker-item">低遅延RDMA</span>
+  </div>
+</div>
+
+<section id="company">
+  <div class="section-label">// 会社概要</div>
+
+  <h2 class="section-title">
+    新しい世代の<br>
+    AI ビルダーのために
+  </h2>
+
+  <div class="overview-grid">
+    <div class="overview-text">
+      <p>
+        Cloud Leasing は、ハードウェアのプロビジョニングやネットワークファブリックから、各ノードで稼働するランタイムスタックに至るまで、エンタープライズ GPU インフラをエンドツーエンドで設計・運用・サポートします。お客様は、複数のベンダーからインフラ、ツール、サポートを個別に組み合わせるのではなく、デプロイのライフサイクル全体を通じて単一のオペレーターと連携します。
+      </p>
+      <p>
+        すべてのノードは、基盤となるデータセンター運用、ネットワークファブリック、事前インストールされたソフトウェアスタックを維持している同じチームによってプロビジョニング、構成、モニタリングされます。この運用モデルこそが、社内にインフラの専門知識を構築することなく、リースした GPU ノードから本番の AI ワークロードへとスムーズに移行できる理由です。
+      </p>
+    </div>
+
+    <div class="overview-points">
+      <div class="overview-point">
+        <div class="overview-point-title">フルライフサイクルインフラ</div>
+        <div class="overview-point-desc">ハードウェア、ネットワークファブリック、ランタイムスタック、API ツールが、個別に調達された部品の寄せ集めではなく、一つの統合されたシステムとして管理されています。</div>
+      </div>
+      <div class="overview-point">
+        <div class="overview-point-title">単なる貸主ではなく、オペレーター</div>
+        <div class="overview-point-desc">ノードをプロビジョニングするチームがそのランタイム環境も維持するため、お客様はコロケーション施設のチケットキューではなく、インフラエンジニアと直接やり取りしてトラブルシューティングできます。</div>
+      </div>
+      <div class="overview-point">
+        <div class="overview-point-title">ワークロードとともに成長</div>
+        <div class="overview-point-desc">単一のリースノードを支える同じ運用モデルが、専用のマルチノードクラスターも支えるため、スケールアップの際にプロバイダーを切り替えたりデプロイツールを再構築したりする必要がありません。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="intro">
+  <div class="section-label">// プラットフォームについて</div>
+
+  <h2 class="section-title">
+    単なるサーバーではなく——<br>
+    AI ファクトリー
+  </h2>
+
+  <div class="intro-grid">
+    <div class="intro-text">
+      <p>
+        Cloud Leasing は、<strong>AI コンピュートプロダクションプラットフォーム</strong>であり、技術力はあってもハイパースケール企業のような資本力を持たない、個人起業家、独立系開発者、中小規模の AI チームのために構築されています。
+      </p>
+
+      <br>
+
+      <p>
+        AI モデルのトレーニングとデプロイには、これまで大規模な GPU クラスター、専用のデータセンター、そしてほとんどのチームが社内に構築するには正当化しづらいインフラエンジニアリングの専門知識が必要とされてきました。明確な技術ロードマップを持つ開発者であっても、基盤となるハードウェア投資の規模によって参入を阻まれてきました。
+      </p>
+
+      <br>
+
+      <p>
+        Cloud Leasing は、同等クラスのインフラを、リースしてそのまま本番投入できるプラットフォームとしてパッケージ化しています——ハードウェアを所有する場合に必要となる資本支出や複数年契約を伴わない、<strong>レンタル可能で収益化可能な AI プロダクションプラットフォーム</strong>です。
+      </p>
+    </div>
+
+    <div class="stat-stack">
+      <div class="stat-item">
+        <div class="stat-num">$0</div>
+        <div>
+          <div class="stat-title">ハードウェア調達コスト</div>
+          <div class="stat-desc">GPU ハードウェアへの資本支出は不要——購入する代わりに、オンデマンドでエンタープライズ級のコンピュート容量をプロビジョニングします。</div>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-num">∞</div>
+        <div>
+          <div class="stat-title">弾力的なスケーラビリティ</div>
+          <div class="stat-desc">Kubernetes ネイティブなオーケストレーションにより、ワークロードの需要変化に応じてノード容量を自動的に増減します。</div>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-num">API</div>
+        <div>
+          <div class="stat-title">即座の収益化</div>
+          <div class="stat-desc">トレーニング済みのモデルをデプロイし、周辺インフラを自ら構築することなく、本番運用可能な課金対象 API として公開できます。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-label">// 選ばれる理由</div>
+
+  <h2 class="section-title section-title-sub">
+    AI コンピュートへの<br>
+    新しいアクセス方法
+  </h2>
+
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">ハードウェア調達不要</div>
+      <div class="why-desc">数か月に及ぶ GPU 納期と多額の初期資本支出を省き、代わりにオンデマンドでコンピュートをリースします。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">透明な料金体系</div>
+      <div class="why-desc">隠れたインフラ費用や保守費用のない、明快なリース料金。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">長期的な縛りなし</div>
+      <div class="why-desc">固定的なハードウェア投資に縛られることなく、ワークロードの変化に応じてノードをスケールアップ・ダウンできます。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">初日から本番運用可能</div>
+      <div class="why-desc">すべてのノードは、単なるベアマシンではなく、トレーニングと推論に必要なランタイムスタックが事前設定された状態で提供されます。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">専任の技術サポート</div>
+      <div class="why-desc">契約時だけでなく、リース期間を通じてインフラおよびデプロイのサポートを提供します。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-check">✓</div>
+      <div class="why-title">収益化を前提とした設計</div>
+      <div class="why-desc">統合された API と課金ツールにより、デプロイ済みのモデルを単なる稼働中のプロセスではなく、販売可能な製品へと変えます。</div>
+    </div>
+  </div>
+</section>
+
+<section id="api-economy">
+  <div class="section-label">// API エコノミー</div>
+
+  <h2 class="section-title">
+    API ファーストな未来の<br>
+    ために
+  </h2>
+
+  <div class="intro-text api-economy-text">
+    <p>
+      業界アナリストは、世界の AI API 市場が 2026 年の約850億ドルから 2034 年には6900億ドル超へと成長すると予測しています——年平均成長率30%超です。企業の AI 能力の購入方法は変化しつつあります：一度きりのモデル購入ではなく、従量課金制の API 呼び出しへと移行しています。
+    </p>
+
+    <br>
+
+    <p>
+      すでに60%を超える企業が API を通じて直接的または間接的に収益を上げており、AI を活用した API は今後、新しいエンタープライズアプリケーションの大部分に組み込まれると見込まれています。この変化を支える基盤インフラ層——GPU コンピュート、モデルサービング、課金、API ゲートウェイ——こそが、Cloud Leasing が事業を展開している領域です。
+    </p>
+  </div>
+
+  <div class="api-economy-source">
+    出典：Grand View Research、Verified Market Research、Fortune Business Insights — AI API Market レポート、2026年。
+  </div>
+
+  <div class="api-economy-transition-title">市場機会から本番稼働へ</div>
+
+  <div class="api-economy-cards">
+    <div class="overview-point">
+      <div class="overview-point-title">モデルから API へのデプロイ</div>
+      <div class="overview-point-desc">サービング用インフラを自ら構築することなく、トレーニング済みモデルを本番運用可能な、認証付きの REST エンドポイントに変換します。</div>
+    </div>
+    <div class="overview-point">
+      <div class="overview-point-title">エンタープライズソフトウェア、事前インストール済み</div>
+      <div class="overview-point-desc">CUDA、NVIDIA AI Enterprise、Slurm、Kubernetes が全ノードに設定済みの状態で提供されます——本番運用に DevOps チームは不要です。</div>
+    </div>
+  </div>
+
+  <div class="api-economy-flow">GPUをレンタル → モデルをデプロイ → APIを生成 → 顧客に課金</div>
+
+  <div class="api-economy-cta-wrap">
+    <a href="#flow" class="btn-ghost">デプロイの仕組みを見る ↓</a>
+  </div>
+</section>
+
+<section class="hw-section">
+  <div class="section-label">// AI ネイティブなデータセンター</div>
+
+  <h2 class="section-title section-title-sub">
+    エンタープライズ級コンピュート<br>
+    産業レベルの導入
+  </h2>
+
+  <div class="hw-grid">
+    <div class="hw-card">
+      <div class="hw-icon">// GPU ノード</div>
+      <div class="hw-name">H100 SXM<br>GB200 / GB300</div>
+      <div class="hw-desc">
+        HBM 高帯域幅メモリと PCIe Gen5 インフラを備えた最新世代の NVIDIA GPU アーキテクチャ。大規模な AI トレーニングおよび推論ワークロード向けにサイジングされています。
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-icon">// 高速インターコネクト</div>
+      <div class="hw-name">NVLink<br>InfiniBand</div>
+      <div class="hw-desc">
+        NVLink、NVSwitch、InfiniBand が組み合わさり、RDMA 上に構築された低遅延の GPU ファブリックを形成。マルチ GPU・マルチノードジョブが標準的なネットワークスタックを経由せずにデータをやり取りします。
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-icon">// 冷却システム</div>
+      <div class="hw-name">液冷<br>コールドプレートシステム</div>
+      <div class="hw-desc">
+        液冷とコールドプレートシステムが GPU から直接熱を除去し、従来の空冷ラックよりも低い PUE で持続的な高密度負荷をサポートします。
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-icon">// 電源インフラ</div>
+      <div class="hw-name">高電圧<br>デュアル冗長化</div>
+      <div class="hw-desc">
+        信頼性が高く、コスト効率の良い電力供給を受けられる地域に設置された、冗長 UPS と PDU による電力分配により、局所的な電力障害時にも GPU ノードの稼働を維持します。
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-icon">// ストレージアーキテクチャ</div>
+      <div class="hw-name">EPYC / Xeon<br>NVMe SSD</div>
+      <div class="hw-desc">
+        AMD EPYC と Intel Xeon の CPU に、データ集約型のトレーニング・推論パイプラインが必要とする持続的な読み書きスループットに対応した NVMe SSD アレイを組み合わせています。
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-icon">// クラスタースケール</div>
+      <div class="hw-name">NVL72<br>ベアメタル</div>
+      <div class="hw-desc">
+        GB300 NVL72 ベアメタルクラスターは、単一ノードのデプロイでは対応しきれないマルチモーダル生成、エージェント型、高並行性の推論ワークロードにまでスケールします。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dc-section">
+  <div class="section-label">// データセンター運用</div>
+
+  <h2 class="section-title section-title-sub">
+    すべてのノードを支える<br>
+    施設レベルの運用
+  </h2>
+
+  <div class="dc-grid">
+    <div class="dc-card">
+      <div class="dc-icon">// 電源＆稼働率</div>
+      <div class="dc-name">冗長電源<br>＆稼働率</div>
+      <div class="dc-desc">N+1 電源冗長化、継続的なモニタリング、自動フェイルオーバーにより、計画停止時だけでなく、定期メンテナンスや局所的な機器障害の際もワークロードの稼働を維持するよう設計されています。</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// 施設アクセス</div>
+      <div class="dc-name">物理<br>セキュリティ</div>
+      <div class="dc-desc">制限された施設アクセス、モニタリングされた環境、管理されたハードウェア取り扱いは、ノードがラックに設置された瞬間から、その後のすべてのメンテナンス訪問に至るまで、初回デプロイ時だけでなく一貫して適用されます。</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// 接続性</div>
+      <div class="dc-name">ネットワークピアリング<br>＆帯域幅</div>
+      <div class="dc-desc">高スループットのアップリンクとピアリング関係は需要を先取りしてプロビジョニングされるため、ピーク負荷時でも推論・トレーニングのトラフィックが他のテナントと共有帯域幅を奪い合うことはありません。</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// フットプリント</div>
+      <div class="dc-name">マルチリージョン<br>デプロイ</div>
+      <div class="dc-desc">インフラは複数の施設にまたがっており、ワークロードをエンドユーザーやデータソースの近くに配置できるほか、複数のベンダー関係を管理することなく地理的冗長性への道を提供します。</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// モニタリング</div>
+      <div class="dc-name">24時間365日の<br>施設モニタリング</div>
+      <div class="dc-desc">冷却、電源、ネットワークの各層にわたる継続的な環境・ハードウェアモニタリングにより、稼働中のワークロードに影響を与える前に、温度ドリフト、電力品質の問題、リンクの劣化といった早期警告サインを検知します。</div>
+    </div>
+    <div class="dc-card">
+      <div class="dc-icon">// メンテナンス</div>
+      <div class="dc-name">予防的<br>メンテナンス</div>
+      <div class="dc-desc">計画的なハードウェアの保守と健全性チェックは、稼働中のワークロードを考慮してスケジューリングされ、定期メンテナンスが計画的に行われ、業務を中断させることはありません。</div>
+    </div>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="section-label">// GPU 製品カテゴリー</div>
+
+  <h2 class="section-title">
+    各段階に対応する<br>
+    コンピュートクラス
+  </h2>
+
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="cat-art"><img src="/assets/images/tiers/rtx.svg" alt="RTX クラスノードのアーキテクチャ" loading="lazy"></div>
+      <div class="cat-tag">プロフェッショナルクラス</div>
+      <div class="cat-name">RTX クラスノード</div>
+      <div class="cat-desc">ファインチューニングと推論向けのマルチGPUノード——500ドルから利用可能。</div>
+      <div class="cat-data-grid">
+        <div class="cat-data-tile">
+          <div class="cat-data-label">GPU数</div>
+          <div class="cat-data-value">4×</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">価格帯</div>
+          <div class="cat-data-value">$500</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">ネットワーク</div>
+          <div class="cat-data-value">100GbE</div>
+        </div>
+      </div>
+      <a href="/ja/products/#cat-rtx" class="cat-link">RTX ノードを見る →</a>
+    </div>
+    <div class="cat-card">
+      <div class="cat-art"><img src="/assets/images/tiers/a100.svg" alt="A100 クラスノードのアーキテクチャ" loading="lazy"></div>
+      <div class="cat-tag cat-tag-enterprise">エンタープライズクラス</div>
+      <div class="cat-name">A100 クラスノード</div>
+      <div class="cat-desc">本番トレーニングクラスター——180日リースで1,000～50,000ドル。</div>
+      <div class="cat-data-grid">
+        <div class="cat-data-tile">
+          <div class="cat-data-label">GPU数</div>
+          <div class="cat-data-value">1× – 8×</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">価格帯</div>
+          <div class="cat-data-value">$1,000 – $50,000</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">ネットワーク</div>
+          <div class="cat-data-value">最大400GbE</div>
+        </div>
+      </div>
+      <a href="/ja/products/#cat-a100" class="cat-link">A100 ノードを見る →</a>
+    </div>
+    <div class="cat-card">
+      <div class="cat-art"><img src="/assets/images/tiers/h800.svg" alt="H800 クラスノードのアーキテクチャ" loading="lazy"></div>
+      <div class="cat-tag cat-tag-frontier">フロンティアクラス</div>
+      <div class="cat-name">H800 クラスノード</div>
+      <div class="cat-desc">マルチノードのフロンティアクラスター——最大56GPU、180日リースで500,000ドル。</div>
+      <div class="cat-data-grid">
+        <div class="cat-data-tile">
+          <div class="cat-data-label">GPU数</div>
+          <div class="cat-data-value">8× – 56×（クラスター）</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">価格帯</div>
+          <div class="cat-data-value">$100,000 – $500,000</div>
+        </div>
+        <div class="cat-data-tile">
+          <div class="cat-data-label">ネットワーク</div>
+          <div class="cat-data-value">最大800GbE</div>
+        </div>
+      </div>
+      <a href="/ja/products/#cat-h800" class="cat-link">H800 ノードを見る →</a>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="section-label">// 仕組み</div>
+
+  <h2 class="section-title">
+    5ステップで始める<br>
+    AI 収益化
+  </h2>
+
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="flow-num">01</div>
+      <div class="flow-step-title">GPU コンピュートをリース</div>
+      <div class="flow-step-desc">H100、GB200、その他のエンタープライズ GPU クラスから選択し、ワークロードに合った構成をプロビジョニング——ハードウェア購入も数か月に及ぶ調達サイクルも不要です。</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-num">02</div>
+      <div class="flow-step-title">AI モデルをデプロイ</div>
+      <div class="flow-step-desc">独自モデルをアップロードするか、オープンソースの選択肢から選び、ノードに事前インストール済みのランタイムスタックを利用します。</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-num">03</div>
+      <div class="flow-step-title">推論を最適化</div>
+      <div class="flow-step-desc">vLLM と TensorRT-LLM が推論レベルの最適化を担い、Kubernetes ネイティブなオーケストレーションがノード全体のリソース割り当てを管理します。</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-num">04</div>
+      <div class="flow-step-title">API を生成</div>
+      <div class="flow-step-desc">API ゲートウェイが、デプロイ済みモデルを認証とレート制限を備えた本番エンドポイントとして公開します。</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-num">05</div>
+      <div class="flow-step-title">収益化を開始</div>
+      <div class="flow-step-desc">API 呼び出し数、トークン使用量、サブスクリプション、またはカスタム料金モデルに応じて課金——課金ロジックはデプロイと同じプラットフォーム上で稼働します。</div>
+    </div>
+  </div>
+</section>
+
+<section id="enterprise-deploy">
+  <div class="section-label">// エンタープライズ導入</div>
+
+  <h2 class="section-title section-title-sub">
+    より大規模な導入のための<br>
+    専用パス
+  </h2>
+
+  <p class="deploy-intro">
+    単一のリースノードを超える専用容量が必要なチームは、個別 GPU ノード向けのセルフサービスフローではなく、構造化されたオンボーディングプロセスを経ます。
+  </p>
+
+  <div class="deploy-steps">
+    <div class="deploy-step">
+      <div class="deploy-num">01</div>
+      <div class="deploy-step-title">相談＆要件ヒアリング</div>
+      <div class="deploy-step-desc">ワークロード要件、モデルサイズ、スループット目標をレビューし、適切なクラスター構成を決定します。</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">02</div>
+      <div class="deploy-step-title">カスタムクラスター設計</div>
+      <div class="deploy-step-desc">ワークロードのプロファイルに合わせて、GPU 数、インターコネクトトポロジー、ストレージを構成します。</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">03</div>
+      <div class="deploy-step-title">プロビジョニング＆統合</div>
+      <div class="deploy-step-desc">専用ノードを立ち上げ、既存のパイプライン、オーケストレーション、ツールと統合します。</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">04</div>
+      <div class="deploy-step-title">専任サポート＆SLA</div>
+      <div class="deploy-step-desc">明確なサービスコミットメントに裏付けられた、継続的なインフラサポート。</div>
+    </div>
+    <div class="deploy-step">
+      <div class="deploy-num">05</div>
+      <div class="deploy-step-title">継続的な最適化</div>
+      <div class="deploy-step-desc">ワークロードと利用パターンの変化に応じた、継続的なモニタリングとチューニング。</div>
+    </div>
+  </div>
+
+  <div class="deploy-cta-wrap">
+    <a href="/ja/products/" class="btn-primary">エンタープライズ導入を開始する</a>
+  </div>
+</section>
+
+<section id="features">
+  <div class="section-label">// プラットフォーム機能</div>
+
+  <h2 class="section-title section-title-sub">
+    完全な<br>
+    AI 収益化エコシステム
+  </h2>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-tag">推論最適化</div>
+      <div class="feature-title">最大限の GPU 利用率</div>
+      <div class="feature-desc">
+        vLLM の連続バッチ処理、TensorRT-LLM の最適化、Triton オーケストレーションが連携し、リクエストの合間に GPU 容量が遊休化することなく利用され続けます。
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-tag">API 商用化</div>
+      <div class="feature-title">完全な API 収益化スタック</div>
+      <div class="feature-desc">
+        API キー管理、トークンベースの課金、RPM/TPM のレート制限、WAF 保護がプラットフォームに組み込まれているため、モデルの商用化のために別途課金・セキュリティスタックを構築する必要はありません。
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-tag">弾力的なスケーリング</div>
+      <div class="feature-title">自動インフラスケーリング</div>
+      <div class="feature-desc">
+        Kubernetes ネイティブなオーケストレーションとロードバランシングが、初期段階のワークロードから本番 SaaS 規模の需要まで、トラフィックの変化に応じて割り当てリソースを調整します。
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-tag">AI ワークロード</div>
+      <div class="feature-title">フルスタック AI シナリオ</div>
+      <div class="feature-desc">
+        トレーニング、推論、マルチモーダルな画像・動画生成、検索拡張生成（RAG）パイプライン、AI エージェントランタイムがすべて同一の基盤プラットフォーム上で稼働します。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tech-advantages">
+  <div class="section-label">// 技術的優位性</div>
+
+  <h2 class="section-title section-title-sub">
+    積み重なっていく<br>
+    エンジニアリングの工夫
+  </h2>
+
+  <div class="adv-grid">
+    <div class="adv-card">
+      <div class="adv-tag">推論</div>
+      <div class="adv-title">連続バッチ処理</div>
+      <div class="adv-desc">vLLM ベースの連続バッチ処理により、GPU がリクエスト間で遊休状態になることなく処理を続けます。</div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-tag">ネットワーキング</div>
+      <div class="adv-title">最適化されたインターコネクト</div>
+      <div class="adv-desc">NVLink と InfiniBand ファブリックにより、マルチノードトレーニングジョブにおける GPU 間通信のオーバーヘッドを削減します。</div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-tag">サーマル</div>
+      <div class="adv-title">効率的な冷却</div>
+      <div class="adv-desc">液冷とコールドプレートシステムにより、サーマルスロットリングを起こすことなく高密度の GPU 負荷を維持します。</div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-tag">オーケストレーション</div>
+      <div class="adv-title">スマートスケジューリング</div>
+      <div class="adv-desc">Kubernetes ネイティブなスケジューリングにより、需要の変化に応じてワークロードを自動的に適切なノードへ配置します。</div>
+    </div>
+  </div>
+</section>
+
+<section class="stack-section">
+  <div class="section-label">// 事前インストール済みランタイムスタック</div>
+
+  <h2 class="section-title section-title-sub">
+    設定不要で<br>
+    すぐに使える
+  </h2>
+
+  <p class="stack-intro">
+    本プラットフォームには、エンタープライズ級の AI インフラがあらかじめフルインストールされています。低レベルなエンジニアリングの複雑さに煩わされることなく、すぐにモデルをデプロイできます。
+  </p>
+
+  <div class="stack-pills">
+    <div class="stack-pill">CUDA</div>
+    <div class="stack-pill">cuDNN</div>
+    <div class="stack-pill">TensorRT-LLM</div>
+    <div class="stack-pill">PyTorch</div>
+    <div class="stack-pill">vLLM</div>
+    <div class="stack-pill">Triton Inference Server</div>
+    <div class="stack-pill">Kubernetes（K8s）</div>
+    <div class="stack-pill">Slurm</div>
+    <div class="stack-pill">Docker コンテナランタイム</div>
+    <div class="stack-pill">GPU 仮想化</div>
+    <div class="stack-pill">FastAPI</div>
+    <div class="stack-pill">gRPC</div>
+    <div class="stack-pill">API ゲートウェイ</div>
+    <div class="stack-pill">WAF セキュリティ</div>
+    <div class="stack-pill">トークン課金システム</div>
+    <div class="stack-pill">API キー管理</div>
+    <div class="stack-pill">ロードバランシング</div>
+    <div class="stack-pill">RDMA</div>
+    <div class="stack-pill">NVMe SSD アレイ</div>
+  </div>
+</section>
+
+<section class="security-section">
+  <div class="section-label">// セキュリティ＆コンプライアンス</div>
+
+  <h2 class="section-title section-title-sub">
+    あらゆる層に組み込まれた<br>
+    セキュリティ
+  </h2>
+
+  <div class="sec-grid">
+    <div class="sec-card">
+      <div class="sec-icon">// 通信経路</div>
+      <div class="sec-name">暗号化通信</div>
+      <div class="sec-desc">API トラフィック、オーケストレーションチャネル、管理インターフェース全体で転送中のデータが暗号化されるため、デプロイ済みモデルと呼び出し元の間を行き来するリクエストが通信経路上で露出することはありません。</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// 分離</div>
+      <div class="sec-name">テナント分離</div>
+      <div class="sec-desc">ワークロードはノードおよびネットワークレベルで分離されているため、ある顧客のデプロイが他の顧客のトラフィック、ストレージ、コンピュート割り当てを観測したり干渉したりすることはできません。</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// アクセス</div>
+      <div class="sec-name">アクセス制御</div>
+      <div class="sec-desc">ロールベースのアクセス制御とスコープ付き API キーにより、インフラやデプロイ済みモデルにアクセスできる対象を定め、権限を特定のユーザーやサービスが実際に必要とする範囲に限定できます。</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// エッジ保護</div>
+      <div class="sec-name">WAF＆ネットワーク保護</div>
+      <div class="sec-desc">Web アプリケーションファイアウォールとネットワークレイヤーの保護が API エンドポイントの前段に配置され、悪意あるトラフィックがデプロイ済みモデルに到達する前にフィルタリングします。</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// モニタリング</div>
+      <div class="sec-name">継続的モニタリング</div>
+      <div class="sec-desc">インフラとアクセスのアクティビティは継続的にモニタリングされ、異常なアクセスパターンやリソース使用状況がインシデントに発展する前にフラグを立て、調査できます。</div>
+    </div>
+    <div class="sec-card">
+      <div class="sec-icon">// データ取り扱い</div>
+      <div class="sec-name">責任あるデータ取り扱い</div>
+      <div class="sec-desc">顧客データとモデル資産は、デフォルトで公開されるのではなく、プラットフォームの運用に必要なシステムと担当者にのみ可視化される、定められた運用アクセス制御のもとで取り扱われます。</div>
+    </div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="section-label">// 対象業界</div>
+
+  <h2 class="section-title section-title-sub">
+    Cloud Leasing の上で<br>
+    事業を構築する業界
+  </h2>
+
+  <div class="industries-grid">
+    <div class="industry-card">
+      <div class="industry-name">AI スタートアップ</div>
+      <div class="industry-desc">GPU インフラを所有する初期コストを負担することなく、新しいモデルや AI 活用製品を構築・提供。</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">研究機関＆大学</div>
+      <div class="industry-desc">常設のオンサイトクラスターを維持することなく、トレーニング、ファインチューニング、実験ワークロードをオンデマンドで実行。</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">独立系開発者</div>
+      <div class="industry-desc">基盤となるサーバーを自ら管理することなく、ファインチューニング済みモデルやサイドプロジェクトを、ホスティングされた課金対象 API に変える。</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">SaaS＆API 企業</div>
+      <div class="industry-desc">既存製品の裏側で本番推論を実行し、顧客需要に合わせて容量をスケール。</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">生成メディアチーム</div>
+      <div class="industry-desc">持続的で高 VRAM な GPU 容量を必要とする画像・動画・マルチモーダル生成ワークロードを実行。</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-name">エンタープライズ AI チーム</div>
+      <div class="industry-desc">新たな資本的ハードウェア購入なしに、パイロットや社内ツール向けに社内コンピュート容量を拡張。</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-label">// よくある質問</div>
+
+  <h2 class="section-title section-title-sub">
+    よくある質問
+  </h2>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>リースできるGPUには何がありますか？</summary>
+      <div class="faq-answer">本プラットフォームでは、プロフェッショナル向けマルチGPUノードから、エンタープライズ級・フロンティア級クラスターまで、幅広いラインナップを提供しています。詳細な仕様と現在の在庫状況は<a href="/ja/products/">GPU サーバー</a>ページに掲載されています。</div>
+    </details>
+    <details class="faq-item">
+      <summary>請求はどのように行われますか？</summary>
+      <div class="faq-answer">リースと請求は Cloud Leasing プラットフォーム上で処理され、ノードの利用を確定する前に料金と支払いの詳細が表示されます。</div>
+    </details>
+    <details class="faq-item">
+      <summary>最低リース期間はありますか？</summary>
+      <div class="faq-answer">契約条件はノードのクラスによって異なり、プラットフォーム上でリース時に提示されます。</div>
+    </details>
+    <details class="faq-item">
+      <summary>自分のモデルをデプロイできますか？</summary>
+      <div class="faq-answer">はい。ノードには事前にランタイムスタック（CUDA、PyTorch、vLLM、TensorRT-LLM）がインストールされているため、独自モデルやオープンソースモデルを直接デプロイできます。</div>
+    </details>
+    <details class="faq-item">
+      <summary>どのようなサポートが含まれますか？</summary>
+      <div class="faq-answer">リース期間中を通じてインフラおよびデプロイのサポートを受けられ、エンタープライズ導入には専任サポートが提供されます。</div>
+    </details>
+    <details class="faq-item">
+      <summary>専用のマルチノード導入が必要な場合はどうすればよいですか？</summary>
+      <div class="faq-answer">単一ノードを超える専用の容量が必要なチームは、個別GPUノード向けのセルフサービスフローではなく、要件ヒアリング、カスタムクラスター設計、明確なサポートSLAを含む<a href="#enterprise-deploy">エンタープライズ導入プロセス</a>に進みます。</div>
+    </details>
+    <details class="faq-item">
+      <summary>顧客間でデータやモデルの知的財産は共有されますか？</summary>
+      <div class="faq-answer">いいえ。ワークロードはノードおよびネットワークレベルで分離されており、顧客データとモデル資産は、デフォルトで公開されるのではなく、定められた運用アクセス制御のもとで管理されます。</div>
+    </details>
+    <details class="faq-item">
+      <summary>どのように始めればよいですか？</summary>
+      <div class="faq-answer">Cloud Leasing プラットフォーム上で直接開始できます。ノードを選択してデプロイを開始してください。<a href="#" data-leasing-link target="_blank">今すぐ始める →</a></div>
+    </details>
+  </div>
+</section>
+
+<section class="manifesto">
+  <div class="section-label">// 私たちのミッション</div>
+
+  <p class="manifesto-quote">
+    インターネットの時代、普通の人々はウェブを通じてビジネスを築きました。<br>
+    AI の時代、普通の人々は<em>コンピューティングパワーと API</em>を通じてビジネスを築くでしょう。<br>
+    私たちは、誰もが自分自身の<em>AI プロダクション能力</em>を持てるようにします。
+  </p>
+
+  <div class="manifesto-sub">
+    Cloud Leasing — AI コンピュート＆API 収益化オペレーティングシステム
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col footer-brand">
+      <div class="footer-logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="footer-logo-mark">CLOUD LEASING</div>
+      <div class="footer-copy">AI コンピュートプロダクションプラットフォーム · ビルダーのために</div>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">プラットフォーム</div>
+      <a href="/ja/#flow">仕組み</a>
+      <a href="/ja/#features">プラットフォーム機能</a>
+      <a href="/ja/products/">GPU サーバー</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">法的情報</div>
+      <a href="/ja/trust/index.html">信頼センター</a>
+      <a href="/ja/privacy/index.html">プライバシーポリシー</a>
+      <a href="/ja/terms/index.html">利用規約</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">今すぐ始める</div>
+      <a href="#" data-leasing-link target="_blank">コンピュートをリース →</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/apply-leasing-links.js"></script>
+
+</body>
+</html>

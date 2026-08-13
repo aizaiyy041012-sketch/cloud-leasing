@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>インフラストラクチャ | Cloud Leasing</title>
+<meta name="description" content="Cloud Leasing プラットフォームを構成するコンピュート、ストレージ、ネットワーキング、デプロイ、モニタリング各層の技術的概要。">
+<link rel="canonical" href="https://aicloudleasing.com/ja/infrastructure/">
+
+<link rel="alternate" hreflang="en" href="https://aicloudleasing.com/infrastructure/">
+<link rel="alternate" hreflang="zh-CN" href="https://aicloudleasing.com/zh/infrastructure/">
+<link rel="alternate" hreflang="ja" href="https://aicloudleasing.com/ja/infrastructure/">
+<link rel="alternate" hreflang="ko" href="https://aicloudleasing.com/ko/infrastructure/">
+<link rel="alternate" hreflang="x-default" href="https://aicloudleasing.com/infrastructure/">
+
+<link rel="icon" href="/assets/images/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="/assets/images/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v=2">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Leasing">
+<meta property="og:title" content="インフラストラクチャ | Cloud Leasing">
+<meta property="og:description" content="Cloud Leasing プラットフォームを構成するコンピュート、ストレージ、ネットワーキング、デプロイ、モニタリング各層の技術的概要。">
+<meta property="og:url" content="https://aicloudleasing.com/ja/infrastructure/">
+<meta property="og:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="インフラストラクチャ | Cloud Leasing">
+<meta name="twitter:description" content="Cloud Leasing プラットフォームを構成するコンピュート、ストレージ、ネットワーキング、デプロイ、モニタリング各層の技術的概要。">
+<meta name="twitter:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/products.css">
+<link rel="stylesheet" href="/assets/css/lang-switcher.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://aicloudleasing.com/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "インフラストラクチャ", "item": "https://aicloudleasing.com/ja/infrastructure/" }
+  ]
+}
+</script>
+</head>
+
+<body>
+
+<div class="topbar">
+  <a href="/ja/" class="logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="logo-mark">CLOUD LEASING</a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="/ja/" data-smart-back class="back">← プラットフォームに戻る</a>
+    <div data-lang-switcher></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="label">// インフラストラクチャ</div>
+  <h1>インフラストラクチャ</h1>
+  <p class="subtitle">
+    Cloud Leasing プラットフォームを構成するコンピュート、ストレージ、ネットワーキング各層の技術的概要と、ノードの導入からモニタリングまでの流れをご紹介します。
+  </p>
+
+  <!-- Infrastructure Overview -->
+  <section class="detail-section">
+    <div class="label">// プラットフォーム概要</div>
+    <h2 class="detail-section-title">プラットフォームの構成</h2>
+    <p class="product-description detail-copy">
+      Cloud Leasing の各ノードは、GPU/CPU コンピュート、NVMe ストレージ、ネットワークインターコネクト、そしてそれらを統合するオーケストレーションソフトウェアという4つの層から構成されています。以下のセクションでは各層を解説し、続いてリース契約から実際のワークロード稼働までの流れ、そして稼働後のモニタリング方法をご紹介します。
+    </p>
+  </section>
+
+  <!-- Compute -->
+  <section class="detail-section">
+    <div class="label">// コンピュート</div>
+    <h2 class="detail-section-title">GPU ＆ CPU プラットフォーム</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// GPU ファミリー</div>
+        <div class="infra-name">RTX、A100、H800</div>
+        <div class="infra-desc">ファミリーと構成に応じて、シングル GPU ノード、マルチ GPU ノード、NVSwitch 搭載の 8-GPU HGX プラットフォームとして提供されます。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// CPU プラットフォーム</div>
+        <div class="infra-name">Intel Xeon / AMD EPYC</div>
+        <div class="infra-desc">ノードは GPU 構成とワークロードに応じたサイジングで、Intel Xeon または AMD EPYC プロセッサーと組み合わされます。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// システムメモリ</div>
+        <div class="infra-name">DDR5 ECC RDIMM</div>
+        <div class="infra-desc">メモリはノード規模に応じてスケールし、シングルノード構成から 8-GPU プラットフォームの数テラバイト級容量まで対応します。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// ノード規模</div>
+        <div class="infra-name">シングル GPU からクラスターまで</div>
+        <div class="infra-desc">コンピュートはシングル GPU ノードから 8-GPU HGX プラットフォーム、さらにマルチノードのベアメタルクラスターまで対応します。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Storage -->
+  <section class="detail-section">
+    <div class="label">// ストレージ</div>
+    <h2 class="detail-section-title">NVMe ストレージアーキテクチャ</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// システムストレージ</div>
+        <div class="infra-name">エンタープライズ NVMe</div>
+        <div class="infra-desc">専用のエンタープライズ NVMe システムドライブが OS とランタイムストレージを担い、データストレージとは分離されています。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// データストレージ</div>
+        <div class="infra-name">大容量 NVMe</div>
+        <div class="infra-desc">より大容量のエンタープライズ NVMe データドライブがノード規模に応じてスケールし、データセットとチェックポイントの保存を支えます。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 冗長性</div>
+        <div class="infra-name">RAID 管理</div>
+        <div class="infra-desc">Broadcom MegaRAID コントローラーが、全ノードのシステムドライブとデータドライブのストレージ冗長性を管理します。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Networking -->
+  <section class="detail-section">
+    <div class="label">// ネットワーキング</div>
+    <h2 class="detail-section-title">インターコネクト＆ファブリック</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// GPU インターコネクト</div>
+        <div class="infra-name">NVLink / NVSwitch</div>
+        <div class="infra-desc">マルチ GPU プラットフォームにおいて、ノード内の GPU 同士を高帯域・低遅延で接続します。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// クラスターファブリック</div>
+        <div class="infra-name">InfiniBand / 高速イーサネット</div>
+        <div class="infra-desc">RDMA を介してノードをマルチノードクラスターに接続し、ノード間通信が標準的なネットワークスタックを経由しないようにします。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// DPU オフロード</div>
+        <div class="infra-name">NVIDIA BlueField-3</div>
+        <div class="infra-desc">HGX およびクラスタープラットフォームにおいて、ネットワーキング、ストレージ、セキュリティ処理をホスト CPU からオフロードします。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment -->
+  <section class="detail-section">
+    <div class="label">// デプロイ</div>
+    <h2 class="detail-section-title">リースから稼働中のワークロードまで</h2>
+    <p class="product-description detail-copy">
+      シングルノードの導入はセルフサービス方式です。ノードを選択するだけで、あらかじめランタイムスタックがインストールされた状態でプロビジョニングされます。マルチノードのクラスター導入は、要件ヒアリング、カスタムクラスター設計、プロビジョニング、明確な SLA の設定という構造化されたプロセスに沿って進められます。詳細は<a href="/ja/#enterprise-deploy">エンタープライズ導入プロセス</a>をご覧ください。
+    </p>
+  </section>
+
+  <!-- Monitoring -->
+  <section class="detail-section">
+    <div class="label">// モニタリング</div>
+    <h2 class="detail-section-title">プラットフォームモニタリング</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// インフラストラクチャ</div>
+        <div class="infra-name">継続的モニタリング</div>
+        <div class="infra-desc">コンピュート、電源、冷却、ネットワークの各層を継続的にモニタリングし、環境やハードウェアの問題が稼働中のワークロードに影響を与える前に検知します。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// アクセス＆アクティビティ</div>
+        <div class="infra-name">継続的な監督</div>
+        <div class="infra-desc">インフラストラクチャとアクセスのアクティビティを継続的にモニタリングし、異常なパターンの早期発見を支援します。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="detail-section detail-cta-section">
+    <a href="#" data-leasing-link target="_blank" rel="noopener" class="btn-lease detail-cta">今すぐ借りる</a>
+  </section>
+
+</div>
+
+<div class="footer">
+  CLOUD LEASING © AI コンピュートプロダクションプラットフォーム
+</div>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/smart-back.js"></script>
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/apply-leasing-links.js"></script>
+
+</body>
+</html>

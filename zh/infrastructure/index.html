@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>基础设施 | Cloud Leasing</title>
+<meta name="description" content="Cloud Leasing 平台计算、存储、网络、部署与监控各层的技术概览。">
+<link rel="canonical" href="https://aicloudleasing.com/zh/infrastructure/">
+
+<link rel="alternate" hreflang="en" href="https://aicloudleasing.com/infrastructure/">
+<link rel="alternate" hreflang="zh-CN" href="https://aicloudleasing.com/zh/infrastructure/">
+<link rel="alternate" hreflang="ja" href="https://aicloudleasing.com/ja/infrastructure/">
+<link rel="alternate" hreflang="ko" href="https://aicloudleasing.com/ko/infrastructure/">
+<link rel="alternate" hreflang="x-default" href="https://aicloudleasing.com/infrastructure/">
+
+<link rel="icon" href="/assets/images/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="/assets/images/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v=2">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Leasing">
+<meta property="og:title" content="基础设施 | Cloud Leasing">
+<meta property="og:description" content="Cloud Leasing 平台计算、存储、网络、部署与监控各层的技术概览。">
+<meta property="og:url" content="https://aicloudleasing.com/zh/infrastructure/">
+<meta property="og:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="基础设施 | Cloud Leasing">
+<meta name="twitter:description" content="Cloud Leasing 平台计算、存储、网络、部署与监控各层的技术概览。">
+<meta name="twitter:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/products.css">
+<link rel="stylesheet" href="/assets/css/lang-switcher.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://aicloudleasing.com/zh/" },
+    { "@type": "ListItem", "position": 2, "name": "基础设施", "item": "https://aicloudleasing.com/zh/infrastructure/" }
+  ]
+}
+</script>
+</head>
+
+<body>
+
+<div class="topbar">
+  <a href="/zh/" class="logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="logo-mark">CLOUD LEASING</a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="/zh/" data-smart-back class="back">← 返回平台首页</a>
+    <div data-lang-switcher></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="label">// 基础设施</div>
+  <h1>基础设施</h1>
+  <p class="subtitle">
+    Cloud Leasing 平台计算、存储与网络各层的技术概览，以及节点从部署到监控的具体流程。
+  </p>
+
+  <!-- Infrastructure Overview -->
+  <section class="detail-section">
+    <div class="label">// 平台架构概览</div>
+    <h2 class="detail-section-title">平台是如何构建的</h2>
+    <p class="product-description detail-copy">
+      每个 Cloud Leasing 节点都由四层构成：GPU 与 CPU 算力、NVMe 存储、网络互联，以及将这一切协同运转的编排软件。下面各节将逐一介绍这四层，随后说明节点从签约租赁到实际运行工作负载的流程，以及部署后如何进行监控。
+    </p>
+  </section>
+
+  <!-- Compute -->
+  <section class="detail-section">
+    <div class="label">// 计算</div>
+    <h2 class="detail-section-title">GPU 与 CPU 平台</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// GPU 系列</div>
+        <div class="infra-name">RTX、A100、H800</div>
+        <div class="infra-desc">根据系列与配置不同，提供单 GPU 节点、多 GPU 节点，以及配备 NVSwitch 的 8-GPU HGX 平台。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// CPU 平台</div>
+        <div class="infra-name">Intel Xeon / AMD EPYC</div>
+        <div class="infra-desc">节点将 GPU 与 Intel Xeon 或 AMD EPYC 处理器搭配，规格根据 GPU 配置与工作负载而定。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 系统内存</div>
+        <div class="infra-name">DDR5 ECC RDIMM</div>
+        <div class="infra-desc">内存容量随节点规模扩展，从单节点配置到 8-GPU 平台的多 TB 级容量均有覆盖。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 节点规模</div>
+        <div class="infra-name">单 GPU 到集群</div>
+        <div class="infra-desc">算力覆盖从单 GPU 节点、8-GPU HGX 平台到多节点裸金属集群的全部规模。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Storage -->
+  <section class="detail-section">
+    <div class="label">// 存储</div>
+    <h2 class="detail-section-title">NVMe 存储架构</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// 系统存储</div>
+        <div class="infra-name">企业级 NVMe</div>
+        <div class="infra-desc">专用企业级 NVMe 系统盘负责操作系统与运行时存储，与数据存储相互独立。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 数据存储</div>
+        <div class="infra-name">大容量 NVMe</div>
+        <div class="infra-desc">更大容量的企业级 NVMe 数据盘随节点规模扩展，支撑数据集与检查点存储需求。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 冗余保护</div>
+        <div class="infra-name">RAID 冗余管理</div>
+        <div class="infra-desc">Broadcom MegaRAID 控制器在每个节点上统一管理系统盘与数据盘的存储冗余。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Networking -->
+  <section class="detail-section">
+    <div class="label">// 网络</div>
+    <h2 class="detail-section-title">互联与网络架构</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// GPU 互联</div>
+        <div class="infra-name">NVLink / NVSwitch</div>
+        <div class="infra-desc">在多 GPU 平台上连接节点内的各 GPU，实现高带宽、低延迟通信。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 集群网络架构</div>
+        <div class="infra-name">InfiniBand / 高速以太网</div>
+        <div class="infra-desc">通过 RDMA 将节点连接为多节点集群，跨节点流量无需经过标准网络协议栈。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// DPU 卸载</div>
+        <div class="infra-name">NVIDIA BlueField-3</div>
+        <div class="infra-desc">在 HGX 与集群平台上，将网络、存储与安全处理从主机 CPU 中卸载出来。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment -->
+  <section class="detail-section">
+    <div class="label">// 部署</div>
+    <h2 class="detail-section-title">从签约租赁到运行工作负载</h2>
+    <p class="product-description detail-copy">
+      单节点部署为自助式：选择节点后，系统会以预装好运行时软件栈的状态直接完成配置。多节点集群部署则遵循结构化流程——需求咨询、定制集群设计、部署实施，并配有明确的服务等级协议（SLA）。详情请参阅<a href="/zh/#enterprise-deploy">企业级部署流程</a>。
+    </p>
+  </section>
+
+  <!-- Monitoring -->
+  <section class="detail-section">
+    <div class="label">// 监控</div>
+    <h2 class="detail-section-title">平台监控</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// 基础设施</div>
+        <div class="infra-name">持续监控</div>
+        <div class="infra-desc">对算力、供电、散热与网络各层进行持续监控，以便在环境或硬件问题影响到运行中的工作负载之前及时发现。</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 访问与活动</div>
+        <div class="infra-name">持续监督</div>
+        <div class="infra-desc">对基础设施与访问活动进行持续监督，帮助及早发现异常模式。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="detail-section detail-cta-section">
+    <a href="#" data-leasing-link target="_blank" rel="noopener" class="btn-lease detail-cta">立即租赁</a>
+  </section>
+
+</div>
+
+<div class="footer">
+  CLOUD LEASING © AI 算力生产平台
+</div>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/smart-back.js"></script>
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/apply-leasing-links.js"></script>
+
+</body>
+</html>

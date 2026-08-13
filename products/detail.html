@@ -8,6 +8,12 @@
   <meta name="description" content="Detailed specifications and lease options for Cloud Leasing GPU servers, including enterprise-ready NVIDIA GPU nodes for AI workloads.">
   <link rel="canonical" href="https://aicloudleasing.com/products/">
 
+  <link rel="alternate" hreflang="en" href="https://aicloudleasing.com/products/">
+  <link rel="alternate" hreflang="zh-CN" href="https://aicloudleasing.com/zh/products/">
+  <link rel="alternate" hreflang="ja" href="https://aicloudleasing.com/ja/products/">
+  <link rel="alternate" hreflang="ko" href="https://aicloudleasing.com/ko/products/">
+  <link rel="alternate" hreflang="x-default" href="https://aicloudleasing.com/products/">
+
   <link rel="icon" href="/assets/images/favicon.svg?v=2" type="image/svg+xml">
   <link rel="icon" href="/assets/images/favicon-32.png?v=2" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v=2">
@@ -30,13 +36,17 @@
 
 <link rel="stylesheet" href="/assets/css/tokens.css">
 <link rel="stylesheet" href="/assets/css/products.css">
+<link rel="stylesheet" href="/assets/css/lang-switcher.css">
 </head>
 
 <body>
 
 <div class="topbar">
   <a href="/" class="logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="logo-mark">CLOUD LEASING</a>
-  <a href="/products/" data-smart-back class="back">← Back to GPU Servers</a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="/products/" data-smart-back class="back">← Back to GPU Servers</a>
+    <div data-lang-switcher></div>
+  </div>
 </div>
 
 <div class="container">
@@ -53,6 +63,8 @@
 
 <script src="/assets/js/config.js"></script>
 <script src="/assets/js/smart-back.js"></script>
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/i18n-dictionary.js"></script>
 <script src="/assets/js/product-shared.js"></script>
 <script src="/assets/js/product-detail.js" defer></script>
 

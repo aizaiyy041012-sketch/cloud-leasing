@@ -1,0 +1,89 @@
+{
+  "productLine": {
+    "zh-CN": "企业级 AI 集群节点",
+    "ja": "エンタープライズ AI クラスターノード",
+    "ko": "엔터프라이즈 AI 클러스터 노드"
+  },
+  "products": {
+    "h800-shared-entry": {
+      "zh-CN": { "name": "H800 入门级共享算力节点", "category": "共享算力节点", "description": "入门级 H800 共享计算节点，提供小时级和天级短期租赁，适合快速推理测试、基准测试和短周期 AI 训练任务。" },
+      "ja": { "name": "H800 エントリー共有コンピュートノード", "category": "共有コンピュートノード", "description": "時間単位・日単位の短期リースで利用できるエントリーレベルの共有 H800 コンピュートノード。迅速な推論実行、ベンチマーク、短期の AI トレーニングタスクに適しています。" },
+      "ko": { "name": "H800 엔트리 공유 컴퓨팅 노드", "category": "공유 컴퓨팅 노드", "description": "시간 단위 및 일 단위 단기 임대로 이용 가능한 엔트리급 공유 H800 컴퓨팅 노드입니다. 빠른 추론 실행, 벤치마킹, 단기 AI 학습 작업에 적합합니다." }
+    },
+    "rtx4090-a": {
+      "zh-CN": { "name": "RTX 4090 4-GPU 工作站集群节点 · A 型", "category": "RTX 4090 工作站节点", "description": "基于 Intel Xeon 平台的 4× RTX 4090 工作站级集群节点，适合模型微调、小规模训练和推理任务。" },
+      "ja": { "name": "RTX 4090 4-GPU ワークステーションクラスターノード · モデル A", "category": "RTX 4090 ワークステーションノード", "description": "Intel Xeon プラットフォーム上に構築された 4× RTX 4090 ワークステーションクラスのクラスターノード。ファインチューニング、小規模トレーニング、推論ワークロードに適しています。" },
+      "ko": { "name": "RTX 4090 4-GPU 워크스테이션 클러스터 노드 · 모델 A", "category": "RTX 4090 워크스테이션 노드", "description": "Intel Xeon 플랫폼 기반의 4× RTX 4090 워크스테이션급 클러스터 노드로, 파인튜닝, 소규모 학습, 추론 워크로드에 적합합니다." }
+    },
+    "rtx4090-b": {
+      "zh-CN": { "name": "RTX 4090 4-GPU 工作站集群节点 · B 型", "category": "RTX 4090 工作站节点", "description": "基于 AMD EPYC 平台的 4× RTX 4090 工作站级集群节点，适合模型微调、小规模训练和推理任务。" },
+      "ja": { "name": "RTX 4090 4-GPU ワークステーションクラスターノード · モデル B", "category": "RTX 4090 ワークステーションノード", "description": "AMD EPYC プラットフォーム上に構築された 4× RTX 4090 ワークステーションクラスのクラスターノード。ファインチューニング、小規模トレーニング、推論ワークロードに適しています。" },
+      "ko": { "name": "RTX 4090 4-GPU 워크스테이션 클러스터 노드 · 모델 B", "category": "RTX 4090 워크스테이션 노드", "description": "AMD EPYC 플랫폼 기반의 4× RTX 4090 워크스테이션급 클러스터 노드로, 파인튜닝, 소규모 학습, 추론 워크로드에 적합합니다." }
+    },
+    "a100-single-entry": {
+      "zh-CN": { "name": "A100 单 GPU 集群节点 · 入门版", "category": "A100 单 GPU 节点", "description": "基于 Intel Xeon 平台的入门级单卡 A100 80GB 节点，适用于生产级训练和推理任务。" },
+      "ja": { "name": "A100 シングル GPU クラスターノード · エントリー", "category": "A100 シングル GPU ノード", "description": "Intel Xeon プラットフォーム上のエントリークラスのシングル A100 80GB ノード。本番環境でのトレーニングおよび推論ワークロード向けです。" },
+      "ko": { "name": "A100 싱글 GPU 클러스터 노드 · 엔트리", "category": "A100 싱글 GPU 노드", "description": "Intel Xeon 플랫폼 기반의 엔트리급 싱글 A100 80GB 노드로, 프로덕션 학습 및 추론 워크로드에 사용됩니다." }
+    },
+    "a100-single-advanced": {
+      "zh-CN": { "name": "A100 单 GPU 集群节点 · 进阶版", "category": "A100 单 GPU 节点", "description": "基于 AMD EPYC 平台的进阶级单卡 A100 80GB 节点，配备更高带宽的 200GbE 网络。" },
+      "ja": { "name": "A100 シングル GPU クラスターノード · アドバンスド", "category": "A100 シングル GPU ノード", "description": "AMD EPYC プラットフォーム上のアドバンスドクラスのシングル A100 80GB ノード。より高帯域な 200GbE ネットワークを搭載しています。" },
+      "ko": { "name": "A100 싱글 GPU 클러스터 노드 · 어드밴스드", "category": "A100 싱글 GPU 노드", "description": "AMD EPYC 플랫폼 기반의 어드밴스드급 싱글 A100 80GB 노드로, 더 높은 대역폭의 200GbE 네트워킹을 탑재했습니다." }
+    },
+    "a100-dual-standard": {
+      "zh-CN": { "name": "A100 双 GPU 集群节点 · 标准版", "category": "A100 双 GPU 节点", "description": "基于 AMD EPYC 平台的标准级双卡 A100 80GB 节点，适用于更大规模的训练和推理任务。" },
+      "ja": { "name": "A100 デュアル GPU クラスターノード · スタンダード", "category": "A100 デュアル GPU ノード", "description": "AMD EPYC プラットフォーム上のスタンダードクラスのデュアル A100 80GB ノード。より大規模なトレーニングおよび推論ワークロード向けです。" },
+      "ko": { "name": "A100 듀얼 GPU 클러스터 노드 · 스탠다드", "category": "A100 듀얼 GPU 노드", "description": "AMD EPYC 플랫폼 기반의 스탠다드급 듀얼 A100 80GB 노드로, 더 대규모의 학습 및 추론 워크로드에 사용됩니다." }
+    },
+    "a100-dual-advanced": {
+      "zh-CN": { "name": "A100 双 GPU 集群节点 · 进阶版", "category": "A100 双 GPU 节点", "description": "基于 Intel Xeon Platinum 平台的进阶级双卡 A100 80GB 节点，配备 400GbE 网络，适用于更高吞吐量的任务。" },
+      "ja": { "name": "A100 デュアル GPU クラスターノード · アドバンスド", "category": "A100 デュアル GPU ノード", "description": "Intel Xeon Platinum プラットフォーム上のアドバンスドクラスのデュアル A100 80GB ノード。400GbE ネットワークを搭載し、より高スループットなワークロードに対応します。" },
+      "ko": { "name": "A100 듀얼 GPU 클러스터 노드 · 어드밴스드", "category": "A100 듀얼 GPU 노드", "description": "Intel Xeon Platinum 플랫폼 기반의 어드밴스드급 듀얼 A100 80GB 노드로, 400GbE 네트워킹을 탑재하여 더 높은 처리량의 워크로드에 대응합니다." }
+    },
+    "a100-hgx4-standard": {
+      "zh-CN": { "name": "A100 4-GPU HGX 集群节点 · 标准版", "category": "A100 4-GPU HGX 节点", "description": "标准级 4-GPU A100 HGX 节点，搭载 NVLink 与 BlueField-3 DPU 加速，适用于多 GPU 训练任务。" },
+      "ja": { "name": "A100 4-GPU HGX クラスターノード · スタンダード", "category": "A100 4-GPU HGX ノード", "description": "NVLink と BlueField-3 DPU アクセラレーションを備えたスタンダードクラスの 4-GPU A100 HGX ノード。マルチ GPU トレーニング向けです。" },
+      "ko": { "name": "A100 4-GPU HGX 클러스터 노드 · 스탠다드", "category": "A100 4-GPU HGX 노드", "description": "NVLink 및 BlueField-3 DPU 가속을 탑재한 스탠다드급 4-GPU A100 HGX 노드로, 멀티 GPU 학습 작업에 적합합니다." }
+    },
+    "a100-hgx4-advanced": {
+      "zh-CN": { "name": "A100 4-GPU HGX 集群节点 · 进阶版", "category": "A100 4-GPU HGX 节点", "description": "基于 Intel Xeon Platinum 平台的进阶级 4-GPU A100 HGX 节点，配备液冷辅助散热和双 BlueField-3 DPU。" },
+      "ja": { "name": "A100 4-GPU HGX クラスターノード · アドバンスド", "category": "A100 4-GPU HGX ノード", "description": "Intel Xeon Platinum プラットフォーム上のアドバンスドクラスの 4-GPU A100 HGX ノード。液冷アシスト冷却とデュアル BlueField-3 DPU を搭載しています。" },
+      "ko": { "name": "A100 4-GPU HGX 클러스터 노드 · 어드밴스드", "category": "A100 4-GPU HGX 노드", "description": "Intel Xeon Platinum 플랫폼 기반의 어드밴스드급 4-GPU A100 HGX 노드로, 액체 냉각 보조 방식과 듀얼 BlueField-3 DPU를 탑재했습니다." }
+    },
+    "a100-hgx8-full": {
+      "zh-CN": { "name": "A100 8-GPU HGX 集群节点 · 完整配置版", "category": "A100 8-GPU HGX 节点", "description": "配备 NVSwitch 的完整配置 8-GPU A100 HGX 节点，适用于大规模训练和高吞吐量推理。" },
+      "ja": { "name": "A100 8-GPU HGX クラスターノード · フル構成", "category": "A100 8-GPU HGX ノード", "description": "NVSwitch を搭載したフル構成の 8-GPU A100 HGX ノード。大規模トレーニングと高スループット推論向けです。" },
+      "ko": { "name": "A100 8-GPU HGX 클러스터 노드 · 풀 구성", "category": "A100 8-GPU HGX 노드", "description": "NVSwitch를 탑재한 풀 구성 8-GPU A100 HGX 노드로, 대규모 학습과 고처리량 추론에 적합합니다." }
+    },
+    "a100-hgx8-top": {
+      "zh-CN": { "name": "A100 8-GPU HGX 集群节点 · 顶配版", "category": "A100 8-GPU HGX 节点", "description": "顶配 8-GPU A100 HGX 节点，搭载核心数最高的 EPYC CPU 及升级版网络架构。" },
+      "ja": { "name": "A100 8-GPU HGX クラスターノード · トップ構成", "category": "A100 8-GPU HGX ノード", "description": "最高コア数の EPYC CPU オプションとアップグレードされたネットワークファブリックを備えたトップ構成の 8-GPU A100 HGX ノード。" },
+      "ko": { "name": "A100 8-GPU HGX 클러스터 노드 · 최상위 구성", "category": "A100 8-GPU HGX 노드", "description": "최고 코어 수의 EPYC CPU 옵션과 업그레이드된 네트워크 패브릭을 갖춘 최상위 구성 8-GPU A100 HGX 노드입니다." }
+    },
+    "h800-hgx8-cluster-entry": {
+      "zh-CN": { "name": "H800 8-GPU HGX 集群 · 入门集群", "category": "H800 8-GPU HGX 集群", "description": "入门级多节点 H800 集群，由两台 8-GPU HGX 服务器组成，共 16 张 GPU，适用于大模型训练。", "clusterScale": "2 × 8-GPU H800 HGX 服务器 — 共 16 张 H800 GPU" },
+      "ja": { "name": "H800 8-GPU HGX クラスター · エントリークラスター", "category": "H800 8-GPU HGX クラスター", "description": "8-GPU HGX サーバー 2 台を組み合わせ、合計 16 GPU のプールを構成するエントリーレベルのマルチノード H800 クラスター。大規模モデルのトレーニング向けです。", "clusterScale": "2 × 8-GPU H800 HGX サーバー — 合計 16 基の H800 GPU" },
+      "ko": { "name": "H800 8-GPU HGX 클러스터 · 엔트리 클러스터", "category": "H800 8-GPU HGX 클러스터", "description": "8-GPU HGX 서버 2대를 결합해 총 16개의 GPU 풀을 구성한 엔트리급 멀티 노드 H800 클러스터로, 대형 모델 학습에 적합합니다.", "clusterScale": "2 × 8-GPU H800 HGX 서버 — 총 16개 H800 GPU" }
+    },
+    "h800-hgx8-cluster-standard": {
+      "zh-CN": { "name": "H800 8-GPU HGX 集群 · 标准集群", "category": "H800 8-GPU HGX 集群", "description": "标准级多节点 H800 集群，由三台 8-GPU HGX 服务器组成，共 24 张 GPU，适用于大模型训练。", "clusterScale": "3 × 8-GPU H800 HGX 服务器 — 共 24 张 H800 GPU" },
+      "ja": { "name": "H800 8-GPU HGX クラスター · スタンダードクラスター", "category": "H800 8-GPU HGX クラスター", "description": "8-GPU HGX サーバー 3 台を組み合わせ、合計 24 GPU のプールを構成するスタンダードクラスのマルチノード H800 クラスター。大規模モデルのトレーニング向けです。", "clusterScale": "3 × 8-GPU H800 HGX サーバー — 合計 24 基の H800 GPU" },
+      "ko": { "name": "H800 8-GPU HGX 클러스터 · 스탠다드 클러스터", "category": "H800 8-GPU HGX 클러스터", "description": "8-GPU HGX 서버 3대를 결합해 총 24개의 GPU 풀을 구성한 스탠다드급 멀티 노드 H800 클러스터로, 대형 모델 학습에 적합합니다.", "clusterScale": "3 × 8-GPU H800 HGX 서버 — 총 24개 H800 GPU" }
+    },
+    "h800-hgx8-cluster-advanced": {
+      "zh-CN": { "name": "H800 8-GPU HGX 集群 · 进阶集群", "category": "H800 8-GPU HGX 集群", "description": "进阶级多节点 H800 集群，由四台 8-GPU HGX 服务器组成，共 32 张 GPU，配备双上联 leaf-spine 网络架构。", "clusterScale": "4 × 8-GPU H800 HGX 服务器 — 共 32 张 H800 GPU" },
+      "ja": { "name": "H800 8-GPU HGX クラスター · アドバンスドクラスター", "category": "H800 8-GPU HGX クラスター", "description": "8-GPU HGX サーバー 4 台を組み合わせ、合計 32 GPU のプールを構成し、デュアルアップリンクの leaf-spine ファブリックを備えたアドバンスドクラスのマルチノード H800 クラスター。", "clusterScale": "4 × 8-GPU H800 HGX サーバー — 合計 32 基の H800 GPU" },
+      "ko": { "name": "H800 8-GPU HGX 클러스터 · 어드밴스드 클러스터", "category": "H800 8-GPU HGX 클러스터", "description": "8-GPU HGX 서버 4대를 결합해 총 32개의 GPU 풀을 구성하고, 듀얼 업링크 leaf-spine 패브릭을 갖춘 어드밴스드급 멀티 노드 H800 클러스터입니다.", "clusterScale": "4 × 8-GPU H800 HGX 서버 — 총 32개 H800 GPU" }
+    },
+    "h800-hgx8-cluster-large": {
+      "zh-CN": { "name": "H800 8-GPU HGX 集群 · 大型集群", "category": "H800 8-GPU HGX 集群", "description": "大型多节点 H800 集群，由六台全液冷 8-GPU HGX 服务器组成，共 48 张 GPU，基于 Spectrum-X 网络架构。", "clusterScale": "6 × 8-GPU H800 HGX 服务器（全液冷） — 共 48 张 H800 GPU" },
+      "ja": { "name": "H800 8-GPU HGX クラスター · ラージクラスター", "category": "H800 8-GPU HGX クラスター", "description": "完全液冷の 8-GPU HGX サーバー 6 台を組み合わせ、Spectrum-X ファブリック上に合計 48 GPU のプールを構成するラージクラスのマルチノード H800 クラスター。", "clusterScale": "6 × 8-GPU H800 HGX サーバー（完全液冷） — 合計 48 基の H800 GPU" },
+      "ko": { "name": "H800 8-GPU HGX 클러스터 · 라지 클러스터", "category": "H800 8-GPU HGX 클러스터", "description": "완전 액체 냉각 방식의 8-GPU HGX 서버 6대를 결합해 Spectrum-X 패브릭 위에 총 48개의 GPU 풀을 구성한 라지급 멀티 노드 H800 클러스터입니다.", "clusterScale": "6 × 8-GPU H800 HGX 서버（완전 액체 냉각） — 총 48개 H800 GPU" }
+    },
+    "h800-hgx8-cluster-flagship": {
+      "zh-CN": { "name": "H800 8-GPU HGX 旗舰全液冷集群", "category": "H800 8-GPU HGX 集群", "description": "旗舰级多节点 H800 集群，由七台全液冷 8-GPU HGX 服务器组成，共 56 张 GPU，配备 800GbE SuperNIC 网络与 NDR/Spectrum-X 混合架构。", "clusterScale": "7 × 旗舰级 8-GPU H800 HGX 服务器（全液冷） — 共 56 张 H800 GPU" },
+      "ja": { "name": "H800 8-GPU HGX フラッグシップ フル液冷クラスター", "category": "H800 8-GPU HGX クラスター", "description": "完全液冷のフラッグシップ 8-GPU HGX サーバー 7 台を組み合わせ、800GbE SuperNIC ネットワークと NDR/Spectrum-X ハイブリッドファブリックを備えた合計 56 GPU のプールを構成するフラッグシップクラスのマルチノード H800 クラスター。", "clusterScale": "7 × フラッグシップ 8-GPU H800 HGX サーバー（完全液冷） — 合計 56 基の H800 GPU" },
+      "ko": { "name": "H800 8-GPU HGX 플래그십 완전 액체 냉각 클러스터", "category": "H800 8-GPU HGX 클러스터", "description": "완전 액체 냉각 방식의 플래그십 8-GPU HGX 서버 7대를 결합하고, 800GbE SuperNIC 네트워킹과 NDR/Spectrum-X 하이브리드 패브릭을 갖춘 총 56개의 GPU 풀을 구성한 플래그십급 멀티 노드 H800 클러스터입니다.", "clusterScale": "7 × 플래그십 8-GPU H800 HGX 서버（완전 액체 냉각） — 총 56개 H800 GPU" }
+    }
+  }
+}

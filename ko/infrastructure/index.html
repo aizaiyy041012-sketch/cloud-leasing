@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>인프라 | Cloud Leasing</title>
+<meta name="description" content="Cloud Leasing 플랫폼을 구성하는 컴퓨팅, 스토리지, 네트워킹, 배포, 모니터링 계층에 대한 기술 개요.">
+<link rel="canonical" href="https://aicloudleasing.com/ko/infrastructure/">
+
+<link rel="alternate" hreflang="en" href="https://aicloudleasing.com/infrastructure/">
+<link rel="alternate" hreflang="zh-CN" href="https://aicloudleasing.com/zh/infrastructure/">
+<link rel="alternate" hreflang="ja" href="https://aicloudleasing.com/ja/infrastructure/">
+<link rel="alternate" hreflang="ko" href="https://aicloudleasing.com/ko/infrastructure/">
+<link rel="alternate" hreflang="x-default" href="https://aicloudleasing.com/infrastructure/">
+
+<link rel="icon" href="/assets/images/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="/assets/images/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v=2">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Leasing">
+<meta property="og:title" content="인프라 | Cloud Leasing">
+<meta property="og:description" content="Cloud Leasing 플랫폼을 구성하는 컴퓨팅, 스토리지, 네트워킹, 배포, 모니터링 계층에 대한 기술 개요.">
+<meta property="og:url" content="https://aicloudleasing.com/ko/infrastructure/">
+<meta property="og:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="인프라 | Cloud Leasing">
+<meta name="twitter:description" content="Cloud Leasing 플랫폼을 구성하는 컴퓨팅, 스토리지, 네트워킹, 배포, 모니터링 계층에 대한 기술 개요.">
+<meta name="twitter:image" content="https://aicloudleasing.com/assets/images/og-cover.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/products.css">
+<link rel="stylesheet" href="/assets/css/lang-switcher.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://aicloudleasing.com/ko/" },
+    { "@type": "ListItem", "position": 2, "name": "인프라", "item": "https://aicloudleasing.com/ko/infrastructure/" }
+  ]
+}
+</script>
+</head>
+
+<body>
+
+<div class="topbar">
+  <a href="/ko/" class="logo"><img src="/assets/images/logos/cloud-leasing-mark.png" alt="Cloud Leasing" class="logo-mark">CLOUD LEASING</a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="/ko/" data-smart-back class="back">← 플랫폼으로 돌아가기</a>
+    <div data-lang-switcher></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="label">// 인프라</div>
+  <h1>인프라</h1>
+  <p class="subtitle">
+    Cloud Leasing 플랫폼을 구성하는 컴퓨팅, 스토리지, 네트워킹 계층에 대한 기술 개요와 노드가 배포되고 모니터링되는 방식을 소개합니다.
+  </p>
+
+  <!-- Infrastructure Overview -->
+  <section class="detail-section">
+    <div class="label">// 플랫폼 개요</div>
+    <h2 class="detail-section-title">플랫폼 구성 방식</h2>
+    <p class="product-description detail-copy">
+      모든 Cloud Leasing 노드는 GPU 및 CPU 컴퓨팅, NVMe 스토리지, 네트워크 인터커넥트, 그리고 이들을 하나로 묶는 오케스트레이션 소프트웨어의 네 가지 계층으로 구성됩니다. 아래 섹션에서는 각 계층을 설명한 뒤, 임대 계약 체결부터 실제 워크로드 실행까지의 과정과 배포 후 모니터링 방식을 소개합니다.
+    </p>
+  </section>
+
+  <!-- Compute -->
+  <section class="detail-section">
+    <div class="label">// 컴퓨팅</div>
+    <h2 class="detail-section-title">GPU 및 CPU 플랫폼</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// GPU 제품군</div>
+        <div class="infra-name">RTX, A100, H800</div>
+        <div class="infra-desc">제품군과 구성에 따라 싱글 GPU 노드, 멀티 GPU 노드, NVSwitch를 탑재한 8-GPU HGX 플랫폼으로 제공됩니다.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// CPU 플랫폼</div>
+        <div class="infra-name">Intel Xeon / AMD EPYC</div>
+        <div class="infra-desc">노드는 GPU 구성 및 워크로드에 맞춰 Intel Xeon 또는 AMD EPYC 프로세서와 결합됩니다.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 시스템 메모리</div>
+        <div class="infra-name">DDR5 ECC RDIMM</div>
+        <div class="infra-desc">메모리는 노드 규모에 따라 확장되며, 싱글 노드 구성부터 8-GPU 플랫폼의 수 테라바이트급 용량까지 지원합니다.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 노드 규모</div>
+        <div class="infra-name">싱글 GPU부터 클러스터까지</div>
+        <div class="infra-desc">컴퓨팅 규모는 싱글 GPU 노드부터 8-GPU HGX 플랫폼, 멀티 노드 베어메탈 클러스터까지 다양합니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Storage -->
+  <section class="detail-section">
+    <div class="label">// 스토리지</div>
+    <h2 class="detail-section-title">NVMe 스토리지 아키텍처</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// 시스템 스토리지</div>
+        <div class="infra-name">엔터프라이즈 NVMe</div>
+        <div class="infra-desc">전용 엔터프라이즈 NVMe 시스템 드라이브가 OS 및 런타임 스토리지를 담당하며, 데이터 스토리지와 분리되어 있습니다.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 데이터 스토리지</div>
+        <div class="infra-name">대용량 NVMe</div>
+        <div class="infra-desc">더 큰 용량의 엔터프라이즈 NVMe 데이터 드라이브가 노드 규모에 맞춰 확장되어 데이터셋 및 체크포인트 저장을 지원합니다.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 이중화</div>
+        <div class="infra-name">RAID 관리</div>
+        <div class="infra-desc">Broadcom MegaRAID 컨트롤러가 모든 노드에서 시스템 드라이브와 데이터 드라이브의 스토리지 이중화를 관리합니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Networking -->
+  <section class="detail-section">
+    <div class="label">// 네트워킹</div>
+    <h2 class="detail-section-title">인터커넥트 및 패브릭</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// GPU 인터커넥트</div>
+        <div class="infra-name">NVLink / NVSwitch</div>
+        <div class="infra-desc">멀티 GPU 플랫폼에서 노드 내 GPU 간 고대역폭, 저지연 통신을 연결합니다.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 클러스터 패브릭</div>
+        <div class="infra-name">InfiniBand / 고속 이더넷</div>
+        <div class="infra-desc">RDMA를 통해 노드를 멀티 노드 클러스터로 연결하여, 노드 간 트래픽이 표준 네트워크 스택을 우회하도록 합니다.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// DPU 오프로드</div>
+        <div class="infra-name">NVIDIA BlueField-3</div>
+        <div class="infra-desc">HGX 및 클러스터 플랫폼에서 네트워킹, 스토리지, 보안 처리를 호스트 CPU에서 오프로드합니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment -->
+  <section class="detail-section">
+    <div class="label">// 배포</div>
+    <h2 class="detail-section-title">임대부터 워크로드 실행까지</h2>
+    <p class="product-description detail-copy">
+      싱글 노드 배포는 셀프서비스 방식입니다. 노드를 선택하면 런타임 스택이 이미 설치된 상태로 프로비저닝됩니다. 멀티 노드 클러스터 배포는 상담, 맞춤형 클러스터 설계, 프로비저닝, 명확한 SLA 설정을 포함한 구조화된 프로세스를 따릅니다. 자세한 내용은 <a href="/ko/#enterprise-deploy">엔터프라이즈 배포 프로세스</a>를 참고하세요.
+    </p>
+  </section>
+
+  <!-- Monitoring -->
+  <section class="detail-section">
+    <div class="label">// 모니터링</div>
+    <h2 class="detail-section-title">플랫폼 모니터링</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-tag">// 인프라</div>
+        <div class="infra-name">지속적 모니터링</div>
+        <div class="infra-desc">컴퓨팅, 전원, 냉각, 네트워크 계층을 지속적으로 모니터링하여 환경적 요인이나 하드웨어 문제가 실행 중인 워크로드에 영향을 미치기 전에 발견합니다.</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-tag">// 접근 및 활동</div>
+        <div class="infra-name">지속적 감시</div>
+        <div class="infra-desc">인프라 및 접근 활동을 지속적으로 모니터링하여 이상 패턴을 조기에 발견할 수 있도록 지원합니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="detail-section detail-cta-section">
+    <a href="#" data-leasing-link target="_blank" rel="noopener" class="btn-lease detail-cta">지금 임대하기</a>
+  </section>
+
+</div>
+
+<div class="footer">
+  CLOUD LEASING © AI 컴퓨팅 프로덕션 플랫폼
+</div>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/smart-back.js"></script>
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/apply-leasing-links.js"></script>
+
+</body>
+</html>
